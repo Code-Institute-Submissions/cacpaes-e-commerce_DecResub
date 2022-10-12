@@ -40,8 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'allauth',
     'allauth.account',
-    'allauth.socialaccount'
-    
+    'allauth.socialaccount',
+    'landingpage.apps.LandingpageConfig',
+    'cloudinary'
 ]
 
 MIDDLEWARE = [
@@ -140,6 +141,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
