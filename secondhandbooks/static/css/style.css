@@ -1,0 +1,303 @@
+body, html {
+    height: 100%;
+    background-color: #FFF;
+    overflow-x: hidden;
+}
+
+h1,h2, h3,h4,p, label, span {
+color: #895737!important;
+}
+
+/* The hero image */
+.hero-image {
+  /* Use "linear-gradient" to add a darken background effect to the image . This will make the text easier to read */
+  
+
+  /* Set a specific height */
+  height: 20%;
+  width: 100%;
+
+  /* Position and center the image to scale nicely on all screens */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+
+
+.hero-text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+.fit-content{
+  width: fit-content;
+}
+
+.buttons-myarea{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.pagination{
+  display: flex;
+  justify-content: center;
+}
+
+.card-coffee{
+  border-radius: 2.25rem;
+}
+
+.align-text{
+  text-align: left;
+}
+
+.none{
+  display: none;
+}
+
+.center{
+  margin: auto;
+}
+
+.flex-container {
+  display: flex;
+}
+
+.hover-menu:hover{
+  background-color: #DAB49D;
+}
+
+.container-post{
+  display: flex;
+  justify-content: center;
+}
+
+.image-container{
+  height: 52vh;
+  margin-bottom: 2em;
+}
+
+.pagination{
+  margin-top: 1em;
+}
+
+.create-button{
+  margin: auto;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  border-radius: 15px;
+}
+
+button,a{
+  border-radius: 15px;
+}
+
+.border-radius-btn{
+  border-radius: 15px;
+}
+
+.list-group-item{
+  border-bottom-right-radius: 15px!important;
+  border-bottom-left-radius:15px!important;
+  border-top-right-radius: 15px!important;
+  border-top-left-radius: 15px!important;
+}
+
+.list-group-item.active {
+  z-index: 2;
+  color: #fff;
+  background-color: #895737;
+  border-color: #DAB49D;
+}
+
+.list-group-item-danger {
+  color: #C08552;
+  background-color: #5E3023;
+}
+
+a {
+  color: #895737;
+  text-decoration: underline;
+}
+
+.link-social{
+  cursor: pointer;
+}
+
+.image-detail{
+  height: 50vh;
+}
+
+.box-details{
+  justify-content: center;
+  align-content: space-around;
+}
+
+.section-details{
+  margin-left: 1em ;
+}
+
+
+
+.not-margin-left{
+  margin-left: 0!important;
+  margin-right: 0!important;
+  width: 80%;
+  margin: auto!important;
+}
+
+.content-post{
+  border: 1px solid #F3E9DC;
+  border-radius: 15px;
+}
+
+.pointer{
+  cursor: pointer;
+}
+
+.background-main{
+  background-color: #F3E9DC;
+}
+
+.background-navbar{
+  background-color: #895737;
+}
+
+.cards{
+  background-color: #895737;
+  color: white;
+}
+
+.card {
+  background-color: #dab49d;
+}
+
+.about-p{
+  margin:auto;
+  width: 90%;
+}
+
+.login{
+  margin:auto;
+  text-align: center;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  padding: 1em;
+}
+
+.rede-social :hover{
+  color: #C08552!important;
+}
+
+.cancel-btn:hover{
+  color: #fff!important;
+}
+
+.create-btn:hover{
+  color: #C08552!important;
+}
+
+.flex-container-post{
+  width: 22vw;
+}
+
+.direction-posts{
+  flex-direction: column;
+}
+
+.flex-container-post{
+  width: 90vw;
+}
+@media (max-width: 1000px){
+  .botao-desktop{
+    display: none;
+  }
+  .botao-mobile{
+    display: block;
+  }
+  .hero-image{ 
+    height: 8%;
+    font-size: 1em;
+  }
+  .content-text{
+  }
+}
+
+.background-message{
+  background-color: #FFFFFF;
+  border: none;
+}
+
+@media (min-width: 1000px){
+  .direction-posts{
+    flex-direction: row;
+  }
+
+  .flex-container-post{
+    width: 22vw;
+  }
+
+  .image-detail{
+    width: 20vw;
+    height: 50vh;
+  }
+  .botao-desktop{
+    display: block;
+  }
+  .botao-mobile{
+    display: none;
+  }
+}
+
+@media (max-width: 1300px){
+  .flex-container-post{
+    height: 95vh;
+    margin: auto;
+    margin-left: 1em;
+  }
+  .content-text{
+    margin-top: 4em;
+  }
+
+  .card-detail{
+    margin-left: 0!important;
+  }
+
+  .box-details{
+    margin: 0!important;
+    flex-direction: column;
+  }
+}
+@media (min-width: 1200px){
+  .margin-left-details{
+    margin-left: 2em;
+  }
+}
+@media (min-width: 1500px){
+  .image-container{height: 55vh;}
+  .about-p{
+    width: 60%;
+  }
+  .direction-posts{
+    flex-direction: row;
+  }
+
+  .margin-left-details{
+    margin-left: 2em;
+  }
+}
+
+@media (min-width: 1700px){
+  .image-container{height: 58vh;}
+}
+
+@media (min-width: 2000px){
+  .image-container{height: 70vh;}
+}
