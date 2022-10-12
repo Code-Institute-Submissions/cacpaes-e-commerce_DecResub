@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+    {% block content %}
+        {% if books %}
+            {% for book in books  %}
+                <p>{{book.name}}</p>
+                <p>{{book.author.name}}</p>
+                <p>{{book.book_cover}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endblock %}
+    
