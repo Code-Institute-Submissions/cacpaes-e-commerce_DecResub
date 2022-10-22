@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'home.apps.HomeConfig',
     'puml_generator',
+    'books.apps.BooksConfig',
+    'bag.apps.BagConfig',
 ]
 
 MIDDLEWARE = [
