@@ -6,7 +6,7 @@ from .models import Books
 
 
 def index(request):
-    template_html = 'landingpage/baselandingpage.html'
+    template_html = 'home/home.html'
 
     books = Books.objects.all()
 

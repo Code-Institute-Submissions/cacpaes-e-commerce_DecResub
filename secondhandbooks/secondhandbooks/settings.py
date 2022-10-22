@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'landingpage.apps.LandingpageConfig',
+    'home.apps.HomeConfig',
     'puml_generator',
 ]
 
