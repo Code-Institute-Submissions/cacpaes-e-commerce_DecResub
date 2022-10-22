@@ -1,11 +1,11 @@
 from django.contrib import admin
 
-from .models import Book, Category
+from .models import Book, Category, Author
 
 # Register your models here.
 
 
-class ProductAdmin(admin.ModelAdmin):
+class BookAdmin(admin.ModelAdmin):
     list_display = (
         'sku',
         'name',
@@ -13,6 +13,7 @@ class ProductAdmin(admin.ModelAdmin):
         'price',
         'rating',
         'image',
+        'author'
     )
 
     ordering = ('sku',)
@@ -25,5 +26,14 @@ class CategoryAdmin(admin.ModelAdmin):
     )
 
 
-admin.site.register(Book, ProductAdmin)
+class AuthorAdmin(admin.ModelAdmin):
+    list_display = (
+        'name',
+        'image',
+        'details',
+    )    
+
+
+admin.site.register(Book, BookAdmin)
+admin.site.register(Author, AuthorAdmin)
 admin.site.register(Category, CategoryAdmin)

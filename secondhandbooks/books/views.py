@@ -78,7 +78,7 @@ def add_book(request):
     """ Add a book to the store """
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
-        return redirect(reverse('home'))
+        return redirect(reverse('books'))
 
     if request.method == 'POST':
         form = BookForm(request.POST, request.FILES)
@@ -106,7 +106,7 @@ def edit_book(request, book_id):
     """ Edit a book in the store """
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
-        return redirect(reverse('home'))
+        return redirect(reverse('books'))
 
     book = get_object_or_404(Book, pk=book_id)
     if request.method == 'POST':
@@ -137,7 +137,7 @@ def delete_book(request, book_id):
     """ Delete a book from the store """
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
-        return redirect(reverse('home'))
+        return redirect(reverse('books'))
 
     book = get_object_or_404(Book, pk=book_id)
     book.delete()
