@@ -21,10 +21,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in bookion secret!
-SECRET_KEY = 'django-insecure-osm-px-nhdv^xwam4p=l6re8ypl__qg&6dwxlurmr6!-(n6&%8'
+SECRET_KEY = os.environ.get('SECRETE_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in bookion!
-DEBUG = True
+DEBUG = 'DEVELOPEMENT' in os.environ
 
 ALLOWED_HOSTS = ['secondhandbookk.herokuapp.com', 'localhost']
 
