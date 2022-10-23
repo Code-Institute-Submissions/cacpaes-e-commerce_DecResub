@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-osm-px-nhdv^xwam4p=l6re8ypl__qg&6dwxlurmr6!-(n6&%8
 # SECURITY WARNING: don't run with debug turned on in bookion!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['secondhandbookk.herokuapp.com', 'localhost']
 
 
 # Application definition
