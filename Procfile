@@ -1,1 +1,1 @@
-web: gunicorn secondhandbooks/secondhandbooks.wsgi:application
+web: sh -c 'cd ./secondhandbooks/ && exec gunicorn secondhandbooks.wsgi --log-file -'
