@@ -111,9 +111,17 @@ WSGI_APPLICATION = 'secondhandbooks.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': dj_database_url.parse('postgres://votixfpnmcrngf:9dea90145414ec388d7e58bc9a306ed733ccc9a6107b9816ca4c8904c713883d@ec2-54-228-218-84.eu-west-1.compute.amazonaws.com:5432/d4g9f1em10bt9p')
-}
+if 'DATABASE_URL' in os.environ:
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
 
 
 # Password validation
