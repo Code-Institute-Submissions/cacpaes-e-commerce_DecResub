@@ -1,1 +1,1 @@
-web: gunicorn secondhandbooks.wsgi:application
+web: gunicorn secondhandbooks/secondhandbooks.wsgi:application
