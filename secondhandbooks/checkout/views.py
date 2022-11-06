@@ -17,6 +17,9 @@ import stripe
 import json
 
 
+class BookUnavailableBook(Exception):
+    pass
+
 @require_POST
 def cache_checkout_data(request):
     try:
@@ -61,18 +64,27 @@ def checkout(request):
             order.stripe_pid = pid
             order.original_bag = json.dumps(bag)
             order.save()
+            print(bag)
             for item_id, item_data in bag.items():
                 try:
                     book = Book.objects.get(id=item_id)
                     if isinstance(item_data, int):
+                        if book.amount < item_data:
+                            raise BookUnavailableBook
                         order_line_item = OrderLineItem(
                             order=order,
                             book=book,
                             quantity=item_data,
                         )
                         order_line_item.save()
+                        book.amount = book.amount - item_data
+                        book.save()
+                        
+                        
                     else:
                         for size, quantity in item_data['items_by_size'].items():
+                            if book.amount < quantity:
+                                raise BookUnavailableBook
                             order_line_item = OrderLineItem(
                                 order=order,
                                 book=book,
@@ -80,6 +92,8 @@ def checkout(request):
                                 book_size=size,
                             )
                             order_line_item.save()
+                            book.amount = book.amount - quantity
+                            book.save()
                 except Book.DoesNotExist:
                     messages.error(request, (
                         "One of the books in your bag wasn't "
@@ -88,6 +102,13 @@ def checkout(request):
                     )
                     order.delete()
                     return redirect(reverse('view_bag'))
+                except BookUnavailableBook:
+                    messages.error(request, (
+                        """Book is not avaliadbled""", )
+                    )
+                    order.delete()
+                    print(messages.error)
+                    return redirect(reverse('view_bag'))  
 
             # Save the info to the user's profile if all is well
             request.session['save_info'] = 'save-info' in request.POST
