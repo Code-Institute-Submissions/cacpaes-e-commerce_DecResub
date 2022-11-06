@@ -25,7 +25,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in bookion!
 DEBUG = 'DEVELOPEMENT' in os.environ
-
+#DEBUG = True
 ALLOWED_HOSTS = ['secondhandbookk.herokuapp.com', 'localhost']
 
 
@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'bag',
     'crispy_forms',
     'storages',
+    'comment',
 ]
 
 MIDDLEWARE = [
@@ -182,7 +183,8 @@ if 'USE_AWS' in os.environ:
     }
 
     # Bucket Config
-    AWS_STORAGE_BUCKET_NAME = 'secondhandbook'
+    AWS_DEFAULT_ACL = None
+    AWS_STORAGE_BUCKET_NAME = 'secondhandbookteste'
     AWS_S3_REGION_NAME = 'us-east-2'
     AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
     AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')

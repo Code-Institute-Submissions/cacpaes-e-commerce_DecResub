@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
-
+from comment.forms import  CommentForm
 from .models import Book, Category
 from .forms import BookForm
 
@@ -65,9 +65,20 @@ def book_detail(request, book_id):
     """ A view to show individual book details """
 
     book = get_object_or_404(Book, pk=book_id)
+    comments = book.comments.filter(active=True)
+    new_comment = None
+
+    if request.method == 'POST' and request.user:
+        comment_form = CommentForm(data=request.POST)
+        if comment_form.is_valid():
+            new_comment = comment_form.save(commit=False)
+            new_comment.book = book
+            new_comment.save()
+    else:
+        comment_form = CommentForm()
 
     context = {
-        'book': book,
+        'book': book,'comments': comments,'new_comment': new_comment,'comment_form': comment_form
     }
 
     return render(request, 'books/book_detail.html', context)
