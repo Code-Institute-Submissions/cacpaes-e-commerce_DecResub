@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 
 class Category(models.Model):
 
@@ -26,6 +26,10 @@ class Author(models.Model):
 
 
 class Book(models.Model):
+    """
+    Entity books
+    """
+
     category = models.ForeignKey('Category', null=True, blank=True,
                                  on_delete=models.SET_NULL)
     author = models.ForeignKey(Author, null=True,blank=True, 
@@ -43,3 +47,31 @@ class Book(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Review(models.Model):
+
+    REVIEW_VALUE = (
+        (1, '1'),
+        (2, '2'),
+        (3, '3'),
+        (4, '4'),
+        (5, '5'),
+    )
+
+    book = models.ForeignKey(Book, on_delete=models.CASCADE, related_name="review")
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name="product_review"
+        )
+    created_on = models.DateTimeField(auto_now_add=True)
+    content = models.TextField(max_length=300,null= True, blank=True )
+    reviewed = models.BooleanField(default=False)
+    review = models.IntegerField(choices=REVIEW_VALUE, default=5)
+
+    class Meta:
+        ordering = ["created_on"]
+
+    def __str__(self):
+        return str(self.book)     

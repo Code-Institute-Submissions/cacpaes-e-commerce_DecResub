@@ -1,6 +1,6 @@
 from django import forms
 from .widgets import CustomClearableFileInput
-from .models import Book, Category
+from .models import Book, Category, Review
 
 
 class BookForm(forms.ModelForm):
@@ -21,3 +21,11 @@ class BookForm(forms.ModelForm):
         self.fields['category'].choices = friendly_names
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'border-black rounded-0'
+
+class ReviewForm(forms.ModelForm):
+    review = forms.IntegerField(label="Review")
+    content = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control'}), label="Content")
+
+    class Meta:
+        model = Review
+        fields = ('review', 'content')             

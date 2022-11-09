@@ -1,11 +1,11 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.db.models import Q
+from django.db.models import Q, Avg
 from django.db.models.functions import Lower
 from comment.forms import  CommentForm
-from .models import Book, Category
-from .forms import BookForm
+from .models import Book, Category, Review
+from .forms import BookForm, ReviewForm
 
 # Create your views here.
 
@@ -18,6 +18,7 @@ def all_books(request):
     categories = None
     sort = None
     direction = None
+
 
     if request.GET:
         if 'sort' in request.GET:
@@ -67,6 +68,9 @@ def book_detail(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
     comments = book.comments.filter(active=True)
     new_comment = None
+    reviews = book.review.filter(reviewed=True).order_by("-created_on")
+    total_review = reviews.count()
+    avg_review = reviews.aggregate(review=Avg('review'))['review']
 
     if request.method == 'POST' and request.user:
         comment_form = CommentForm(data=request.POST)
@@ -78,8 +82,11 @@ def book_detail(request, book_id):
         comment_form = CommentForm()
 
     context = {
-        'book': book,'comments': comments,'new_comment': new_comment,'comment_form': comment_form
+        'book': book,'comments': comments,'new_comment': new_comment,'comment_form': comment_form, 'reviews': reviews, 
+        'total_review': total_review, 'avg_review': avg_review
     }
+
+    print(context)
 
     return render(request, 'books/book_detail.html', context)
 
@@ -154,3 +161,25 @@ def delete_book(request, book_id):
     book.delete()
     messages.success(request, 'Book deleted!')
     return redirect(reverse('books'))
+
+
+@login_required()
+def add_review(request, book_id):
+    book = get_object_or_404(Book, pk=book_id)
+    reviews = book.review.filter(reviewed=True).order_by("-created_on")
+
+    if request.method == 'POST' and request.user:
+        review_form = ReviewForm(data=request.POST)
+        if comment_form.is_valid():
+            new_review = review_form.save(commit=False)
+            new_review.book = book
+            new_review.user = request.user
+            new_review.save()
+    else:
+        review_form = ReviewForm()
+
+    context = {
+        'reviews': reviews, 'book': book, 'review_form': review_form
+    }
+
+    return render(request, 'books/review_detail.html', context)

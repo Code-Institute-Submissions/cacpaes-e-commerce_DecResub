@@ -37,7 +37,19 @@
                         </a>
                     </p>
                     {% endif %}
+
+                    <div style="cursor:pointer">
+                        {% if avg_review %}
+                            <small>
+                                {{ avg_review }}
+                            </small>
+                        {% endif %}
+                        <small class="">{{ total_review }}</small>
+                        
+                    </div>    
+
                     {% if book.rating %}
+                        
                         <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ book.rating }} / 5</small>
                     {% else %}
                         <small class="text-muted">No Rating</small>
