@@ -37,7 +37,7 @@
                         </a>
                     </p>
                     {% endif %}
-
+                    {% if request.user.is_authenticated %}
                     <div style="cursor:pointer" data-toggle="modal" data-target="#exampleModal">
                         
                         <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ avg_review }}/ 5</small>
@@ -68,7 +68,20 @@
                             
                           </div>
                         </div>
-                      </div>    
+                      </div>
+                    {% else %}
+                    
+                    <div>
+                        
+                        <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ avg_review }}/ 5</small>
+                          
+                        <small class="">({{ total_review }})</small>
+                        
+                       
+                    </div>
+                    {% endif %}
+
+                      
 
            
                     {% if request.user.is_superuser %}

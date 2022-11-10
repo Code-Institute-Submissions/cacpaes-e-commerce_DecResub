@@ -158,10 +158,19 @@ def book_detail(request, book_id):
 
         review_form = ReviewForm(data=request.POST)
         if review_form.is_valid():
-            new_review = review_form.save(commit=False)
-            new_review.book = book
-            new_review.user = request.user
-            new_review.save()    
+            review = Review.objects.filter(user=request.user, book=book)[::1]
+            if len(review) > 0:
+                review_edit = review[0]
+                review_edit.review = review_form['review'].value()
+                review_edit.save()
+            else:    
+                new_review = review_form.save(commit=False)
+                new_review.book = book
+                new_review.user = request.user
+                new_review.save()
+            reviews = book.review.filter(reviewed=True).order_by("-created_on")
+            total_review = reviews.count()
+            avg_review = reviews.aggregate(review=Avg('review'))['review']        
     else:
         comment_form = CommentForm()
         review_form = ReviewForm()
@@ -171,7 +180,6 @@ def book_detail(request, book_id):
         'total_review': total_review, 'avg_review': avg_review, 'review_form': review_form
     }
 
-    print(context)
 
     return render(request, 'books/book_detail.html', context)
 

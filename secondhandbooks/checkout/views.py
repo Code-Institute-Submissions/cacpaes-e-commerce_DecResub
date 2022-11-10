@@ -64,7 +64,6 @@ def checkout(request):
             order.stripe_pid = pid
             order.original_bag = json.dumps(bag)
             order.save()
-            print(bag)
             for item_id, item_data in bag.items():
                 try:
                     book = Book.objects.get(id=item_id)
@@ -107,7 +106,6 @@ def checkout(request):
                         """Book is not avaliadbled""", )
                     )
                     order.delete()
-                    print(messages.error)
                     return redirect(reverse('view_bag'))  
 
             # Save the info to the user's profile if all is well
