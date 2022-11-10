@@ -38,22 +38,39 @@
                     </p>
                     {% endif %}
 
-                    <div style="cursor:pointer">
-                        {% if avg_review %}
-                            <small>
-                                {{ avg_review }}
-                            </small>
-                        {% endif %}
-                        <small class="">{{ total_review }}</small>
+                    <div style="cursor:pointer" data-toggle="modal" data-target="#exampleModal">
                         
-                    </div>    
+                        <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ avg_review }}/ 5</small>
+                          
+                        <small class="">({{ total_review }})</small>
+                        
+                       
+                    </div>
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Rate this book</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <form method="post" style="margin-top: 1.3em;">
+                                <div class="modal-body">
+                                    {{ review_form.as_p }}
+                                    {% csrf_token %}
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                  </div>
+                            </form>
+                            
+                          </div>
+                        </div>
+                      </div>    
 
-                    {% if book.rating %}
-                        
-                        <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ book.rating }} / 5</small>
-                    {% else %}
-                        <small class="text-muted">No Rating</small>
-                    {% endif %}
+           
                     {% if request.user.is_superuser %}
                         <small class="ml-3">
                             <a href="{% url 'edit_book' book.id %}">Edit</a> | 

@@ -67,7 +67,7 @@ class Review(models.Model):
         )
     created_on = models.DateTimeField(auto_now_add=True)
     content = models.TextField(max_length=300,null= True, blank=True )
-    reviewed = models.BooleanField(default=False)
+    reviewed = models.BooleanField(default=True)
     review = models.IntegerField(choices=REVIEW_VALUE, default=5)
 
     class Meta:
