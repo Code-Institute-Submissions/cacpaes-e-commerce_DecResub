@@ -2,6 +2,9 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class Category(models.Model):
+    """
+    Entity Category
+    """
 
     class Meta:
         verbose_name_plural = 'Categories'
@@ -50,7 +53,9 @@ class Book(models.Model):
 
 
 class Review(models.Model):
-
+    """
+    Entity Review
+    """
     REVIEW_VALUE = (
         (1, '1'),
         (2, '2'),

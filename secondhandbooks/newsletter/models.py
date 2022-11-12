@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class SubscribedUsers(models.Model):
-    """ Entity to subcribed users to newsleatter"""
+    """ Entity to subcribed users to newsletter"""
     email = models.CharField(unique=True, max_length=50)
     name = models.CharField(max_length=50)
     user = models.ForeignKey(

@@ -185,6 +185,7 @@ def book_detail(request, book_id):
 
 @login_required()
 def add_review(request, book_id):
+    """ View to add review in book"""
     book = get_object_or_404(Book, pk=book_id)
     reviews = book.review.filter(reviewed=True).order_by("-created_on")
 
