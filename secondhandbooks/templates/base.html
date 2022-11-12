@@ -30,77 +30,7 @@
         <!-- Stripe -->
         <script src="https://js.stripe.com/v3/"></script>
 
-        <script>
-            const validateEmail = function(email) {
-                var formData = new FormData();
-                formData.append('email', email)
-                $.ajaxSetup({
-                    headers: {
-                        "X-CSRFToken": document.querySelector('[name=csrfmiddlewaretoken]').value,
-                    }
-                });
-                $.ajax({
-                    url: '/validate/',
-                    type: 'POST',
-                    dataType: 'json',
-                    cache: false,
-                    processData: false,
-                    contentType: false,
-                    data: formData,
-                    error: function (xhr) {
-                        console.error(xhr.statusText);
-                    },
-                    success: function (res) {
-                        $('.error').text(res.msg);
-                    }
-                });
-            };
-
-            const subscribeUser = function(email, name) {
-                var formData = new FormData();
-                formData.append('email', email);
-                formData.append('name', name);
-                $.ajaxSetup({
-                    headers: {
-                        "X-CSRFToken": document.querySelector('[name=csrfmiddlewaretoken]').value,
-                    }
-                });
-                $.ajax({
-                    url: '/newsletter/',
-                    type: 'POST',
-                    dataType: 'json',
-                    cache: false,
-                    processData: false,
-                    contentType: false,
-                    data: formData,
-                    error: function (xhr) {
-                        console.error(xhr.statusText);
-                    },
-                    success: function (res) {
-                        $('.success').text(res.msg);
-                        $('#userEmail').val(' ');
-                        $('#userName').val(' ');
-                    }
-                });
-            };
-
-            (function ($) {
-                $('#submit').on('click', () => {
-                    event.preventDefault();
-                    const userEmail = $('#userEmail').val();
-                    const userName = $('#userName').val();
-                    if (userEmail && userName) {
-                        subscribeUser(userEmail, userName);
-                    }
-                });
-
-                $('#userEmail').on('change', (event) => {
-                    event.preventDefault();
-                    const email = event.target.value;
-                    validateEmail(email);
-                });
-            })(jQuery);
-        </script>
+        
     {% endblock %}
 
     {% block extra_js %}
@@ -219,6 +149,7 @@
     {% endblock %}
 
     <footer>
+        {% if request.user.is_authenticated %}
         <div class="col-lg-6 col-md-6" style="margin: 100px auto; display: block;">
             <form enctype="multipart/form-data" method="POST" action="" style="text-align: center;">
                 {% csrf_token %}
@@ -229,9 +160,86 @@
                     <input type="text" class="form-control mt-2" id="userName" placeholder="Enter name" required>
                     <small style="font-weight: 600;color: green;" class="success"></small>
                 </div>
-                <input type="submit" value="Subscribe" id="submit" class="btn" style="padding: 7px 21px;background-color: rgb(143, 1, 1);color: white;font-size: 18px;">     
+                <input onclick="event.preventDefault();" type="submit" value="Subscribe" id="submit" class="btn" style="padding: 7px 21px;background-color: rgb(143, 1, 1);color: white;font-size: 18px;">     
             </form>
         </div>
+        {% endif%}
+        
     </footer>
   </body>
 </html>
+
+<script>
+    const validateEmail = function(email) {
+        var formData = new FormData();
+        console.log(document.querySelector('[name=csrfmiddlewaretoken]').value)
+        formData.append('email', email)
+        $.ajaxSetup({
+            headers: {
+                "X-CSRFToken": document.querySelector('[name=csrfmiddlewaretoken]').value,
+            }
+            
+        });
+        $.ajax({
+            url: '/newsletter/validate',
+            type: 'POST',
+            dataType: 'json',
+            cache: false,
+            processData: false,
+            contentType: false,
+            data: formData,
+            error: function (xhr) {
+                console.error(xhr.statusText);
+            },
+            success: function (res) {
+                $('.error').text(res.msg);
+            }
+        });
+    };
+
+    const subscribeUser = function(email, name) {
+        var formData = new FormData();
+        formData.append('email', email);
+        formData.append('name', name);
+        $.ajaxSetup({
+            headers: {
+                "X-CSRFToken": document.querySelector('[name=csrfmiddlewaretoken]').value,
+            }
+        });
+        $.ajax({
+            url: '/newsletter/',
+            type: 'POST',
+            dataType: 'json',
+            cache: false,
+            processData: false,
+            contentType: false,
+            data: formData,
+            error: function (xhr) {
+                console.error(xhr.statusText);
+            },
+            success: function (res) {
+                $('.success').text(res.msg);
+                $('#userEmail').val(' ');
+                $('#userName').val(' ');
+            }
+        });
+    };
+
+    (function teste ($) {
+        $('#submit').on('click', () => {
+            event.preventDefault();
+            console.log('submit')
+            const userEmail = $('#userEmail').val();
+            const userName = $('#userName').val();
+            if (userEmail && userName) {
+                subscribeUser(userEmail, userName);
+            }
+        });
+
+        $('#userEmail').on('change', (event) => {
+            event.preventDefault();
+            const email = event.target.value;
+            validateEmail(email);
+        });
+    })(jQuery);
+</script>
