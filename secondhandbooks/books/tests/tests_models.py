@@ -280,6 +280,4 @@ class BookTestCase(TestCase):
         self.assertIsNotNone(book)
         self.assertEquals(book.name, "Harry Potter")
         self.assertEquals(book.description, "is very good book")
-        self.assertEquals(book.price, Decimal(73))
-
-        
+        self.assertEquals(book.price, Decimal(73))      
