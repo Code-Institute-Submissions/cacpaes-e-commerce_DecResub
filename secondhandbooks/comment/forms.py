@@ -4,6 +4,10 @@ from django import forms
 
 
 class CommentForm(forms.ModelForm):
+    """
+    Class user validated comment and created new  
+    """
+
     name = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}), label="Name", max_length=80)
     email = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}), label="Email")
     body = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control'}), label="Comment")
