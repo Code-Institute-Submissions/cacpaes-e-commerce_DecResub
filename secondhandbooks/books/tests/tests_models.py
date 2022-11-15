@@ -172,4 +172,65 @@ class CategoriaTestCase(TestCase):
         self.assertIsNone(book)        
 
 
-  
+"""
+class to test model Author
+"""
+
+
+class AuthorTestCase(TestCase):
+
+
+    def setUp(self):
+        """
+        Defined function before condition for test
+        """
+
+
+        user = User.objects.create(username='test', password='test')
+
+        author = Author.objects.create(
+            name="JK",
+            details="Children's Books"
+        )
+
+        category_children = Category.objects.create(
+            name="Children's Books",
+            friendly_name="Children's Books"
+        )
+
+        book_children = Book.objects.create(
+            username=user,
+            nome="Harry Potter",
+            description="is very good book",
+            price=73.54,
+            category=category_children,
+            author=author
+        )
+
+    def test_author_return_str(self):
+        """
+        Test string for author
+        """
+        author = Authot.objects.get(name="JK")
+        self.assertIsNotNone(author)
+        self.assertEquals(author.__str__(), "JK")
+
+    def test_confirm_data(self):
+        """
+        Test confirm objects atributes
+        """
+        author = Auhtor.objects.get(name="JK")
+        self.assertEquals(author.name, "JK")
+        self.assertEquals(author.details, "Children's Books")
+
+    def test_get_book_author(self):
+        """
+        Test return books in filter author
+        """
+        author = Author.objects.get(name="JK")
+        books = Book.objects.get(author=author)
+        self.assertIsNotNone(book)
+
+        Author.objects.delete(author)
+        books = Book.objects.get(author=author)
+        self.assertIsNone(book)     

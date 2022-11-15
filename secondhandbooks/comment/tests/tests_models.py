@@ -1,11 +1,16 @@
 from django.contrib.auth.models import User
 from django.test import TestCase
-from comment.models import  Comment
+from comment.models import Comment
+from comment.models import Book
+
 
 """
 class to test model Comment
 """
+
+
 class CommentTestCase(TestCase):
+
 
     def setUp(self):
         """
@@ -13,22 +18,21 @@ class CommentTestCase(TestCase):
         """
 
         user = User.objects.create(username='test', password='test')
-        post = CoffeePost.objects.create(
+        book = Book.objects.create(
             username=user,
-            coffee_name="Colombiano",
-            coffee_origin="Brazil",
-            coffee_brand="Nespresso",
-            coffee_content="I like this coffee"
+            nome="Harry Potter",
+            description="is very good book",
+            price=73.54
         )
         Comment.objects.create(
-            post=post,
+            book=book,
             name="Carlos",
             email="carlos@test.com",
             body="I like this post"
         )
 
         Comment.objects.create(
-            post=post,
+            book=book,
             name="Test",
             email="test@test.com",
             body="I like this post"

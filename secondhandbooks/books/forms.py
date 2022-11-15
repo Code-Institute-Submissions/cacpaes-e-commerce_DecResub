@@ -4,7 +4,11 @@ from .models import Book, Category, Review
 
 
 class BookForm(forms.ModelForm):
-
+    """
+    Class user validated book and created new  
+    """
+    
+    
     class Meta:
         model = Book
         fields = '__all__'
@@ -22,7 +26,11 @@ class BookForm(forms.ModelForm):
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'border-black rounded-0'
 
+
 class ReviewForm(forms.ModelForm):
+    """
+    Class user validated review in the book and created new  
+    """
     CHOICES = (('1', '1'),('2', '2'),('3','3'), ('4', '4'), ('5', '5'))
     review = forms.ChoiceField( choices=CHOICES,label="Rate",widget=forms.Select)
 
