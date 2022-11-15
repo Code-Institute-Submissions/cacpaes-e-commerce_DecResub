@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from django.test import TestCase
 from comment.models import Comment
-from comment.models import Book
+from books.models import Book
 
 
 """
@@ -18,9 +18,9 @@ class CommentTestCase(TestCase):
         """
 
         user = User.objects.create(username='test', password='test')
+
         book = Book.objects.create(
-            username=user,
-            nome="Harry Potter",
+            name="Harry Potter",
             description="is very good book",
             price=73.54
         )

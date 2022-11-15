@@ -20,47 +20,46 @@ class ReviewTestCase(TestCase):
         """
 
 
-        user = User.objects.create(username='test', password='test')
+        self.user = User.objects.create(username='test', password='test')
+        self.user.save()
         user2 = User.objects.create(username='test2', password='test2')
 
         book = Book.objects.create(
-            username=user,
-            nome="Harry Potter",
+            name="Harry Potter",
             description="is very good book",
             price=73.54
         )
 
         book2 = Book.objects.create(
-            username=user,
-            nome="think and grow rich ",
+            name="think and grow rich ",
             description="is very good book",
             price=82.54
         )
 
         Review.objects.create(
-            user=user,
+            user=self.user,
             book=book,
             review=4
         )
 
         Review.objects.create(
-            user=user2
+            user=user2,
             book=book,
-            review=5
+            review=5,
         )
 
     def test_review_return_str(self):
         """
         Test string for review
         """
-        review = Review.objects.get(user=user)
+        review = Review.objects.get(user=self.user)
         self.assertEquals(review.__str__(), "Harry Potter")
 
     def test_confirm_data(self):
         """
         Test confirm objects atributes
         """
-        review = Review.objects.get(user=user)
+        review = Review.objects.get(user=self.user)
         self.assertEquals(review.review, 5)
         self.assertEquals(review.reviewed, True)
 
@@ -71,7 +70,7 @@ class ReviewTestCase(TestCase):
         reviews = Review.objects.all()
         self.assertEquals(reviews[0].review, 4)
         self.assertEquals(reviews[1].review, 5)
-        self.assertGreater(reviews[0].created_on, reviews[1].created_on)
+        self.assertGreater(reviews[1].created_on, reviews[0].created_on)
 
 
 """
@@ -113,32 +112,28 @@ class CategoriaTestCase(TestCase):
         )
 
         book_children = Book.objects.create(
-            username=user,
-            nome="Harry Potter",
+            name="Harry Potter",
             description="is very good book",
             price=73.54,
             category=category_children
         )
 
         book_health = Book.objects.create(
-            username=user,
-            nome="think and grow rich ",
+            name="think and grow rich ",
             description="is very good book",
             price=82.54,
             category=category_health
         )
 
         book_food = Book.objects.create(
-            username=user,
-            nome="think and grow rich ",
+            name="think and grow rich ",
             description="is very good book",
             price=82.54,
             category=category_food
         )
 
         book_crime = Book.objects.create(
-            username=user,
-            nome="think and grow rich ",
+            name="think and grow rich ",
             description="is very good book",
             price=82.54,
             category=category_crime
@@ -165,11 +160,11 @@ class CategoriaTestCase(TestCase):
         """
         category = Category.objects.get(name="Health")
         books = Book.objects.get(category=category)
-        self.assertIsNotNone(book)
+        self.assertIsNotNone(books)
 
         Category.objects.delete(category)
         books = Book.objects.get(category=category)
-        self.assertIsNone(book)        
+        self.assertIsNone(books)        
 
 
 """
@@ -186,21 +181,22 @@ class AuthorTestCase(TestCase):
         """
 
 
-        user = User.objects.create(username='test', password='test')
+        self.user = User.objects.create(username='test', password='test')
+        self.user.save()
 
-        author = Author.objects.create(
+        self.author = Author.objects.create(
             name="JK",
             details="Children's Books"
         )
+        self.author.save()
 
-        category_children = Category.objects.create(
+        self.category_children = Category.objects.create(
             name="Children's Books",
             friendly_name="Children's Books"
         )
 
         book_children = Book.objects.create(
-            username=user,
-            nome="Harry Potter",
+            name="Harry Potter",
             description="is very good book",
             price=73.54,
             category=category_children,
@@ -229,8 +225,8 @@ class AuthorTestCase(TestCase):
         """
         author = Author.objects.get(name="JK")
         books = Book.objects.get(author=author)
-        self.assertIsNotNone(book)
+        self.assertIsNotNone(books)
 
         Author.objects.delete(author)
         books = Book.objects.get(author=author)
-        self.assertIsNone(book)     
+        self.assertIsNone(books)     
