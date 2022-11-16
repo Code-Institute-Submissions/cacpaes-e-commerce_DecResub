@@ -1,5 +1,5 @@
 from django.shortcuts import (
-    render, redirect, reverse, HttpResponse, get_object_or_404
+    render, redirect, reverse, HttpResponse, get_object_or_404, Http404
 )
 from django.contrib import messages
 
@@ -100,25 +100,18 @@ def remove_from_bag(request, item_id):
 
     try:
         book = get_object_or_404(Book, pk=item_id)
-        size = None
-        if 'book_size' in request.POST:
-            size = request.POST['book_size']
-        bag = request.session.get('bag', {})
 
-        if size:
-            del bag[item_id]['items_by_size'][size]
-            if not bag[item_id]['items_by_size']:
-                bag.pop(item_id)
-            messages.success(request,
-                             (f'Removed size {size.upper()} '
-                              f'{book.name} from your bag'))
-        else:
-            bag.pop(item_id)
-            messages.success(request, f'Removed {book.name} from your bag')
+        bag = request.session.get('bag', {})
+        bag.pop(item_id)
+        messages.success(request, f'Removed {book.name} from your bag')
 
         request.session['bag'] = bag
         return HttpResponse(status=200)
 
+    except Http404 as e:
+        messages.error(request, f'Error removing item: {e}')
+        return HttpResponse(status=404)
     except Exception as e:
+        print(e)
         messages.error(request, f'Error removing item: {e}')
         return HttpResponse(status=500)
