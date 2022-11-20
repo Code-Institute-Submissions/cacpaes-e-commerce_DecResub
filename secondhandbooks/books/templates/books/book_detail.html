@@ -96,9 +96,24 @@
                     
                     <div>
                         
-                        <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ avg_review }}/ 5</small>
+                        <small class="text-muted">
+                            {% for i in iterator%}
+                                {% if avg_review >= i%}
+                                    <i class="fas fa-star mr-1" style="color: yellow;"></i>
+                                {% else %}
+                                    <i class="fas fa-star mr-1"></i>
+                                {% endif%}
+                            {% endfor %}
+
+                            {{ avg_review }}/ 5
+                        
+                        </small>
                           
+                        {% if total_review == 0%}
+                        <small class="">(Make the 1st review)</small>
+                        {% else %}
                         <small class="">({{ total_review }})</small>
+                        {% endif%}
                         
                        
                     </div>
