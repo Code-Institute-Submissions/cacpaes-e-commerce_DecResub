@@ -17,6 +17,15 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
+from django.contrib.sitemaps import GenericSitemap
+from django.contrib.sitemaps.views import sitemap
+from books.models import Book
+from secondhandbooks.sitemap import BookSitemap, CategorySitemap
+
+sitemaps = {
+    'blog':BookSitemap,
+    'category': CategorySitemap
+}
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,4 +35,5 @@ urlpatterns = [
     path('profile/', include('profiles.urls')),
     path('accounts/', include('allauth.urls')),
     path('newsletter/', include('newsletter.urls')),
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

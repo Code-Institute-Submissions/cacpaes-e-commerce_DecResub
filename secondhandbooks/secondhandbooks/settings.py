@@ -51,7 +51,8 @@ INSTALLED_APPS = [
     'crispy_forms',
     'storages',
     'comment',
-    'newsletter'
+    'newsletter',
+    'django.contrib.sitemaps'
 ]
 
 MIDDLEWARE = [
