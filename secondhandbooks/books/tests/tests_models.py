@@ -1,8 +1,6 @@
 from django.contrib.auth.models import User
 from django.test import TestCase
 from books.models import Review, Book, Category, Author
-from decimal import *
-
 
 """
 class to test model Review
@@ -242,16 +240,9 @@ class BookTestCase(TestCase):
 
 
     def setUp(self):
-
-
         """
         Defined function before condition for test
         """
-
-
-        self.user = User.objects.create(username='test', password='test')
-        self.user.save()
-        user2 = User.objects.create(username='test2', password='test2')
 
         book = Book.objects.create(
             name="Harry Potter",

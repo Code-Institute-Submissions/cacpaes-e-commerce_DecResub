@@ -8,7 +8,6 @@ class to test model Profile
 
 class ProfileTestCase(TestCase):
 
-
     def setUp(self):
         
         """

@@ -39,13 +39,7 @@ class BookingViewsTestCase(TestCase):
 
         self.book2.save()
 
-        test_user1 = User.objects.create_user(username='testuser1', password='1X<ISRUkw+tuK')
-        test_user2 = User.objects.create_user(username='testuser2', password='2HJ1vRV0Z&3iD')
-
-        test_user1.save()
-        test_user2.save()
-
-        self.my_admin = User.objects.create_superuser(username= 'myemail@test.com',password= 'mypassword')
+        self.my_admin = User.objects.create_superuser(username='myemail@test.com', password='mypassword')
         self.my_admin.save()
 
     def test_all_books_sucess_200(self):

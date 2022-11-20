@@ -14,14 +14,14 @@ class OrderFormTestCase(TestCase):
 
         form = OrderForm(data={
             'full_name': 'jfkhadkfhds',
-            'email':'carlos@gmail.com',
-            'phone_number':'91265656532',
-            'street_address1':'grafton street',
-            'street_address2':'grafton street',
-            'town_or_city':'Dublin',
-            'postcode':'65655',
-            'country':'NZ',
-            'county':'Dublin',
+            'email': 'carlos@gmail.com',
+            'phone_number': '91265656532',
+            'street_address1': 'grafton street',
+            'street_address2': 'grafton street',
+            'town_or_city': 'Dublin',
+            'postcode': '65655',
+            'country': 'NZ',
+            'county': 'Dublin',
         })
         self.assertTrue(form.is_valid())
 
@@ -30,12 +30,12 @@ class OrderFormTestCase(TestCase):
         Check if the form is invalid, parameter full name
         """
         form = OrderForm(data={
-            'email':'carlos@gmail.com',
-            'phone_number':'91265656532',
-            'street_address1':'grafton street',
-            'town_or_city':'Dublin',
-            'postcode':'65655',
-            'country':'NZ',
+            'email': 'carlos@gmail.com',
+            'phone_number': '91265656532',
+            'street_address1': 'grafton street',
+            'town_or_city': 'Dublin',
+            'postcode': '65655',
+            'country': 'NZ',
         })
         self.assertFalse(form.is_valid(), form.errors)
 
@@ -45,11 +45,11 @@ class OrderFormTestCase(TestCase):
         """
         form = OrderForm(data={
             'full_name': 'jfkhadkfhds',
-            'phone_number':'91265656532',
-            'street_address1':'grafton street',
-            'town_or_city':'Dublin',
-            'postcode':'65655',
-            'country':'NZ',
+            'phone_number': '91265656532',
+            'street_address1': 'grafton street',
+            'town_or_city': 'Dublin',
+            'postcode': '65655',
+            'country': 'NZ',
         })
         self.assertFalse(form.is_valid(), form.errors)
 
@@ -60,11 +60,11 @@ class OrderFormTestCase(TestCase):
         """
         form = OrderForm(data={
             'full_name': 'jfkhadkfhds',
-            'email':'carlos@gmail.com',
-            'street_address1':'grafton street',
-            'town_or_city':'Dublin',
-            'postcode':'65655',
-            'country':'NZ',
+            'email': 'carlos@gmail.com',
+            'street_address1': 'grafton street',
+            'town_or_city': 'Dublin',
+            'postcode': '65655',
+            'country': 'NZ',
         })
         self.assertFalse(form.is_valid(), form.errors)
 
@@ -74,10 +74,11 @@ class OrderFormTestCase(TestCase):
         """
         form = OrderForm(data={
             'full_name': 'jfkhadkfhds',
-            'phone_number':'91265656532',
-            'email':'carlos@gmail.com',
-            'street_address1':'grafton street',
-            'town_or_city':'Dublin',
-            'postcode':'65655',
+            'phone_number': '91265656532',
+            'email': 'carlos@gmail.com',
+            'street_address1': 'grafton street',
+            'town_or_city': 'Dublin',
+            'postcode': '65655',
         })
         self.assertFalse(form.is_valid(), form.errors)
+        

@@ -102,4 +102,5 @@ class BookFormTestCase(TestCase):
             'name': 'Harry Potter',
             'description': 'The best book',
         })
-        self.assertFalse(form.is_valid(), form.errors)    
+        self.assertFalse(form.is_valid(), form.errors)
+            

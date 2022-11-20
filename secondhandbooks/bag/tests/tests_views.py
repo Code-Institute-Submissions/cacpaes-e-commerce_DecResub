@@ -43,15 +43,6 @@ class BagViewsTestCase(TestCase):
 
         self.book2.save()
 
-        test_user1 = User.objects.create_user(username='testuser1', password='1X<ISRUkw+tuK')
-        test_user2 = User.objects.create_user(username='testuser2', password='2HJ1vRV0Z&3iD')
-
-        test_user1.save()
-        test_user2.save()
-
-        self.my_admin = User.objects.create_superuser(username= 'myemail@test.com',password= 'mypassword')
-        self.my_admin.save()
-
     def test_view_bag_sucess(self):
         """
         Test return bag user
@@ -63,7 +54,8 @@ class BagViewsTestCase(TestCase):
     def test_view_add_bag_error_book_not_exist(self):
         """
         Test return add bag user book not exist
-        """    
+        """
+
         response = self.client.get(reverse('add_to_bag', kwargs={'item_id': '999999999'}))
         self.assertEqual(response.status_code, 404, response)
 
@@ -71,7 +63,7 @@ class BagViewsTestCase(TestCase):
         """
         Test return add bag user
         """
-        response = self.client.post(reverse('add_to_bag', kwargs={'item_id': self.book.id}), data={'quantity': 43,'redirect_url': 'request.path'})
+        response = self.client.post(reverse('add_to_bag', kwargs={'item_id': self.book.id}), data={'quantity': 43, 'redirect_url': 'request.path'})
         self.assertEqual(response.status_code, 302, response)
 
     def test_view_adjust_bag_error_book_not_exist(self):
@@ -100,4 +92,5 @@ class BagViewsTestCase(TestCase):
         Test return remove bag user
         """
         response = self.client.post(reverse('remove_from_bag', kwargs={'item_id': self.book.id}),)
-        self.assertEqual(response.status_code, 500, response)                
+        self.assertEqual(response.status_code, 500, response)
+                        

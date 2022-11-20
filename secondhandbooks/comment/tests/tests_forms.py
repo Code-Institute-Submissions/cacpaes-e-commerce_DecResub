@@ -6,6 +6,7 @@ from comment.forms import CommentForm
 class to test form CommentForm
 """
 class CommentFormTestCase(TestCase):
+    
 
     def test_comment_form_valid(self):
         """
@@ -37,7 +38,6 @@ class CommentFormTestCase(TestCase):
             'body': 'This is a valid'
         })
         self.assertFalse(form.is_valid(), form.errors)
-
 
     def test_comment_form_invalid_skip_body(self):
         """

@@ -20,7 +20,7 @@ class BookAdmin(admin.ModelAdmin):
 
 
 class ReviewAdmin(admin.ModelAdmin):
-    list_display =(
+    list_display = (
         'book',
         'user',
         'created_on',

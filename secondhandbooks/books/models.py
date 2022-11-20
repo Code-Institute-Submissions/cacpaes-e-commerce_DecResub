@@ -23,7 +23,7 @@ class Category(models.Model):
 class Author(models.Model):
     name = models.CharField(max_length=30, null=False, blank=False)
     image = models.ImageField(null=True, blank=True)
-    details = models.CharField(max_length=1024, null=True , blank=True) 
+    details = models.CharField(max_length=1024, null=True, blank=True) 
 
     def __str__(self):
         return self.name
@@ -53,7 +53,7 @@ class Book(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('book_detail', kwargs={'book_id' : self.id})    
+        return reverse('book_detail', kwargs={'book_id': self.id})    
 
 
 class Review(models.Model):
@@ -75,7 +75,7 @@ class Review(models.Model):
         related_name="book_review"
         )
     created_on = models.DateTimeField(auto_now_add=True)
-    content = models.TextField(max_length=300,null= True, blank=True )
+    content = models.TextField(max_length=300, null= True, blank=True)
     reviewed = models.BooleanField(default=True)
     review = models.IntegerField(choices=REVIEW_VALUE, default=5)
 
@@ -83,4 +83,4 @@ class Review(models.Model):
         ordering = ["created_on"]
 
     def __str__(self):
-        return str(self.book)     
+        return str(self.book)

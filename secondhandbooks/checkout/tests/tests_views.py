@@ -75,7 +75,12 @@ class BookingViewsTestCase(TestCase):
         """
         View checkout, form checkout
         """
-        response = self.client.post(reverse('checkout'), data={'full_name':'RENAN+RIBEIRO+LAGE','email':'renan.lagee@gmail.com','phone_number':'31989791428','street_address1':'Rua+francisco+ovidio+227','street_address2':'ap2','town_or_city':'Belo+Horizonte','county':'MG','postcode':'30770040','country':'BR','save-info':'on','client_secret':'pi_3M5yYaAqyUAdlutt0EqCCs5Z_secret_RlAGjaO9t8n7uX44mIgp0Yp4C'})
+        response = self.client.post(reverse('checkout'), data={'full_name': 'RENAN+RIBEIRO+LAGE',
+        'email': 'renan.lagee@gmail.com', 'phone_number': '31989791428', 
+        'street_address1': 'Rua+francisco+ovidio+227', 'street_address2': 'ap2',
+        'town_or_city': 'Belo+Horizonte', 'county': 'MG', 'postcode': '30770040', 
+        'country': 'BR', 'save-info': 'on',
+        'client_secret': 'pi_3M5yYaAqyUAdlutt0EqCCs5Z_secret_RlAGjaO9t8n7uX44mIgp0Yp4C'})
         self.assertEqual(response.status_code, 302, response)
         self.assertIn('/checkout/checkout_success/', response.url)
 
@@ -84,9 +89,8 @@ class BookingViewsTestCase(TestCase):
         View checkout, checkout sucess order not parameter invalid
         """
 
-        response = self.client.get(reverse('checkout_success', kwargs={'order_number':9898989}))
+        response = self.client.get(reverse('checkout_success', kwargs={'order_number': 9898989}))
         self.assertEqual(response.status_code, 404, response)
-
 
     def test_checkout_sucess_ordem_pass_sucess(self):
         """
@@ -107,5 +111,5 @@ class BookingViewsTestCase(TestCase):
             stripe_pid="9898"
         )
 
-        response = self.client.get(reverse('checkout_success', kwargs={'order_number':order.order_number}))
-        self.assertEqual(response.status_code, 200, response)   
+        response = self.client.get(reverse('checkout_success', kwargs={'order_number': order.order_number}))
+        self.assertEqual(response.status_code, 200, response)

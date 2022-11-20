@@ -1,12 +1,13 @@
 from django.contrib.auth.models import User
 from django.test import TestCase
-from books.models import Review, Book, Category, Author
+from books.models import  Book
 from checkout.models import Order, OrderLineItem
 import uuid
 
 """
 class to test model Order
 """
+
 
 class OrderTestCase(TestCase):
 
@@ -65,7 +66,6 @@ class OrderLineItemTestCase(TestCase):
         self.user = User.objects.create(username='test', password='test')
 
         self.user.save()
-        user2 = User.objects.create(username='test2', password='test2')
 
         self.book = Book.objects.create(
             name="Harry Potter",
@@ -89,7 +89,7 @@ class OrderLineItemTestCase(TestCase):
         )
         self.order.save()
 
-        order_line_item= OrderLineItem.objects.create(
+        order_line_item = OrderLineItem.objects.create(
             book=self.book,
             order=self.order,
             lineitem_total=5,
@@ -102,3 +102,4 @@ class OrderLineItemTestCase(TestCase):
         """
         order = OrderLineItem.objects.get(book=self.book)
         self.assertEquals(order.__str__(), f'SKU {self.book.sku} on order {self.order.order_number}')
+        
