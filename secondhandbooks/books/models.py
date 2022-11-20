@@ -23,7 +23,8 @@ class Category(models.Model):
 class Author(models.Model):
     name = models.CharField(max_length=30, null=False, blank=False)
     image = models.ImageField(null=True, blank=True)
-    details = models.CharField(max_length=1024, null=True, blank=True) 
+    details = models.CharField(max_length=1024, null=True, blank=True)
+    site_url = models.URLField(max_length=1024, null=True, blank=True) 
 
     def __str__(self):
         return self.name
@@ -48,6 +49,7 @@ class Book(models.Model):
                                  blank=True)
     image_url = models.URLField(max_length=1024, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
+    site_url = models.URLField(max_length=1024, null=True, blank=True)
 
     def __str__(self):
         return self.name
@@ -78,6 +80,7 @@ class Review(models.Model):
     content = models.TextField(max_length=300, null= True, blank=True)
     reviewed = models.BooleanField(default=True)
     review = models.IntegerField(choices=REVIEW_VALUE, default=5)
+    
 
     class Meta:
         ordering = ["created_on"]
