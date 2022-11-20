@@ -48,7 +48,7 @@ def all_books(request):
                                ("You didn't enter any search criteria!"))
                 return redirect(reverse('books'))
 
-            queries = Q(name__icontains=query) | Q(description__icontains=query)
+            queries = Q(name__icontains=query) | Q(description__icontains = query)
             books = books.filter(queries)
 
     current_sorting = f'{sort}_{direction}'
@@ -138,6 +138,7 @@ def delete_book(request, book_id):
     return redirect(reverse('books'))
 
 def book_detail(request, book_id):
+    
     """ A view to show individual book details """
 
     book = get_object_or_404(Book, pk=book_id)
@@ -177,7 +178,7 @@ def book_detail(request, book_id):
         review_form = ReviewForm()
 
     context = {
-        'book': book,'comments': comments,'new_comment': new_comment,'comment_form': comment_form, 'reviews': reviews, 
+        'book': book, 'comments': comments, 'new_comment': new_comment, 'comment_form': comment_form, 'reviews': reviews, 
         'total_review': total_review, 'avg_review': avg_review, 'review_form': review_form
     }
 
