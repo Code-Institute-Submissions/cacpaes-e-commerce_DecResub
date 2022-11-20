@@ -179,7 +179,7 @@ def book_detail(request, book_id):
 
     context = {
         'book': book, 'comments': comments, 'new_comment': new_comment, 'comment_form': comment_form, 'reviews': reviews, 
-        'total_review': total_review, 'avg_review': avg_review, 'review_form': review_form
+        'total_review': total_review, 'avg_review': avg_review, 'review_form': review_form, 'iterator': range(1,6)
     }
 
 
