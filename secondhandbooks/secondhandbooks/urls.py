@@ -39,3 +39,8 @@ urlpatterns = [
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
     path("robots.txt", robots_txt),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+handler400 = "secondhandbooks.views.error_400"
+handler403 = "secondhandbooks.views.error_403"
+handler404 = "secondhandbooks.views.page_not_found_view"
+handler500 = "secondhandbooks.views.error_500"
