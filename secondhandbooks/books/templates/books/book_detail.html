@@ -42,8 +42,11 @@
                         
                         <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ avg_review }}/ 5</small>
                           
+                        {% if total_review == 0%}
+                        <small class="">(Make the 1st review)</small>
+                        {% else %}
                         <small class="">({{ total_review }})</small>
-                        
+                        {% endif%}
                        
                     </div>
                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -173,7 +176,7 @@
                 <form method="post" style="margin-top: 1.3em;">
                     {{ comment_form.as_p }}
                     {% csrf_token %}
-                    <button type="submit" class="btn btn-outline-light  btn-lg">Submit</button>
+                    <button type="submit" class="btn btn-outline-light  btn-lg" style="color: black;">Submit</button>
                 </form>
                 {% endif %}
             </div>
