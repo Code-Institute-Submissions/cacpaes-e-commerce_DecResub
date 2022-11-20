@@ -21,6 +21,7 @@ from django.contrib.sitemaps import GenericSitemap
 from django.contrib.sitemaps.views import sitemap
 from books.models import Book
 from secondhandbooks.sitemap import BookSitemap, CategorySitemap
+from secondhandbooks.robots import robots_txt
 
 sitemaps = {
     'blog':BookSitemap,
@@ -36,4 +37,5 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('newsletter/', include('newsletter.urls')),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+    path("robots.txt", robots_txt),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
