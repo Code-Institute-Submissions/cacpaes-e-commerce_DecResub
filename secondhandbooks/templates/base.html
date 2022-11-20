@@ -148,9 +148,9 @@
     </script>
     {% endblock %}
 
-    <footer>
+    <div>
         {% if request.user.is_authenticated %}
-        <div class="col-lg-6 col-md-6" style="margin: 100px auto; display: block;">
+        <div class="col-lg-6 col-md-6" style="margin: 10px auto; display: block;">
             <form enctype="multipart/form-data" method="POST" action="" style="text-align: center;">
                 {% csrf_token %}
                 <div class="form-group">
@@ -165,6 +165,17 @@
         </div>
         {% endif%}
         
+    </div>
+
+    <footer class="footer mt-auto py-3 background-main">
+        <!-- Section: Social media -->
+        <p class="m-0 text-center">Made by Carlos</p>
+
+            <!-- Linkedin -->
+            <p class="m-0 text-center">Follow us:<a class="m-3 footer-button rede-social" href="https://www.linkedin.com/in/carlos-alberto-de-carvalho-paes-181b0120b/" role="button" target="_blank" aria-label="linkedin" ><i class="fab fa-lg fa-linkedin-in" style="color: black;"></i></a>
+
+            <!-- Github -->
+            <a class="m-3 footer-button rede-social" href="https://github.com/CACPaes" role="button" target="_blank" aria-label="github" style="color: black; margin-left: 0!important;"><i class="fab fa-lg fa-github" style="color: black;"></i></a>
     </footer>
   </body>
 </html>

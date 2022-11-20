@@ -26,7 +26,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in bookion!
 DEBUG = 'DEVELOPEMENT' in os.environ
-DEBUG = True
+# DEBUG = True
 ALLOWED_HOSTS = ['secondhandbookk.herokuapp.com', 'localhost']
 
 
@@ -52,7 +52,7 @@ INSTALLED_APPS = [
     'storages',
     'comment',
     'newsletter',
-    'django.contrib.sitemaps'
+    'django.contrib.sitemaps',
 ]
 
 MIDDLEWARE = [
