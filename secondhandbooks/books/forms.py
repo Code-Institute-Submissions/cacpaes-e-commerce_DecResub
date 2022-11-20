@@ -31,7 +31,7 @@ class ReviewForm(forms.ModelForm):
     Class user validated review in the book and created new  
     """
     CHOICES = (('1', '1'), ('2', '2'), ('3','3'), ('4', '4'), ('5', '5'))
-    review = forms.ChoiceField(choices=CHOICES,label="Rate", widget=forms.Select)
+    review = forms.ChoiceField(choices = CHOICES, label="Rate", widget = forms.Select)
 
     class Meta:
         model = Review

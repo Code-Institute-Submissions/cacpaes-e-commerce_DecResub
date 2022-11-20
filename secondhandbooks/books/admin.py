@@ -13,7 +13,8 @@ class BookAdmin(admin.ModelAdmin):
         'price',
         'rating',
         'image',
-        'author'
+        'author',
+        'site_url'
     )
 
     ordering = ('sku',)
@@ -28,7 +29,9 @@ class ReviewAdmin(admin.ModelAdmin):
     )    
     ordering = ('book',)
 
+
 class CategoryAdmin(admin.ModelAdmin):
+
     list_display = (
         'friendly_name',
         'name',
@@ -40,6 +43,7 @@ class AuthorAdmin(admin.ModelAdmin):
         'name',
         'image',
         'details',
+        'site_url'
     )    
 
 
