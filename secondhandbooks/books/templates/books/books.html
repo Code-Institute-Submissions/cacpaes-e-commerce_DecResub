@@ -56,17 +56,18 @@
                             <div class="card h-100 border-0">
                                 {% if book.image %}
                                 <a href="{% url 'book_detail' book.id %}">
-                                    <img class="card-img-top img-fluid" src="{{ book.image.url }}" alt="{{ book.name }}">
+                                    <img class="card-img-top img-fluid" style="height: 25em;" src="{{ book.image.url }}" alt="{{ book.name }}">
                                 </a>
                                 {% else %}
                                 <a href="{% url 'book_detail' book.id %}">
-                                    <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ book.name }}">
+                                    <img class="card-img-top img-fluid" style="max-height: 25em;" src="{{ MEDIA_URL }}noimage.png" alt="{{ book.name }}">
                                 </a>
                                 {% endif %}
-                                <div class="card-body pb-0">
+                                <div class="card-body pb-0 d-flex" style="justify-content: flex-end;flex-direction: column;">
                                     <p class="mb-0">{{ book.name }}</p>
                                 </div>
                                 <div class="card-footer bg-white pt-0 border-0 text-left">
+                                    
                                     <div class="row">
                                         <div class="col">
                                             <p class="lead mb-0 text-left font-weight-bold">${{ book.price }}</p>
@@ -76,11 +77,6 @@
                                                     <i class="fas fa-tag mr-1"></i>{{ book.category.friendly_name }}
                                                 </a>
                                             </p>
-                                            {% endif %}
-                                            {% if book.rating %}
-                                                <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ book.rating }} / 5</small>
-                                            {% else %}
-                                                <small class="text-muted">No Rating</small>
                                             {% endif %}
                                             {% if request.user.is_superuser %}
                                                 <small class="ml-3">
