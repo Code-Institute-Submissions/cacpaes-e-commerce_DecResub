@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from django.test import TestCase
-from books.models import  Book
+from books.models import Book
 from checkout.models import Order, OrderLineItem
 import uuid
 
@@ -13,7 +13,7 @@ class OrderTestCase(TestCase):
 
 
     def setUp(self):
-        
+
         """
         Defined function before condition for test
         """
@@ -54,9 +54,7 @@ class to test model Order Line Item
 
 class OrderLineItemTestCase(TestCase):
 
-
     def setUp(self):
-        
         """
         Defined function before condition for test
         """
@@ -102,4 +100,3 @@ class OrderLineItemTestCase(TestCase):
         """
         order = OrderLineItem.objects.get(book=self.book)
         self.assertEquals(order.__str__(), f'SKU {self.book.sku} on order {self.order.order_number}')
-        
