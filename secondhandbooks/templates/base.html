@@ -8,7 +8,8 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="Sale of second-hand books, in the categories of crime, fantasy, health, food and drink, popular">
+        <meta name="description" content="
+        Sale of used books, in the categories of crime, fantasy, health, food and drink, popular. You can find well-preserved books at a good price, being able to filter by price, rating and category. We use reliable and established means of payment and delivery by the market.">
     {% endblock %}
 
     {% block extra_meta %}
@@ -38,13 +39,43 @@
     {% endblock %}
 
     <title>SecondHandBooks {% block extra_title %}{% endblock %}</title>
+    <link rel="canonical" href="https://secondhandbookk.herokuapp.com/" />
+
+    <link rel="apple-touch-icon" sizes="57x57" href="{{ MEDIA_URL }}favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="{{ MEDIA_URL }}favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="{{ MEDIA_URL }}favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ MEDIA_URL }}favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="{{ MEDIA_URL }}favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="{{ MEDIA_URL }}favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="{{ MEDIA_URL }}favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="{{ MEDIA_URL }}favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ MEDIA_URL }}favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="{{ MEDIA_URL }}favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ MEDIA_URL }}favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="{{ MEDIA_URL }}favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ MEDIA_URL }}favicon/favicon-16x16.png">
+    <link rel="manifest" href="{{ MEDIA_URL }}favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="twitter:card" content="summary"></meta>
+    <meta property="og:title" content="SecondHandBooks" />
   </head>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-V4YSE287VJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-V4YSE287VJ');
+</script>
   <body style="background-color: rgb(241, 241, 241);">
     <header class="container-fluid fixed-top">
         <div id="topnav" class="row bg-white pt-lg-2 d-none d-lg-flex">
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
                 <a href="{% url 'books' %}" class="nav-link main-logo-link">
-                    <h2 class="logo-font text-black my-0"><strong>SecondHandBooks</strong></h2>
+                    <h1 class="logo-font text-black my-0"><strong>SecondHandBooks</strong></h1>
                 </a>
             </div>
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
