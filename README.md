@@ -29,3 +29,12 @@ The idea of marketing and promotion would be the presence on social networks aim
 *  That users can view offers and discounted prices.
 *  Be practical to register and access the account/profile for users who wish to do so.
 *  So that users can easily add products to their bag and also modify it with convenience.
+
+
+<h3>Agile</h3>
+
+<p>For the development of this project, the Agile methodology was applied. As a support tool, I used the GitHub projects.</p>
+
+[Go to this link for the project](https://github.com/users/cacpaes/projects/7)
+
+<p>As you can see, we used a simple Kanban board with the fields (To do, Doing, Done). To do the next ones that will be executed, Doing the ones that are currently being developed and Done the ones that were finished.</p>
