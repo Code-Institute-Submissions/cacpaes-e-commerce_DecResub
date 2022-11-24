@@ -51,3 +51,20 @@ The idea of marketing and promotion would be the presence on social networks aim
 *  As a site owner, I want to easily add, edit or remove products, so I can provide new products or correct some information.
 *  As a site owner, I want to send a communication to the subscribers of the site, so I can send promotions and communications.
 *  As a site owner, I I want to update stock and order status, so I can keep accurate information.
+
+
+<h3>Scope</h3>
+
+<p>For the scope of this project the following key points were determined.</p>
+
+*  Allow the site owner to update stock and order status direct from the website.
+*  Allow the site owner add, update or remove produtos direct from the website.
+*  Allow the user to add and manipulate the products in the bag before checkout.
+*  Allow logged in users to interact with comments and rating.
+*  Allow users to manipulate their delivery details informations.
+*  Allow the user to create an account to keep the information saved.
+*  The website should be functional and intuitive, easy to navigate and proceed to checkout.
+*  Use bootstrap to make the site responsive, and custom CSS and Java Script to complement.
+*  Create a checkout using Stripe as payment method tool.
+*  Create a webpage application using the Django framework.
+*  Create a webpage application using the Django framework.
