@@ -68,3 +68,19 @@ The idea of marketing and promotion would be the presence on social networks aim
 *  Create a checkout using Stripe as payment method tool.
 *  Create a webpage application using the Django framework.
 *  Create a webpage application using the Django framework.
+
+
+<h3>Structure</h3>
+
+<p>The page structure for SecondHandBooks Store was determined as follows:</p>
+
+  *  Home, profile, products (filter pages for: Categories / Offers), shopbag, checkout (checkout page / checkout success), management (Product Manag. / Stock Manag. / Order Status Manag. / New Letter Manag.).
+
+<p>For users not logged in, will be displayed:</p>
+
+*  Home, products (filter pages for: Categories / Offers), sign in, sign up, shopbag, checkout (checkout page / checkout success).
+
+<p>For superuser (site owner) logged in, will be displayed:</P>
+
+*  Home, products (filter pages for: Categories / Offers), management (Product Manag. / Stock Manag. / Order Status Manag. / New Letter Manag.), My account (My profile / Logout), shopbag, checkout (checkout page / checkout success).
+*  My profile will be the same as users.
