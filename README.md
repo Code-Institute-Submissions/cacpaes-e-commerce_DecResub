@@ -99,6 +99,16 @@ The idea of marketing and promotion would be the presence on social networks aim
 ![wireframes2](https://user-images.githubusercontent.com/93129370/203789257-1b95334a-6d2d-4c9e-a47f-0f3ef35743c6.png)
 
 
+<h3>Database diagram</h3>
+<p>The SecondHandBooks database is designed to determine all models present in the project and their relationships.
+
+Regarding the purchase and checkout process, the user must be logged in. It is not possible to checkout without an account. The selected products are added to the shopping bag and when accessing the checkout, the information is transferred automatically.</p>
+
+
+
+![img-diagram](https://user-images.githubusercontent.com/93129370/204109520-79438816-67d9-4c44-9295-0ea378dd3a49.jpeg)
+
+
 
 
 
