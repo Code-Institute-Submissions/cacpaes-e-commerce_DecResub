@@ -1,0 +1,308 @@
+@startuml
+class "admin.LogEntry <Administration>" as admin.LogEntry #f4d6f1 {
+    log entry
+    --
+    - id (AutoField)
+    + action_time (DateTimeField)
+    ~ user (ForeignKey)
+    ~ content_type (ForeignKey)
+    + object_id (TextField)
+    + object_repr (CharField)
+    + action_flag (PositiveSmallIntegerField)
+    + change_message (TextField)
+    --
+}
+admin.LogEntry *-- auth.User
+admin.LogEntry *-- contenttypes.ContentType
+
+
+class "auth.Permission <Authentication and Authorization>" as auth.Permission #e8f4d6 {
+    permission
+    --
+    - id (AutoField)
+    + name (CharField)
+    ~ content_type (ForeignKey)
+    + codename (CharField)
+    --
+}
+auth.Permission *-- contenttypes.ContentType
+
+
+class "auth.Group <Authentication and Authorization>" as auth.Group #e8f4d6 {
+    group
+    --
+    - id (AutoField)
+    + name (CharField)
+    # permissions (ManyToManyField)
+    --
+}
+auth.Group *--* auth.Permission
+
+
+class "auth.User <Authentication and Authorization>" as auth.User #e8f4d6 {
+    user
+    --
+    - id (AutoField)
+    + password (CharField)
+    + last_login (DateTimeField)
+    + is_superuser (BooleanField)
+    + username (CharField)
+    + first_name (CharField)
+    + last_name (CharField)
+    + email (EmailField)
+    + is_staff (BooleanField)
+    + is_active (BooleanField)
+    + date_joined (DateTimeField)
+    # groups (ManyToManyField)
+    # user_permissions (ManyToManyField)
+    --
+}
+auth.User *--* auth.Group
+auth.User *--* auth.Permission
+
+
+class "contenttypes.ContentType <Content Types>" as contenttypes.ContentType #d6f4de {
+    content type
+    --
+    - id (AutoField)
+    + app_label (CharField)
+    + model (CharField)
+    --
+}
+
+
+class "sessions.Session <Sessions>" as sessions.Session #f4e1d6 {
+    session
+    --
+    + session_key (CharField)
+    + session_data (TextField)
+    + expire_date (DateTimeField)
+    --
+}
+
+
+class "sites.Site <Sites>" as sites.Site #d6f4f0 {
+    site
+    --
+    - id (AutoField)
+    + domain (CharField)
+    + name (CharField)
+    --
+}
+
+
+class "account.EmailAddress <Accounts>" as account.EmailAddress #e2f4d6 {
+    email address
+    --
+    - id (AutoField)
+    ~ user (ForeignKey)
+    + email (EmailField)
+    + verified (BooleanField)
+    + primary (BooleanField)
+    --
+}
+account.EmailAddress *-- auth.User
+
+
+class "account.EmailConfirmation <Accounts>" as account.EmailConfirmation #e2f4d6 {
+    email confirmation
+    --
+    - id (AutoField)
+    ~ email_address (ForeignKey)
+    + created (DateTimeField)
+    + sent (DateTimeField)
+    + key (CharField)
+    --
+}
+account.EmailConfirmation *-- account.EmailAddress
+
+
+class "socialaccount.SocialApp <Social Accounts>" as socialaccount.SocialApp #d6f4f1 {
+    social application
+    --
+    - id (AutoField)
+    + provider (CharField)
+    + name (CharField)
+    + client_id (CharField)
+    + secret (CharField)
+    + key (CharField)
+    # sites (ManyToManyField)
+    --
+}
+socialaccount.SocialApp *--* sites.Site
+
+
+class "socialaccount.SocialAccount <Social Accounts>" as socialaccount.SocialAccount #d6f4f1 {
+    social account
+    --
+    - id (AutoField)
+    ~ user (ForeignKey)
+    + provider (CharField)
+    + uid (CharField)
+    + last_login (DateTimeField)
+    + date_joined (DateTimeField)
+    + extra_data (JSONField)
+    --
+}
+socialaccount.SocialAccount *-- auth.User
+
+
+class "socialaccount.SocialToken <Social Accounts>" as socialaccount.SocialToken #d6f4f1 {
+    social application token
+    --
+    - id (AutoField)
+    ~ app (ForeignKey)
+    ~ account (ForeignKey)
+    + token (TextField)
+    + token_secret (TextField)
+    + expires_at (DateTimeField)
+    --
+}
+socialaccount.SocialToken *-- socialaccount.SocialApp
+socialaccount.SocialToken *-- socialaccount.SocialAccount
+
+
+class "checkout.Order <Checkout>" as checkout.Order #d6e7f4 {
+    order
+    --
+    - id (AutoField)
+    + order_number (CharField)
+    ~ user_profile (ForeignKey)
+    + full_name (CharField)
+    + email (EmailField)
+    + phone_number (CharField)
+    + country (CountryField)
+    + postcode (CharField)
+    + town_or_city (CharField)
+    + street_address1 (CharField)
+    + street_address2 (CharField)
+    + county (CharField)
+    + date (DateTimeField)
+    + delivery_cost (DecimalField)
+    + order_total (DecimalField)
+    + grand_total (DecimalField)
+    + original_bag (TextField)
+    + stripe_pid (CharField)
+    --
+}
+checkout.Order *-- profiles.UserProfile
+
+
+class "checkout.OrderLineItem <Checkout>" as checkout.OrderLineItem #d6e7f4 {
+    order line item
+    --
+    - id (AutoField)
+    ~ order (ForeignKey)
+    ~ book (ForeignKey)
+    + quantity (IntegerField)
+    + lineitem_total (DecimalField)
+    --
+}
+checkout.OrderLineItem *-- checkout.Order
+checkout.OrderLineItem *-- books.Book
+
+
+class "books.Category <Books>" as books.Category #e0f4d6 {
+    category
+    --
+    - id (AutoField)
+    + name (CharField)
+    + friendly_name (CharField)
+    --
+}
+
+
+class "books.Author <Books>" as books.Author #e0f4d6 {
+    author
+    --
+    - id (AutoField)
+    + name (CharField)
+    + image (ImageField)
+    + details (CharField)
+    + site_url (URLField)
+    --
+}
+
+
+class "books.Book <Books>" as books.Book #e0f4d6 {
+    book
+    --
+    - id (AutoField)
+    ~ category (ForeignKey)
+    ~ author (ForeignKey)
+    + sku (CharField)
+    + name (CharField)
+    + description (TextField)
+    + special (BooleanField)
+    + price (DecimalField)
+    + amount (IntegerField)
+    + rating (DecimalField)
+    + image_url (URLField)
+    + image (ImageField)
+    + site_url (URLField)
+    --
+}
+books.Book *-- books.Category
+books.Book *-- books.Author
+
+
+class "books.Review <Books>" as books.Review #e0f4d6 {
+    review
+    --
+    - id (AutoField)
+    ~ book (ForeignKey)
+    ~ user (ForeignKey)
+    + created_on (DateTimeField)
+    + content (TextField)
+    + reviewed (BooleanField)
+    + review (IntegerField)
+    --
+}
+books.Review *-- books.Book
+books.Review *-- auth.User
+
+
+class "profiles.UserProfile <Profiles>" as profiles.UserProfile #ead6f4 {
+    user profile
+    --
+    - id (AutoField)
+    ~ user (OneToOneField)
+    + default_phone_number (CharField)
+    + default_street_address1 (CharField)
+    + default_street_address2 (CharField)
+    + default_town_or_city (CharField)
+    + default_county (CharField)
+    + default_postcode (CharField)
+    + default_country (CountryField)
+    --
+}
+
+
+class "comment.Comment <Comment>" as comment.Comment #d6f4de {
+    comment
+    --
+    - id (AutoField)
+    ~ book (ForeignKey)
+    + name (CharField)
+    + email (EmailField)
+    + body (TextField)
+    + created_on (DateTimeField)
+    + active (BooleanField)
+    --
+}
+comment.Comment *-- books.Book
+
+
+class "newsletter.SubscribedUsers <Newsletter>" as newsletter.SubscribedUsers #f1f4d6 {
+    subscribed users
+    --
+    - id (AutoField)
+    + email (CharField)
+    + name (CharField)
+    ~ user (ForeignKey)
+    --
+}
+newsletter.SubscribedUsers *-- auth.User
+
+
+@enduml
