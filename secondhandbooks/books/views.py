@@ -172,7 +172,9 @@ def book_detail(request, book_id):
                 new_review.save()
             reviews = book.review.filter(reviewed=True).order_by("-created_on")
             total_review = reviews.count()
-            avg_review = reviews.aggregate(review=Avg('review'))['review']        
+            avg_review = reviews.aggregate(review=Avg('review'))['review']
+            book.rating = avg_review
+            book.save()      
     else:
         comment_form = CommentForm()
         review_form = ReviewForm()
