@@ -69,12 +69,12 @@ ROOT_URLCONF = 'secondhandbooks.urls'
 
 
 MESSAGE_TAGS = {
-        messages.DEBUG: 'alert-secondary',
-        messages.INFO: 'alert-info',
-        messages.SUCCESS: 'alert-success',
-        messages.WARNING: 'alert-warning',
-        messages.ERROR: 'alert-danger',
- }
+    messages.DEBUG: 'alert-secondary',
+    messages.INFO: 'alert-info',
+    messages.SUCCESS: 'alert-success',
+    messages.WARNING: 'alert-warning',
+    messages.ERROR: 'alert-danger',
+}
 
 TEMPLATES = [
     {
@@ -82,7 +82,7 @@ TEMPLATES = [
         'DIRS': [
             os.path.join(BASE_DIR, 'templates'),
             os.path.join(BASE_DIR, 'templates', 'allauth')
-            ],
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -101,7 +101,7 @@ TEMPLATES = [
     },
 ]
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
-AUTHENTICATION_BACKENDS = [ 
+AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
@@ -170,8 +170,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
-
 
 
 # Static files (CSS, JavaScript, Images)

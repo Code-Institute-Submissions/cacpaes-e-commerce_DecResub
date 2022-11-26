@@ -17,7 +17,7 @@ def newsletter(request):
             subscribedUsers = SubscribedUsers.objects.get(user=request.user)
         except SubscribedUsers.DoesNotExist:
             subscribedUsers = SubscribedUsers()
-        finally:       
+        finally:
             post_data = request.POST.copy()
             email = post_data.get("email", None)
             name = post_data.get("name", None)
@@ -27,33 +27,33 @@ def newsletter(request):
             subscribedUsers.save()
             # send a confirmation mail
             subject = 'NewsLetter Subscription'
-            message = 'Hello ' + name + ', Thanks for subscribing us. You will get notification of latest articles posted on our website. Please do not reply on this email.'
+            message = 'Hello ' + name + \
+                ', Thanks for subscribing us. You will get notification of latest articles posted on our website. Please do not reply on this email.'
             email_from = settings.EMAIL_HOST_USER
             recipient_list = [email, ]
             send_mail(subject, message, email_from, recipient_list)
             res = JsonResponse({'msg': 'Thanks. Subscribed Successfully!'})
             return res
-        
-            
+
     return render(request, 'index.html')
 
 
 def validate_email(request):
     """ Funcion to validate email """
-    print(request) 
+    print(request)
     email = request.POST.get("email", None)
     print(email)
-    try:    
+    try:
         if email is None:
             res = JsonResponse({'msg': 'Email is required.'})
         elif not re.match(r"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$", email):
             res = JsonResponse({'msg': 'Invalid Email Address'})
-        
-        elif SubscribedUsers.objects.get(email = email):
+
+        elif SubscribedUsers.objects.get(email=email):
             res = JsonResponse({'msg': 'Email Address already exists'})
-        
+
         else:
             res = JsonResponse({'msg': ''})
     except SubscribedUsers.DoesNotExist:
-        pass       
+        pass
     return res

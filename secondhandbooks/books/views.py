@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q, Avg
 from django.db.models.functions import Lower
-from comment.forms import  CommentForm
+from comment.forms import CommentForm
 from .models import Book, Category, Review
 from .forms import BookForm, ReviewForm
 
@@ -18,7 +18,6 @@ def all_books(request):
     categories = None
     sort = None
     direction = None
-
 
     if request.GET:
         if 'sort' in request.GET:
@@ -48,7 +47,8 @@ def all_books(request):
                                ("You didn't enter any search criteria!"))
                 return redirect(reverse('books'))
 
-            queries = Q(name__icontains=query) | Q(description__icontains = query)
+            queries = Q(name__icontains=query) | Q(
+                description__icontains=query)
             books = books.filter(queries)
 
     current_sorting = f'{sort}_{direction}'
@@ -61,9 +61,6 @@ def all_books(request):
     }
 
     return render(request, 'books/books.html', context)
-
-
-
 
 
 @login_required
@@ -137,8 +134,8 @@ def delete_book(request, book_id):
     messages.success(request, 'Book deleted!')
     return redirect(reverse('books'))
 
+
 def book_detail(request, book_id):
-    
     """ A view to show individual book details """
 
     book = get_object_or_404(Book, pk=book_id)
@@ -165,7 +162,7 @@ def book_detail(request, book_id):
                 review_edit = review[0]
                 review_edit.review = review_form['review'].value()
                 review_edit.save()
-            else:    
+            else:
                 new_review = review_form.save(commit=False)
                 new_review.book = book
                 new_review.user = request.user
@@ -174,18 +171,18 @@ def book_detail(request, book_id):
             total_review = reviews.count()
             avg_review = reviews.aggregate(review=Avg('review'))['review']
             book.rating = avg_review
-            book.save()      
+            book.save()
     else:
         comment_form = CommentForm()
         review_form = ReviewForm()
 
     context = {
-        'book': book, 'comments': comments, 'new_comment': new_comment, 'comment_form': comment_form, 'reviews': reviews, 
-        'total_review': total_review, 'avg_review': avg_review, 'review_form': review_form, 'iterator': range(1,6)
+        'book': book, 'comments': comments, 'new_comment': new_comment, 'comment_form': comment_form, 'reviews': reviews,
+        'total_review': total_review, 'avg_review': avg_review, 'review_form': review_form, 'iterator': range(1, 6)
     }
 
-
     return render(request, 'books/book_detail.html', context)
+
 
 @login_required()
 def add_review(request, book_id):

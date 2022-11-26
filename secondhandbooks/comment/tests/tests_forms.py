@@ -5,8 +5,9 @@ from comment.forms import CommentForm
 """
 class to test form CommentForm
 """
+
+
 class CommentFormTestCase(TestCase):
-    
 
     def test_comment_form_valid(self):
         """

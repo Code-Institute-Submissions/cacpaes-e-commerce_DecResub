@@ -56,40 +56,46 @@ class BagViewsTestCase(TestCase):
         Test return add bag user book not exist
         """
 
-        response = self.client.get(reverse('add_to_bag', kwargs={'item_id': '999999999'}))
+        response = self.client.get(
+            reverse('add_to_bag', kwargs={'item_id': '999999999'}))
         self.assertEqual(response.status_code, 404, response)
 
     def test_view_add_bag_sucess(self):
         """
         Test return add bag user
         """
-        response = self.client.post(reverse('add_to_bag', kwargs={'item_id': self.book.id}), data={'quantity': 43, 'redirect_url': 'request.path'})
+        response = self.client.post(reverse('add_to_bag', kwargs={'item_id': self.book.id}), data={
+                                    'quantity': 43, 'redirect_url': 'request.path'})
         self.assertEqual(response.status_code, 302, response)
 
     def test_view_adjust_bag_error_book_not_exist(self):
         """
         Test return adjust bag user book not exist
         """
-        response = self.client.get(reverse('adjust_bag', kwargs={'item_id': '999999999'}))
+        response = self.client.get(
+            reverse('adjust_bag', kwargs={'item_id': '999999999'}))
         self.assertEqual(response.status_code, 404, response)
 
     def test_view_adjust_bag_sucess(self):
         """
         Test return adjust bag user
         """
-        response = self.client.post(reverse('adjust_bag', kwargs={'item_id': self.book.id}), data={'quantity': 43, 'redirect_url': 'request.path'})
+        response = self.client.post(reverse('adjust_bag', kwargs={'item_id': self.book.id}), data={
+                                    'quantity': 43, 'redirect_url': 'request.path'})
         self.assertEqual(response.status_code, 302, response)
 
     def test_view_remove_bag_error_book_not_exist(self):
         """
         Test return remove bag user book not exist
         """
-        response = self.client.get(reverse('remove_from_bag', kwargs={'item_id': '999999999'}))
+        response = self.client.get(
+            reverse('remove_from_bag', kwargs={'item_id': '999999999'}))
         self.assertEqual(response.status_code, 404, response)
 
     def test_view_adjust_remove_sucess(self):
         """
         Test return remove bag user
         """
-        response = self.client.post(reverse('remove_from_bag', kwargs={'item_id': self.book.id}),)
+        response = self.client.post(
+            reverse('remove_from_bag', kwargs={'item_id': self.book.id}),)
         self.assertEqual(response.status_code, 500, response)

@@ -11,6 +11,7 @@ class BookSitemap(Sitemap):
     def items(self):
         return Book.objects.all()
 
+
 class CategorySitemap(Sitemap):
     changefreq = "weekly"
     priority = 1
@@ -19,5 +20,5 @@ class CategorySitemap(Sitemap):
     def items(self):
         return Category.objects.all()
 
-    def location(self,obj):
-        return '/?category=%s' % (obj.name)    
+    def location(self, obj):
+        return '/?category=%s' % (obj.name)

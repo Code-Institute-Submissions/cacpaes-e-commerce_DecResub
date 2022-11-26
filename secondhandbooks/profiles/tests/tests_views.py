@@ -42,13 +42,16 @@ class ProfilesViewsTestCase(TestCase):
 
         self.book2.save()
 
-        test_user1 = User.objects.create_user(username='testuser1', password='1X<ISRUkw+tuK')
-        test_user2 = User.objects.create_user(username='testuser2', password='2HJ1vRV0Z&3iD')
+        test_user1 = User.objects.create_user(
+            username='testuser1', password='1X<ISRUkw+tuK')
+        test_user2 = User.objects.create_user(
+            username='testuser2', password='2HJ1vRV0Z&3iD')
 
         test_user1.save()
         test_user2.save()
 
-        self.my_admin = User.objects.create_superuser(username= 'myemail@test.com',password= 'mypassword')
+        self.my_admin = User.objects.create_superuser(
+            username='myemail@test.com', password='mypassword')
         self.my_admin.save()
 
         self.uuid_number = uuid.uuid4()
@@ -73,15 +76,17 @@ class ProfilesViewsTestCase(TestCase):
         View Profiles, return order history error 404 
         """
 
-        response = self.client.get(reverse('order_history', kwargs={'order_number':9898989}))
-        self.assertEqual(response.status_code, 404, response)    
+        response = self.client.get(
+            reverse('order_history', kwargs={'order_number': 9898989}))
+        self.assertEqual(response.status_code, 404, response)
 
     def test_order_history_profile_sucess(self):
         """
         View Profiles, return order history error 200 
         """
 
-        response = self.client.get(reverse('order_history', kwargs={'order_number':self.uuid_number}))
+        response = self.client.get(reverse('order_history', kwargs={
+                                   'order_number': self.uuid_number}))
         self.assertEqual(response.status_code, 200, response)
 
     def test_return_profile(self):
@@ -90,4 +95,4 @@ class ProfilesViewsTestCase(TestCase):
         """
 
         response = self.client.get(reverse('profile'))
-        self.assertEqual(response.status_code, 302, response)        
+        self.assertEqual(response.status_code, 302, response)

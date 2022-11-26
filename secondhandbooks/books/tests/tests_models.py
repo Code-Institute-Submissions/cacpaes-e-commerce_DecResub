@@ -9,14 +9,10 @@ class to test model Review
 
 class ReviewTestCase(TestCase):
 
-
     def setUp(self):
-
-
         """
         Defined function before condition for test
         """
-
 
         self.user = User.objects.create(username='test', password='test')
         self.user.save()
@@ -78,14 +74,10 @@ class to test model Category
 
 class CategoryTestCase(TestCase):
 
-
     def setUp(self):
-
-
         """
         Defined function before condition for test
         """
-
 
         user = User.objects.create(username='test', password='test')
 
@@ -162,7 +154,7 @@ class CategoryTestCase(TestCase):
 
 #        category.delete(self)
 #        books = Book.objects.get(category=category)
-#        self.assertIsNone(books)        
+#        self.assertIsNone(books)
 
 
 """
@@ -172,12 +164,10 @@ class to test model Author
 
 class AuthorTestCase(TestCase):
 
-
     def setUp(self):
         """
         Defined function before condition for test
         """
-
 
         self.user = User.objects.create(username='test', password='test')
         self.user.save()
@@ -229,7 +219,8 @@ class AuthorTestCase(TestCase):
 #        author.delete()
 #        books = Book.objects.get(author=author)
 #        self.assertIsNone(books)
-# 
+#
+
 
 """
 class to test model Books
@@ -237,7 +228,6 @@ class to test model Books
 
 
 class BookTestCase(TestCase):
-
 
     def setUp(self):
         """
@@ -271,4 +261,4 @@ class BookTestCase(TestCase):
         self.assertIsNotNone(book)
         self.assertEquals(book.name, "Harry Potter")
         self.assertEquals(book.description, "is very good book")
-        self.assertEquals(book.price, Decimal(73))      
+        self.assertEquals(book.price, Decimal(73))
