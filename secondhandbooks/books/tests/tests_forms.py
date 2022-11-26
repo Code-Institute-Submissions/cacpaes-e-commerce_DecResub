@@ -5,6 +5,8 @@ from books.models import Category
 """
 class to test form ReviewForm
 """
+
+
 class ReviewFormTestCase(TestCase):
 
     def test_review_form_valid(self):
@@ -34,7 +36,6 @@ class ReviewFormTestCase(TestCase):
         })
         self.assertFalse(form.is_valid(), form.errors)
 
-
     def test_review_form_invalid_review_value_greather_than_five(self):
         """
         Check if the form is invalid, parameter review value greather than 5 
@@ -48,10 +49,11 @@ class ReviewFormTestCase(TestCase):
 """
 class to test form BookForm
 """
+
+
 class BookFormTestCase(TestCase):
 
     def setUp(self):
-
         """
         Create setup book form
         """
@@ -93,7 +95,6 @@ class BookFormTestCase(TestCase):
         })
         self.assertFalse(form.is_valid(), form.errors)
 
-
     def test_book_form_invalid_price_none(self):
         """
         Check if the form is invalid, parameter price none
@@ -103,4 +104,3 @@ class BookFormTestCase(TestCase):
             'description': 'The best book',
         })
         self.assertFalse(form.is_valid(), form.errors)
-            

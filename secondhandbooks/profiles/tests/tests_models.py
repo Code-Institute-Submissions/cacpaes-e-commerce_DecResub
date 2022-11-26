@@ -6,18 +6,17 @@ from profiles.models import UserProfile
 class to test model Profile
 """
 
+
 class ProfileTestCase(TestCase):
 
     def setUp(self):
-        
         """
         Defined function before condition for test
         """
 
-
         self.user = User.objects.create(username='test33', password='test33')
         self.user.save()
-        
+
         profile = UserProfile.objects.create(
             user=self.user,
             default_phone_number='0834187086',
