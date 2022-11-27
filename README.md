@@ -424,6 +424,14 @@ Quantity field (Less / More buttons).
 * When finished, I clicked the View button, which redirected me to the live site.
 
 
+<h2>Fork</h2>
+
+* Forks let you make changes to a project without affecting the original repository. Follow this steps:
+1. Go to the repository page, can be accessed [here](https://github.com/cacpaes/e-commerce).
+2. On top right, you select the Fork option and proceed.
+3. A duplicate will be created inside your repository.
+
+
 
 
 
