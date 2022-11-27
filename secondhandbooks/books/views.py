@@ -18,8 +18,10 @@ def all_books(request):
     categories = None
     sort = None
     direction = None
+    style = None
 
     if request.GET:
+        style = "display: none;"
         if 'sort' in request.GET:
             sortkey = request.GET['sort']
             sort = sortkey
@@ -58,6 +60,7 @@ def all_books(request):
         'search_term': query,
         'current_categories': categories,
         'current_sorting': current_sorting,
+        'style': style
     }
 
     return render(request, 'books/books.html', context)

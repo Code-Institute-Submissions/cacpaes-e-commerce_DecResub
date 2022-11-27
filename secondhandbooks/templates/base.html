@@ -75,7 +75,9 @@
         <div id="topnav" class="row bg-white pt-lg-2 d-none d-lg-flex">
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
                 <a href="{% url 'books' %}" class="nav-link main-logo-link">
-                    <h1 class="logo-font text-black my-0"><strong>SecondHandBooks</strong></h1>
+                    <h1 class="logo-font text-black my-0"><span class="icon">
+                        <i class="fas fa-book"></i>
+                    </span><strong class="ml-2" style="text-transform:initial;">SecondHandBooks</strong></h1>
                 </a>
             </div>
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
@@ -180,7 +182,7 @@
     {% endblock %}
 
    
-    <footer class="footer mt-auto py-3 background-main d-flex" style="justify-content: center;">
+    <footer class="footer mt-auto py-3 background-main d-flex footer-mobile" style="justify-content: center;">
         <div style="width: 100%; margin: auto;">
             <h3 class="m-0 text-center">Made by Carlos</h3>
 
@@ -194,9 +196,9 @@
             <a class="m-3 footer-button rede-social" href="https://www.facebook.com/profile.php?id=100088202703974" role="button" target="_blank" aria-label="facebook" style="color: black; margin-left: 0!important;"><i class="fab fa-lg fa-facebook" style="color: black;"></i></a></h4>
         </div>
         <!-- Section: Social media -->
-
+        {% if request.user.is_authenticated %}
         <div style="width: 100%;">
-            {% if request.user.is_authenticated %}
+            
             <div class="col-lg-6 col-md-6" style="margin: 10px auto; display: block;">
                 <form enctype="multipart/form-data" method="POST" action="" style="text-align: center;">
                     {% csrf_token %}
@@ -211,9 +213,10 @@
                     <input onclick="event.preventDefault();" type="submit" value="Subscribe" id="submit" class="btn" style="padding: 7px 21px;background-color: rgb(143, 1, 1);color: white;font-size: 18px;">     
                 </form>
             </div>
-            {% endif%}
+           
             
         </div>
+        {% endif%}
     
         
     </footer>

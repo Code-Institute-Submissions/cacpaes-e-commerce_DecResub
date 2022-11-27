@@ -69,6 +69,18 @@ body {
   }
 }
 
+@media (max-width: 768px) {
+    .footer-mobile{
+        flex-direction: column;
+    }
+
+    .mobile-top-img{
+        width: 90%;
+        margin: auto;
+        margin-top: 10em;
+    }
+}
+
 /* fixed top navbar only on medium and up */
 @media (min-width: 992px) {
     .fixed-top-desktop-only {
