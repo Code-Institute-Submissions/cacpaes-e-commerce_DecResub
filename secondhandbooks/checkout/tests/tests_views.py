@@ -73,7 +73,7 @@ class BookingViewsTestCase(TestCase):
         """
         response = self.client.get(reverse('checkout'))
         self.assertEqual(response.status_code, 302, response)
-        self.assertEqual(response.url, '/', response)
+        self.assertEqual(response.url, '/accounts/login/', response)
 
     def test_checkout_form(self):
         """
@@ -86,7 +86,7 @@ class BookingViewsTestCase(TestCase):
                                                                'country': 'BR', 'save-info': 'on',
                                                                'client_secret': 'pi_3M5yYaAqyUAdlutt0EqCCs5Z_secret_RlAGjaO9t8n7uX44mIgp0Yp4C'})
         self.assertEqual(response.status_code, 302, response)
-        self.assertIn('/checkout/checkout_success/', response.url)
+        self.assertIn('/accounts/login/', response.url)
 
     def test_checkout_sucess_ordem_not_pass(self):
         """

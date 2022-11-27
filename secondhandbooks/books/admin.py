@@ -14,7 +14,6 @@ class BookAdmin(admin.ModelAdmin):
         'rating',
         'image',
         'author',
-        'site_url'
     )
 
     ordering = ('sku',)

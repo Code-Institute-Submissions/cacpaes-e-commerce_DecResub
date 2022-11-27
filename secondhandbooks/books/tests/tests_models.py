@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.test import TestCase
 from books.models import Review, Book, Category, Author
+from decimal import *
 
 """
 class to test model Review
@@ -207,19 +208,6 @@ class AuthorTestCase(TestCase):
         author = Author.objects.get(name="JK")
         self.assertEquals(author.name, "JK")
         self.assertEquals(author.details, "Children's Books")
-
-#    def test_get_book_author(self):
-#        """
-#        Test return books in filter author
-#        """
-#        author = Author.objects.get(name="JK")
-#        books = Book.objects.get(author=author)
-#        self.assertIsNotNone(books)
-
-#        author.delete()
-#        books = Book.objects.get(author=author)
-#        self.assertIsNone(books)
-#
 
 
 """

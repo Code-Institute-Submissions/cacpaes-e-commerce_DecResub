@@ -1,0 +1,290 @@
+Operations to perform:
+  Synchronize unmigrated apps: allauth, crispy_forms, messages, puml_generator, sitemaps, staticfiles, storages
+  Apply all migrations: account, admin, auth, books, checkout, comment, contenttypes, newsletter, profiles, sessions, sites, socialaccount
+Running pre-migrate handlers for application admin
+Running pre-migrate handlers for application auth
+Running pre-migrate handlers for application contenttypes
+Running pre-migrate handlers for application sessions
+Running pre-migrate handlers for application sites
+Running pre-migrate handlers for application allauth
+Running pre-migrate handlers for application account
+Running pre-migrate handlers for application socialaccount
+Running pre-migrate handlers for application checkout
+Running pre-migrate handlers for application books
+Running pre-migrate handlers for application profiles
+Running pre-migrate handlers for application comment
+Running pre-migrate handlers for application newsletter
+Synchronizing apps without migrations:
+  Creating tables...
+    Running deferred SQL...
+Running migrations:
+  Applying contenttypes.0001_initial... OK (0.004s)
+  Applying auth.0001_initial... OK (0.014s)
+  Applying account.0001_initial... OK (0.012s)
+  Applying account.0002_email_max_length... OK (0.008s)
+  Applying admin.0001_initial... OK (0.008s)
+  Applying admin.0002_logentry_remove_auto_add... OK (0.009s)
+  Applying admin.0003_logentry_add_action_flag_choices... OK (0.009s)
+  Applying contenttypes.0002_remove_content_type_name... OK (0.019s)
+  Applying auth.0002_alter_permission_name_max_length... OK (0.005s)
+  Applying auth.0003_alter_user_email_max_length... OK (0.009s)
+  Applying auth.0004_alter_user_username_opts... OK (0.009s)
+  Applying auth.0005_alter_user_last_login_null... OK (0.009s)
+  Applying auth.0006_require_contenttypes_0002... OK (0.001s)
+  Applying auth.0007_alter_validators_add_error_messages... OK (0.010s)
+  Applying auth.0008_alter_user_username_max_length... OK (0.010s)
+  Applying auth.0009_alter_user_last_name_max_length... OK (0.008s)
+  Applying auth.0010_alter_group_name_max_length... OK (0.007s)
+  Applying auth.0011_update_proxy_permissions... OK (0.007s)
+  Applying books.0001_initial... OK (0.007s)
+  Applying books.0002_review... OK (0.008s)
+  Applying books.0003_auto_20221110_2242... OK (0.021s)
+  Applying books.0004_auto_20221120_1802... OK (0.011s)
+  Applying profiles.0001_initial... OK (0.014s)
+  Applying checkout.0001_initial... OK (0.034s)
+  Applying checkout.0002_remove_orderlineitem_book_size... OK (0.044s)
+  Applying comment.0001_initial... OK (0.018s)
+  Applying newsletter.0001_initial... OK (0.002s)
+  Applying newsletter.0002_subscribedusers_user... OK (0.020s)
+  Applying sessions.0001_initial... OK (0.002s)
+  Applying sites.0001_initial... OK (0.002s)
+  Applying sites.0002_alter_domain_unique... OK (0.004s)
+  Applying socialaccount.0001_initial... OK (0.058s)
+  Applying socialaccount.0002_token_max_lengths... OK (0.029s)
+  Applying socialaccount.0003_extra_data_default_dict... OK (0.010s)
+Running post-migrate handlers for application admin
+Adding content type 'admin | logentry'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Running post-migrate handlers for application auth
+Adding content type 'auth | permission'
+Adding content type 'auth | group'
+Adding content type 'auth | user'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Running post-migrate handlers for application contenttypes
+Adding content type 'contenttypes | contenttype'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Running post-migrate handlers for application sessions
+Adding content type 'sessions | session'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Running post-migrate handlers for application sites
+Adding content type 'sites | site'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Creating example.com Site object
+Running post-migrate handlers for application allauth
+Running post-migrate handlers for application account
+Adding content type 'account | emailaddress'
+Adding content type 'account | emailconfirmation'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Running post-migrate handlers for application socialaccount
+Adding content type 'socialaccount | socialaccount'
+Adding content type 'socialaccount | socialapp'
+Adding content type 'socialaccount | socialtoken'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Running post-migrate handlers for application checkout
+Adding content type 'checkout | order'
+Adding content type 'checkout | orderlineitem'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Running post-migrate handlers for application books
+Adding content type 'books | author'
+Adding content type 'books | category'
+Adding content type 'books | book'
+Adding content type 'books | review'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Running post-migrate handlers for application profiles
+Adding content type 'profiles | userprofile'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Running post-migrate handlers for application comment
+Adding content type 'comment | comment'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Creating test database for alias 'default' ('file:memorydb_default?mode=memory&cache=shared')...
+test_view_add_bag_error_book_not_exist (bag.tests.tests_views.BagViewsTestCase)
+Test return add bag user book not exist ... ok
+test_view_add_bag_sucess (bag.tests.tests_views.BagViewsTestCase)
+Test return add bag user ... ok
+test_view_adjust_bag_error_book_not_exist (bag.tests.tests_views.BagViewsTestCase)
+Test return adjust bag user book not exist ... ok
+test_view_adjust_bag_sucess (bag.tests.tests_views.BagViewsTestCase)
+Test return adjust bag user ... ok
+test_view_adjust_remove_sucess (bag.tests.tests_views.BagViewsTestCase)
+Test return remove bag user ... ok
+test_view_bag_sucess (bag.tests.tests_views.BagViewsTestCase)
+Test return bag user ... ok
+test_view_remove_bag_error_book_not_exist (bag.tests.tests_views.BagViewsTestCase)
+Test return remove bag user book not exist ... ok
+test_book_form_invalid_description (books.tests.tests_forms.BookFormTestCase)
+Check if the form is invalid, parameter description none ... ok
+test_book_form_invalid_price_none (books.tests.tests_forms.BookFormTestCase)
+Check if the form is invalid, parameter price none ... ok
+test_book_form_invalid_skip_value_name (books.tests.tests_forms.BookFormTestCase)
+Check if the form is invalid, parameter name blank ... ok
+test_book_form_valid (books.tests.tests_forms.BookFormTestCase)
+Check if the form is valid ... ok
+test_review_form_invalid_review_negative (books.tests.tests_forms.ReviewFormTestCase)
+Check if the form is invalid, parameter review value negative ... ok
+test_review_form_invalid_review_value_greather_than_five (books.tests.tests_forms.ReviewFormTestCase)
+Check if the form is invalid, parameter review value greather than 5 ... ok
+test_review_form_invalid_skip_value_review (books.tests.tests_forms.ReviewFormTestCase)
+Check if the form is invalid, parameter name not review ... ok
+test_review_form_valid (books.tests.tests_forms.ReviewFormTestCase)
+Check if the form is valid ... ok
+test_author_return_str (books.tests.tests_models.AuthorTestCase)
+Test string for author ... ok
+test_confirm_data (books.tests.tests_models.AuthorTestCase)
+Test confirm objects atributes ... ok
+test_book_return_str (books.tests.tests_models.BookTestCase)
+Test string for book ... ok
+test_confirm_data (books.tests.tests_models.BookTestCase)
+Test confirm objects atributes ... ok
+test_cetegory_return_str (books.tests.tests_models.CategoryTestCase)
+Test string for cetegory ... ok
+test_confirm_data (books.tests.tests_models.CategoryTestCase)
+Test confirm objects atributes ... ok
+test_confirm_data (books.tests.tests_models.ReviewTestCase)
+Test confirm objects atributes ... ok
+test_review_orderind (books.tests.tests_models.ReviewTestCase)
+Test ordering review ... ok
+test_review_return_str (books.tests.tests_models.ReviewTestCase)
+Test string for review ... ok
+test_add_book_not_permission (books.tests.tests_views.BookingViewsTestCase)
+View return error add book user not permission 403, reponse redirect ... ok
+test_all_books_sucess_200 (books.tests.tests_views.BookingViewsTestCase)
+View return all books, not parametes ... ok
+test_delete_book_not_permission (books.tests.tests_views.BookingViewsTestCase)
+View return error delete book user not permission 403, reponse redirect ... ok
+test_delete_book_sucess (books.tests.tests_views.BookingViewsTestCase)
+View return delete book ... ok
+test_detail_book_error_404 (books.tests.tests_views.BookingViewsTestCase)
+View return error book 404 ... ok
+test_detail_book_sucess_200 (books.tests.tests_views.BookingViewsTestCase)
+View return details book ... ok
+test_edit_book_not_permission (books.tests.tests_views.BookingViewsTestCase)
+View return error edit book user not permission 403, reponse redirect ... ok
+test_checkout_form_invalid_skip_value_full_name (checkout.tests.tests_forms.OrderFormTestCase)
+Check if the form is invalid, parameter full name ... ok
+test_country_number_form_invalid (checkout.tests.tests_forms.OrderFormTestCase)
+Check if the form is invalid, country phone number ... ok
+test_ordem_form_invalid_email (checkout.tests.tests_forms.OrderFormTestCase)
+Check if the form is invalid, parameter email ... ok
+test_order_form_valid (checkout.tests.tests_forms.OrderFormTestCase)
+Check if the form is valid ... ok
+test_phone_number_form_invalid (checkout.tests.tests_forms.OrderFormTestCase)
+Check if the form is invalid, parameter phone number ... ok
+test_order_line_item_return_str (checkout.tests.tests_models.OrderLineItemTestCase)
+Test string for OrderLineItem ... ok
+test_order_return_str (checkout.tests.tests_models.OrderTestCase)
+Test string for Order ... ok
+test_cache_checkout_data_sucess_200 (checkout.tests.tests_views.BookingViewsTestCase)
+View checkout, parametes ... ok
+test_cache_checkout_erro_400 (checkout.tests.tests_views.BookingViewsTestCase)
+View checkout, not parametes error ... ok
+test_checkout_erro_302 (checkout.tests.tests_views.BookingViewsTestCase)
+View checkout, not parametes error ... ok
+test_checkout_form (checkout.tests.tests_views.BookingViewsTestCase)
+View checkout, form checkout ... ok
+test_checkout_sucess_ordem_not_pass (checkout.tests.tests_views.BookingViewsTestCase)
+View checkout, checkout sucess order not parameter invalid ... ok
+test_checkout_sucess_ordem_pass_sucess (checkout.tests.tests_views.BookingViewsTestCase)
+View checkout, checkout sucess order valid ... ok
+test_comment_form_invalid_skip_body (comment.tests.tests_forms.CommentFormTestCase)
+Check if the form is invalid, parameter body not invite ... ok
+test_comment_form_invalid_skip_email (comment.tests.tests_forms.CommentFormTestCase)
+Check if the form is invalid, parameter email not invite ... ok
+test_comment_form_invalid_skip_name (comment.tests.tests_forms.CommentFormTestCase)
+Check if the form is invalid, parameter name not invite ... ok
+test_comment_form_valid (comment.tests.tests_forms.CommentFormTestCase)
+Check if the form is valid ... ok
+test_comment_orderind (comment.tests.tests_models.CommentTestCase)
+Test ordering comment ... ok
+test_comment_return_str (comment.tests.tests_models.CommentTestCase)
+Test string for comment ... ok
+test_confirm_data (comment.tests.tests_models.CommentTestCase)
+Test confirm objects atributes ... ok
+test_order_history_profile_not_found (profiles.tests.tests_views.ProfilesViewsTestCase)
+View Profiles, return order history error 404 ... ok
+test_order_history_profile_sucess (profiles.tests.tests_views.ProfilesViewsTestCase)
+View Profiles, return order history error 200 ... ok
+test_return_profile (profiles.tests.tests_views.ProfilesViewsTestCase)
+View Profiles, return profile ... ok
+
+----------------------------------------------------------------------
+Ran 54 tests in 3.017s
+
+OK
+Destroying test database for alias 'default' ('file:memorydb_default?mode=memory&cache=shared')...
+Running post-migrate handlers for application newsletter
+Adding content type 'newsletter | subscribedusers'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+Adding permission 'Permission object (None)'
+System check identified no issues (0 silenced).
+'1'
