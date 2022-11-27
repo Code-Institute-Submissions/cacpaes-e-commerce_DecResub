@@ -10,8 +10,7 @@ from django.contrib.auth.decorators import login_required
 @login_required
 def newsletter(request):
     """ Function to create newsletter for user  """
-    print(request)
-    print(request.user)
+
     if request.method == 'POST':
         try:
             subscribedUsers = SubscribedUsers.objects.get(user=request.user)
@@ -40,9 +39,7 @@ def newsletter(request):
 
 def validate_email(request):
     """ Funcion to validate email """
-    print(request)
     email = request.POST.get("email", None)
-    print(email)
     try:
         if email is None:
             res = JsonResponse({'msg': 'Email is required.'})
