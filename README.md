@@ -109,6 +109,18 @@ Regarding the purchase and checkout process, the user must be logged in. It is n
 ![img-diagram](https://user-images.githubusercontent.com/93129370/204109520-79438816-67d9-4c44-9295-0ea378dd3a49.jpeg)
 
 
+<h3>Surface</h3>
+
+*  Colours
+<p>For the Street Craft project I used predominantly standard Bootstrap colors.<br>
+For the texts, the colors white or black were applied according to the background color to have the proper contrast.</p>
+
+
+<h3>Typography</h3>
+
+<p>The site's font was chosen from google fonts.</p>
+
+
 
 
 
