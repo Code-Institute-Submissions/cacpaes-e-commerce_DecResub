@@ -121,6 +121,10 @@ For the texts, the colors white or black were applied according to the backgroun
 <p>The site's font was chosen from google fonts.</p>
 
 
+<h2>Imagery</h2>
+
+* For the SecondHandBooks project, I selected images that can enhance the user's visual response and convey the idea of the website. 
+
 
 
 
