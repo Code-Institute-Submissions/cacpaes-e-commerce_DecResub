@@ -165,7 +165,7 @@ For the texts, the colors white or black were applied according to the backgroun
 
 
 * The News Letter - Subscribe button, open a modal form when clicked. Where the user can subscribe using e-mail and a name.
-* The Social links are four in total, they open a new page of the corresponding social network when clicked.
+* The Social links are three in total, they open a new page of the corresponding social network when clicked.
 
 <h3>Hero image</h3>
 
@@ -176,7 +176,7 @@ For the texts, the colors white or black were applied according to the backgroun
 
 <h3>Sign up</h3>
 
-* Registration page, with a simple form with the field for username, e-mail (optional) and for password twice, a button to register. A short text that calls who already has a registration to the login page.
+* Registration page, with form with field for email and email confirmation, username, password and password confirmation and button for registration. A small text that calls who already has a record on the login page.
 
 ![signup](https://user-images.githubusercontent.com/93129370/204152853-17ee02ca-8460-4e78-af64-cf92b13529ea.png)
 
