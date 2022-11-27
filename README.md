@@ -432,6 +432,15 @@ Quantity field (Less / More buttons).
 3. A duplicate will be created inside your repository.
 
 
+<h2>Clone</h2>
+
+* Clone let you create an identical repository to the original. Follow this steps:
+1. Go to the repository page, can be accessed [here](https://github.com/cacpaes/e-commerce).
+2. Click on code drop down menu.
+3. Choose if you want to clone using HTTPS, SSH or GitHub CLI. Then select de copy button.
+4. Open your Git Bash in your IDE.
+5. Type git clone and then paste the URL you copied before.
+6. Press Enter to create your clone.
 
 
 
