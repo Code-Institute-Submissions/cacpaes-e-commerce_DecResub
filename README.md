@@ -517,3 +517,8 @@ Quantity field (Less / More buttons).
 * Validator - Used to test HTML code.
 
 
+<h2>Acknowledgements</h2>
+
+* Code Institute for all the support.
+* The Slack community for sharing their expertise.
+* My wife and friends for believing in me.
