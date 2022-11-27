@@ -145,18 +145,6 @@ class CategoryTestCase(TestCase):
         self.assertEquals(category.name, "Health")
         self.assertEquals(category.friendly_name, "Health")
 
-#    def test_get_book_category(self):
-#        """
-#        Test return books in filter category
-#        """
-#        category = Category.objects.get(name="Health")
-#        books = Book.objects.get(category=category)
-#        self.assertIsNotNone(books)
-
-#        category.delete(self)
-#        books = Book.objects.get(category=category)
-#        self.assertIsNone(books)
-
 
 """
 class to test model Author
