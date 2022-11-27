@@ -18,7 +18,7 @@ def all_books(request):
     categories = None
     sort = None
     direction = None
-    style = None
+    style = "display: block;"
 
     if request.GET:
         style = "display: none;"
