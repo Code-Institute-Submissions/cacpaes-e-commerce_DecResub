@@ -443,4 +443,82 @@ Quantity field (Less / More buttons).
 6. Press Enter to create your clone.
 
 
+<h2>Technologies and tools</h2>
 
+<p> Programming languages used: Python 3.8, Java Script, HTML5 and CSS3. </p>
+
+* Gitpod - Used to create/edit the code of the project.
+
+* Github - Used to create repository, for version control and Agile project.
+
+* Heroku - Used to deploy the project.
+
+* Django - Used in the development of this project. Main python Framework.
+
+      *The following python modules were used on this project:
+      asgiref==3.5.2
+           django-model2puml==0.2.1
+           asgiref==3.2.3
+           boto3==1.12.42
+           botocore==1.15.42
+           chardet==3.0.4
+           dj-database-url==0.5.0
+           Django==3.0.1
+           django-allauth==0.41.0
+           django-countries==6.0
+           django-crispy-forms==1.8.1
+           django-storages==1.9.1
+           docutils==0.15.2
+           gunicorn==20.0.4
+           idna==2.8
+           jmespath==0.9.5
+           oauthlib==3.1.0
+           Pillow==7.0.0
+           psycopg2-binary==2.8.5
+           python3-openid==3.1.0
+           pytz==2019.3
+           requests==2.22.0
+           requests-oauthlib==1.3.0
+           s3transfer==0.3.3
+           sqlparse==0.3.0
+           stripe==2.42.0
+           urllib3==1.25.7
+
+* Bootstrap - Used to . CSS/JS Framework for developing responsiveness and styling.
+
+* ElephantSQL - Used as database for this project.
+
+* Amazon AWS - Used to upload images and cloud hosting service.
+
+* Jquery Ajax - Used to load more content at garage and events pages.
+
+* Ludichart - Used to create the database diagram and agile images.
+
+* Pencil - Used to creat the wireframes.
+
+* Font Awesome - Used for the favourite icon.
+
+* Bootstrap Icons - Used for all others icons.
+
+* Favicon.io - Used to implement the favicon on the website.
+
+* DevTools - Chrome - to assist in the development of the project.
+
+* Lighthouse (Chrome Devtools) - Used to performance test.
+
+* WAVE - Used to acecessibility test.
+
+* PEP8 - Used to test/validate Python code.
+
+* JShint - Used to test Java Script code.
+
+* Jigsaw - Used to test CSS code.
+
+* Validator - Used to test HTML code.
+
+
+<h2>Acknowledgements</h2>
+
+* Code Institute for all the support.
+* The Slack community for sharing their expertise.
+* My wife and friends for believing in me.
