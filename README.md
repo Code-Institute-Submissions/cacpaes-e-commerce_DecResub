@@ -517,6 +517,27 @@ Quantity field (Less / More buttons).
 * Validator - Used to test HTML code.
 
 
+<h2>Credits</h2>
+
+<h3>CODE</h3>
+
+<p> I present here the sources of information that I used to develop the project and the applications contained therein. </p>
+
+* [Code Institute](https://codeinstitute.net/ie/) 
+* [Django Documentation](https://docs.djangoproject.com/en/4.1/)
+* [Bootstrap Documentation](https://getbootstrap.com/docs/4.1/getting-started/introduction/)
+
+
+<h3>Content</h3>
+
+All images used to create the demo content for the site were selected from: Bazaart, Bing and Google Images. I thank the curatorship of the three sites for the extraordinary images.
+
+<h3>Media</h3>
+
+* The photos used for Hero (Home page) and placeholder images was taken from [Bazzart](https://www.bazaart.me/) [Bing](https://www.bing.com/images/details/%7B0%7D) [Google Images](https://images.google.com/)
+* Responsive Nav-bar [WEB CIFAR](https://www.youtube.com/channel/UCdxaLo9ALJgXgOUDURRPGiQ)
+* All the icons from [Icons8](https://icons8.com/)
+
 <h2>Acknowledgements</h2>
 
 * Code Institute for all the support.
