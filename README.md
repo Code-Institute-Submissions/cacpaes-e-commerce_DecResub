@@ -5,8 +5,7 @@ SecondHandBooks is an online store that sells used books in great condition and 
 
 [View website in Heroku Pages](https://secondhandbookk.herokuapp.com/)
 
-![]()
-
+![homepage](https://user-images.githubusercontent.com/93129370/204146480-9ed80cfb-d9ac-424a-a569-9964228a84d2.png)
 
 <h2>Contents</h2>
 
