@@ -2,13 +2,15 @@
 
 <!doctype html>
 <html lang="en" style="background-color: #F8F8FF;">
-  <head>
+
+<head>
 
     {% block meta %}
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description"
+        content="
         Sale of used books, in the categories of crime, fantasy, health, food and drink, popular. You can find well-preserved books at a good price, being able to filter by price, rating and category. We use reliable and established means of payment and delivery by the market.">
     {% endblock %}
 
@@ -16,23 +18,29 @@
     {% endblock %}
 
     {% block corecss %}
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&display=swap">
-        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&display=swap">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% endblock %}
 
     {% block extra_css %}
     {% endblock %}
 
     {% block corejs %}
-        <script src="https://kit.fontawesome.com/e9c73d7092.js" crossorigin="anonymous"></script>
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-        <!-- Stripe -->
-        <script src="https://js.stripe.com/v3/"></script>
+    <script src="https://kit.fontawesome.com/e9c73d7092.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
+    <!-- Stripe -->
+    <script src="https://js.stripe.com/v3/"></script>
 
-        
+
     {% endblock %}
 
     {% block extra_js %}
@@ -50,7 +58,7 @@
     <link rel="apple-touch-icon" sizes="144x144" href="{{ MEDIA_URL }}favicon/apple-icon-144x144.png">
     <link rel="apple-touch-icon" sizes="152x152" href="{{ MEDIA_URL }}favicon/apple-icon-152x152.png">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ MEDIA_URL }}favicon/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="{{ MEDIA_URL }}favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="{{ MEDIA_URL }}favicon/android-icon-192x192.png">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ MEDIA_URL }}favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="96x96" href="{{ MEDIA_URL }}favicon/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ MEDIA_URL }}favicon/favicon-16x16.png">
@@ -61,29 +69,33 @@
     <meta name="twitter:card" content="summary">
     <meta property="og:title" content="SecondHandBooks" />
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-V4YSE287VJ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script>
+        window.dataLayer = window.dataLayer || [];
 
-  gtag('config', 'G-V4YSE287VJ');
-</script>
-  </head>
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
 
-  <body>
+        gtag('config', 'G-V4YSE287VJ');
+    </script>
+</head>
+
+<body>
     <header class="container-fluid fixed-top">
         <div id="topnav" class="row bg-white pt-lg-2 d-none d-lg-flex">
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
                 <a href="{% url 'books' %}" class="nav-link main-logo-link">
                     <h1 class="logo-font text-black my-0"><span class="icon">
-                        <i class="fas fa-book"></i>
-                    </span><strong class="ml-2" style="text-transform:initial;">SecondHandBooks</strong></h1>
+                            <i class="fas fa-book"></i>
+                        </span><strong class="ml-2" style="text-transform:initial;">SecondHandBooks</strong></h1>
                 </a>
             </div>
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
                 <form method="GET" action="{% url 'books' %}">
                     <div class="input-group w-100">
-                        <input class="form-control border border-black rounded-0" type="text" name="q" placeholder="Search our site">
+                        <input class="form-control border border-black rounded-0" type="text" name="q"
+                            placeholder="Search our site">
                         <div class="input-group-append">
                             <button class="form-control btn btn-black border border-black rounded-0" type="submit">
                                 <span class="icon">
@@ -97,7 +109,8 @@
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
                 <ul class="list-inline list-unstyled text-center text-lg-right my-0">
                     <li class="list-inline-item dropdown">
-                        <a class="text-black nav-link" href="#" id="user" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="text-black nav-link" href="#" id="user" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
                             <div class="text-center">
                                 <div><i class="fas fa-user fa-lg"></i></div>
                                 <p class="my-0">My Account</p>
@@ -105,26 +118,27 @@
                         </a>
                         <div class="dropdown-menu border-0" aria-labelledby="user-options">
                             {% if request.user.is_authenticated %}
-                                {% if request.user.is_superuser %}
-                                    <a href="{% url 'add_book' %}" class="dropdown-item">Book Management</a>
-                                {% endif %}
-                                <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
-                                <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+                            {% if request.user.is_superuser %}
+                            <a href="{% url 'add_book' %}" class="dropdown-item">Book Management</a>
+                            {% endif %}
+                            <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
+                            <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
                             {% else %}
-                                <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
-                                <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+                            <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
+                            <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
                             {% endif %}
                         </div>
                     </li>
                     <li class="list-inline-item">
-                        <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link" href="{% url 'view_bag' %}">
+                        <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link"
+                            href="{% url 'view_bag' %}">
                             <div class="text-center">
                                 <div><i class="fas fa-shopping-bag fa-lg"></i></div>
                                 <p class="my-0">
                                     {% if grand_total %}
-                                        ${{ grand_total|floatformat:2 }}
+                                    ${{ grand_total|floatformat:2 }}
                                     {% else %}
-                                        $0.00
+                                    $0.00
                                     {% endif %}
                                 </p>
                             </div>
@@ -135,7 +149,8 @@
         </div>
         <div class="row bg-white">
             <nav class="navbar navbar-expand-lg navbar-light w-100">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav"
+                    aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 {% include 'includes/mobile-top-header.html' %}
@@ -144,94 +159,103 @@
         </div>
         <div id="delivery-banner" class="row text-center">
             <div class="col bg-black text-white">
-            </div>            
+            </div>
         </div>
     </header>
 
-    
+
 
     {% if messages %}
-        <div class="message-container">
-            {% for message in messages %}
-                {% with message.level as level %}
-                    {% if level == 40 %}
-                        {% include 'includes/toasts/toast_error.html' %}
-                    {% elif level == 30 %}
-                        {% include 'includes/toasts/toast_warning.html' %}
-                    {% elif level == 25 %}
-                        {% include 'includes/toasts/toast_success.html' %}
-                    {% else %}
-                        {% include 'includes/toasts/toast_info.html' %}
-                    {% endif %}
-                {% endwith %}
-            {% endfor %}
-        </div>
+    <div class="message-container">
+        {% for message in messages %}
+        {% with message.level as level %}
+        {% if level == 40 %}
+        {% include 'includes/toasts/toast_error.html' %}
+        {% elif level == 30 %}
+        {% include 'includes/toasts/toast_warning.html' %}
+        {% elif level == 25 %}
+        {% include 'includes/toasts/toast_success.html' %}
+        {% else %}
+        {% include 'includes/toasts/toast_info.html' %}
+        {% endif %}
+        {% endwith %}
+        {% endfor %}
+    </div>
     {% endif %}
 
     {% block page_header %}
     {% endblock %}
 
     {% block content %}
-    
+
     {% endblock %}
 
     {% block postloadjs %}
-    <script >
+    <script>
         $('.toast').toast('show');
     </script>
     {% endblock %}
 
-   
+
     <footer class="footer mt-auto py-3 background-main d-flex footer-mobile" style="justify-content: center;">
         <div style="width: 100%; margin: auto;">
             <h3 class="m-0 text-center">Made by Carlos</h3>
 
             <!-- Linkedin -->
-            <h4 class="m-0 text-center mt-4"><a class="m-3 footer-button rede-social" href="https://www.linkedin.com/in/carlos-alberto-de-carvalho-paes-181b0120b/" role="button" target="_blank" aria-label="linkedin" ><i class="fab fa-lg fa-linkedin-in" style="color: black;"></i></a>
+            <h4 class="m-0 text-center mt-4"><a class="m-3 footer-button rede-social"
+                    href="https://www.linkedin.com/in/carlos-alberto-de-carvalho-paes-181b0120b/" role="button"
+                    target="_blank" aria-label="linkedin"><i class="fab fa-lg fa-linkedin-in"
+                        style="color: black;"></i></a>
 
-            <!-- Github -->
-            <a class="m-3 footer-button rede-social" href="https://github.com/CACPaes" role="button" target="_blank" aria-label="github" style="color: black; margin-left: 0!important;"><i class="fab fa-lg fa-github" style="color: black;"></i></a>
+                <!-- Github -->
+                <a class="m-3 footer-button rede-social" href="https://github.com/CACPaes" role="button" target="_blank"
+                    aria-label="github" style="color: black; margin-left: 0!important;"><i class="fab fa-lg fa-github"
+                        style="color: black;"></i></a>
 
-            <!-- Facebook -->
-            <a class="m-3 footer-button rede-social" href="https://www.facebook.com/profile.php?id=100088202703974" role="button" target="_blank" aria-label="facebook" style="color: black; margin-left: 0!important;"><i class="fab fa-lg fa-facebook" style="color: black;"></i></a></h4>
+                <!-- Facebook -->
+                <a class="m-3 footer-button rede-social" href="https://www.facebook.com/profile.php?id=100088202703974"
+                    role="button" target="_blank" aria-label="facebook"
+                    style="color: black; margin-left: 0!important;"><i class="fab fa-lg fa-facebook"
+                        style="color: black;"></i></a></h4>
         </div>
         <!-- Section: Social media -->
         {% if request.user.is_authenticated %}
         <div style="width: 100%;">
-            
+
             <div class="col-lg-6 col-md-6" style="margin: 10px auto; display: block;">
                 <form enctype="multipart/form-data" method="POST" action="" style="text-align: center;">
                     {% csrf_token %}
                     <div class="form-group">
                         <label style="font-size: 22px;font-weight: bold;">Subscribe to our Newsletter.</label>
-                        <p>Subscribe your email in News Letter and stay on top of the news and <span style="font-weight: 700;">exclusive discounts.</span></p>
+                        <p>Subscribe your email in News Letter and stay on top of the news and <span
+                                style="font-weight: 700;">exclusive discounts.</span></p>
                         <input type="email" class="form-control" id="userEmail" placeholder="Enter email" required>
                         <small style="font-weight: 600;color: red;" class="error"></small>
                         <input type="text" class="form-control mt-2" id="userName" placeholder="Enter name" required>
                         <small style="font-weight: 600;color: green;" class="success"></small>
                     </div>
-                    <input onclick="event.preventDefault();" type="submit" value="Subscribe" id="submit" class="btn" style="padding: 7px 21px;background-color: rgb(143, 1, 1);color: white;font-size: 18px;">     
+                    <input onclick="event.preventDefault();" type="submit" value="Subscribe" id="submit" class="btn"
+                        style="padding: 7px 21px;background-color: rgb(143, 1, 1);color: white;font-size: 18px;">
                 </form>
             </div>
-           
-            
+
+
         </div>
         {% endif%}
-    
-        
-    </footer>
-  </body>
 
-  <script>
-    const validateEmail = function(email) {
+
+    </footer>
+</body>
+
+<script>
+    const validateEmail = function (email) {
         var formData = new FormData();
-        console.log(document.querySelector('[name=csrfmiddlewaretoken]').value)
         formData.append('email', email)
         $.ajaxSetup({
             headers: {
                 "X-CSRFToken": document.querySelector('[name=csrfmiddlewaretoken]').value,
             }
-            
+
         });
         $.ajax({
             url: '/newsletter/validate',
@@ -250,7 +274,7 @@
         });
     };
 
-    const subscribeUser = function(email, name) {
+    const subscribeUser = function (email, name) {
         var formData = new FormData();
         formData.append('email', email);
         formData.append('name', name);
@@ -278,10 +302,9 @@
         });
     };
 
-    (function teste ($) {
+    (function teste($) {
         $('#submit').on('click', () => {
             event.preventDefault();
-            console.log('submit')
             const userEmail = $('#userEmail').val();
             const userName = $('#userName').val();
             if (userEmail && userName) {
@@ -296,5 +319,5 @@
         });
     })(jQuery);
 </script>
-</html>
 
+</html>
