@@ -138,13 +138,22 @@ For the texts, the colors white or black were applied according to the backgroun
 <h3>Navbar</h3>
 
 * Navbar that is present on all pages for user navigation through the online store.
-* Is present for everyone the logo/banner that redirects to the home page, the search bar, a link to Home, a link to Shop(Dropdown) - All Products / Select Category(Skateboards / Caps & Hats / Backpacks & Bags) / Special Offers(New Arrivals / Special Sale / Las Chance), a shopbag where display Bag icon, total of products and value.
+
+![navbar](https://user-images.githubusercontent.com/93129370/204151904-d548d4d0-58e7-46e1-a483-9e252f28f64f.png)
+
+
+* Is present for everyone the logo/banner that redirects to the home page.
 * The other links are displayed depending on whether the user is logged off or not, and what type of account.
 * For not logged users, the links are displayed: : Sign in and Sign up.
 * For logged users, the links are displayed: : My Account(Dropdown) - My Profile / Logout
-* For logged superusers, the links are displayed: : My Account(Dropdown) - My Profile / Logout and Management(Dropdown) - Product Manag. / Stock Manag. / Order Status Manag. / News Letter Manag.
+* For logged superusers, the links are displayed: : My Account(Dropdown) - My Profile / Logout and Management(Dropdown) 
+
+![navbarmanage](https://user-images.githubusercontent.com/93129370/204152129-efb55147-326d-437b-afba-9b9a8fc11b59.png)
+
+
 * Navbar is responsive, for mobiles it automatically groups to drowdown menu.
 
+![navbarmobile](https://user-images.githubusercontent.com/93129370/204152219-3e1e9a63-f133-48e3-a773-b1a822c421a3.png)
 
 
 
@@ -152,38 +161,39 @@ For the texts, the colors white or black were applied according to the backgroun
 
 * The footer is shown only when reaching the end of the page, it counts with a few navegation links, News Letter - Subscribe button and Social links.
 
+![footer](https://user-images.githubusercontent.com/93129370/204152284-99c79f80-d06d-4c99-aa31-9ec5da2cc8fa.png)
+
+
 * The News Letter - Subscribe button, open a modal form when clicked. Where the user can subscribe using e-mail and a name.
 * The Social links are four in total, they open a new page of the corresponding social network when clicked.
 
 <h3>Hero image</h3>
 
-<p>At the beginning of the home page, the first section has a carousel of images.</p>
+<p>At the beginning of the home page, the first section has a book image.</p>
 
-* Present on the index page, and one of the first images that the user sees when he logs into the website, it has a background image of an  coffee.
- 
- 
+![home](https://user-images.githubusercontent.com/93129370/204152502-813d9de9-d964-4464-8c69-05232c24aecc.png)
 
 
-<h3>About section</h3>
-
-* This section has a short introductory text about what is being made available on the website.
-
-<h3>Sign out</h3>
+<h3>Sign up</h3>
 
 * Registration page, with a simple form with the field for username, e-mail (optional) and for password twice, a button to register. A short text that calls who already has a registration to the login page.
 
-
+![signup](https://user-images.githubusercontent.com/93129370/204152853-17ee02ca-8460-4e78-af64-cf92b13529ea.png)
 
 
 <h3>Sign in</h3>
 
 * Access page, with two fields to be filled in (username and password). a button to log in. A short text with a callout for those who don't have an account.
 
+![signin](https://user-images.githubusercontent.com/93129370/204152958-b549f8c5-b7fc-4aad-b499-ea899732f5cc.png)
 
 
-<h3>Logout</h3>
+<h3>Sign Out</h3>
 
 * Page for logged in users who have selected the logout option.
+
+![signout](https://user-images.githubusercontent.com/93129370/204153076-8aeb3c72-fde7-40ab-b941-6a97d689b671.png)
+
 
 
 <h3>My Profile</h3>
@@ -192,12 +202,16 @@ For the texts, the colors white or black were applied according to the backgroun
 * It shows some account options like: a button for My Orders, a field to show active coupons, a button to change the password and another button to delete the profile.
 * The delivery data is available as a form that can be changed. By clicking the update info button the information entered into the fields is saved and a success message is displayed
 
+![myprofile](https://user-images.githubusercontent.com/93129370/204153201-041907f7-b076-41f6-a873-a8fb54503def.png)
+
 
 <h3>My Orders</h3>
 
 * Returns the total orders of the logged in user.
 * A list with the following information: Order Number / Date / Items / Order Total
 * The Order Number ia a link to redirect to that order details page.
+
+![myorder](https://user-images.githubusercontent.com/93129370/204153357-62772c30-24a8-46dd-9a51-1145bf28dfbe.png)
 
 
 <h3>Order Details</h3>
@@ -207,23 +221,34 @@ For the texts, the colors white or black were applied according to the backgroun
 * It also has two buttons, one to go back to My Profile page and the other to My Orders.
 
 
+![myorderdetail](https://user-images.githubusercontent.com/93129370/204153457-d3a6080a-b1fb-4e48-8317-905d1561fa22.png)
+
+
 <h3>All Products</h3>
 
 * The main page for displaying the store's products.
-* At the top, it shows how many products there are for a given search / filter. A selection box is present to sort among all products, sorted by price or name.
+* At the top, it shows how many products there are for a given search / filter. A selection box is present to sort among all products.
 * The user can add the product to the shopbag via the product card container and select the quantity.
 * By clicking on the product image, the user is redirected to the product detail page.
-* By selecting the category or offer in the navigation bar the user will only see the products in that specific filter.
+
+![allbooks](https://user-images.githubusercontent.com/93129370/204153660-fe40cfa1-b30e-443a-a53f-789e39ea9e5c.png)
+
 
 
 <h3>Product Details</h3>
 
 * It shows a picture of the product and just below the average reviews. If the user is logged in, a button is displayed that redirects to the reviews page.
-* It is possible to see all information, name, SKU, offer if any, price (discounted price if any), description.
-Quantity field (Less / More buttons).
+* It is possible to see all information.
 * Buttons for KEEP SHOPPING (back to products page) and ADD TO BAG.
 * If logged as superuser the buttons to edit and delete product are visible at the end.
 * Delete product button, redirect to a new page to confirm action.
+
+
+![bookdetail](https://user-images.githubusercontent.com/93129370/204154038-4971d416-96b0-4be6-8daa-8d15e16279da.png)
+
+![managebookdetail](https://user-images.githubusercontent.com/93129370/204153930-7f36ec96-db4d-46d8-abd5-db9d3d5a1778.png)
+
+
 
 
 <h3>Shopbag</h3>
@@ -237,6 +262,12 @@ Quantity field (Less / More buttons).
 * At the end are the buttons for KEEP SHOPPING (back to products page) and SECURE CHECKOUT (redirect to checkout page).
 
 
+![bag](https://user-images.githubusercontent.com/93129370/204154233-9218fa7c-faef-46b6-a7a6-1cad51469143.png)
+
+![shoppingbag](https://user-images.githubusercontent.com/93129370/204154329-565b47a6-1c0b-44ef-b3c2-c53c67900ab1.png)
+
+
+
 <h3>Checkout</h3>
 
 * It shows a Order Summary with a resume of the order.
@@ -245,6 +276,8 @@ Quantity field (Less / More buttons).
 * Field for credit card data, using the Stripe tool.
 * At the end are the buttons for Adjust Bag (back to shopbag page) and Complete Order (submit the form if valid, and redirect to success checkout page).
 
+![checkout](https://user-images.githubusercontent.com/93129370/204154471-7947f7d9-66f0-4ccd-807c-75dbd08accd7.png)
+
 
 <h3>Checkout Success</h3>
 
@@ -252,21 +285,40 @@ Quantity field (Less / More buttons).
 * It shows the details of the order. It is possible to see the order number, date, products and quantity, billing info, delivering info, contact info.
 * At the end have one button Check out the latest promotions (redirect to products page)
 
+![successorder](https://user-images.githubusercontent.com/93129370/204154647-d8948a00-8fb3-4889-99f4-1ee0f1d746f3.png)
+
+![order](https://user-images.githubusercontent.com/93129370/204154757-da8db366-ff33-43ec-969d-d2d141367b56.png)
+
+
 
 <h3>Management - Add Product, edit and delete</h3>
 
 * Accessible only to superuser.
 * It has a form for the site owner to easily add new products to the store.
+
+![addbook](https://user-images.githubusercontent.com/93129370/204154921-fc295673-0a5e-4bdf-bd8d-5ed9a7528cbc.png)
+
+
 * One button for cancel(redirect to My Prodile page) and one button for add product (If valid, submit form and add new product).
 * It has a form for the site owner to easily  edit products to the store.
 * One button for Update Book
+
+![editbook](https://user-images.githubusercontent.com/93129370/204155425-0f67e74d-0925-4002-a880-583b20e19a6c.png)
+
+
 * To delete a book just click the DELETE button
+
+![managebookdetail](https://user-images.githubusercontent.com/93129370/204155091-7b0d12b3-ce31-4b91-8191-6334ae6cca4c.png)
+
+
 * When add, edit and delete a book a success message appears.
 
 
 <h3>Management - Custom Facebook Page</h3>
 
 *  A customized page for the store was created on Facebook. In order to increase the presence of the store on social networks.
+
+![facebookpage](https://user-images.githubusercontent.com/93129370/204155357-3a63a129-defd-457b-828a-31cb1a8e5b23.png)
 
 
 <h2>Features Left to Implement</h2>
