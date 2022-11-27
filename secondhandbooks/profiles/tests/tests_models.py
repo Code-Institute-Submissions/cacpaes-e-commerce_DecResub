@@ -26,9 +26,4 @@ class ProfileTestCase(TestCase):
             default_postcode='32653'
         )
 
-#    def test_profile_return_str(self):
-#        """
-#        Test string for UserProfile
-#        """
-#        profile = UserProfile.objects.get(user=self.user)
-#        self.assertEquals(profile.__str__(), self.user.username)
+
