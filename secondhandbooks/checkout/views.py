@@ -103,8 +103,8 @@ def checkout(request):
                         order.delete()
                         return redirect(reverse('view_bag'))
                     except BookUnavailableBook:
-                        messages.error(request, (
-                            'the {} book does not have the requested demand for purchase. Available quantity {}.'.format(book.name, book.amount),))
+                        messages.error(request, 
+                            "the {} book does not have the requested demand for purchase. Available quantity {}.".format(book.name, book.amount))
                         order.delete()
                         return redirect(reverse('view_bag'))  
 
