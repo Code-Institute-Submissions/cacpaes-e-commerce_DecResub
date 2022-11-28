@@ -787,7 +787,7 @@ For the texts, the colors white or black were applied according to the backgroun
 
 * In settings.py inside the Django project I changed DEBUG to:
   
-      DEBUG = 'DEVELOPEMENT' in os.environ
+      DEBUG = 'DEVELOPMENT' in os.environ
          
 * I migrate database to ElephantSQL instance using DATABASE_URL settings, coping and pasting the URL without commit. Changing the DATABASES to: 
 
