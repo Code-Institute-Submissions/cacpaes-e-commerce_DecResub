@@ -787,10 +787,7 @@ For the texts, the colors white or black were applied according to the backgroun
 
 * In settings.py inside the Django project I changed DEBUG to:
   
-      if 'USE_AWS' in os.environ:
-         DEBUG = False
-      else:
-         DEBUG = True
+      DEBUG = 'DEVELOPEMENT' in os.environ
          
 * I migrate database to ElephantSQL instance using DATABASE_URL settings, coping and pasting the URL without commit. Changing the DATABASES to: 
 
