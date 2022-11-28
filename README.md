@@ -122,7 +122,7 @@ For the texts, the colors white or black were applied according to the backgroun
 
 <h2>Imagery</h2>
 
-* For the SecondHandBooks project, I selected images that can enhance the user's visual response and convey the idea of the website. 
+* For the Second Hand Books project, select images of the original book covers that can improve the user's visual response and convey the idea of the site.
 
 
 
@@ -183,14 +183,14 @@ For the texts, the colors white or black were applied according to the backgroun
 
 <h3>Sign in</h3>
 
-* Access page, with two fields to be filled in (username and password). a button to log in. A short text with a callout for those who don't have an account.
+* Access page, with two fields to be filled in (username and password). a button to Sign in. A short text with a callout for those who don't have an account.
 
 ![signin](https://user-images.githubusercontent.com/93129370/204152958-b549f8c5-b7fc-4aad-b499-ea899732f5cc.png)
 
 
 <h3>Sign Out</h3>
 
-* Page for logged in users who have selected the logout option.
+* Page for logged in users who have selected the Sign Out option.
 
 ![signout](https://user-images.githubusercontent.com/93129370/204153076-8aeb3c72-fde7-40ab-b941-6a97d689b671.png)
 
@@ -198,8 +198,8 @@ For the texts, the colors white or black were applied according to the backgroun
 
 <h3>My Profile</h3>
 
-* Returns the username from which account you are logged in.
-* It shows some account options like: a button for My Orders, a field to show active coupons, a button to change the password and another button to delete the profile.
+*  Returns default delivery information.
+* Shows some information about purchase history.
 * The delivery data is available as a form that can be changed. By clicking the update info button the information entered into the fields is saved and a success message is displayed
 
 ![myprofile](https://user-images.githubusercontent.com/93129370/204153201-041907f7-b076-41f6-a873-a8fb54503def.png)
@@ -323,9 +323,9 @@ For the texts, the colors white or black were applied according to the backgroun
 
 <h2>Features Left to Implement</h2>
 
-* For the future implement the User Stories #13 Filter products that have not been completed at this time. As a user, I want be able to see any special offers quickly.
-* For the future implement the User Stories #15 Filter products that have not been completed at this time. As an user, I want to receive an email to confirm my order, so that I can feel more secure
-* For the future implement the User Stories #24 Filter products that have not been completed at this time. As a user I want to see books related to the topic I'm researching so I can have more purchase options
+* For the future implement the User Stories #13. As a user, I want be able to see any special offers quickly.
+* For the future implement the User Stories #15. As an user, I want to receive an email to confirm my order, so that I can feel more secure
+* For the future implement the User Stories #24. As a user I want to see books related to the topic I'm researching so I can have more purchase options
 
 
 
