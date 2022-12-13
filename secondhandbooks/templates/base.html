@@ -83,7 +83,8 @@
 
 <body>
     <header class="container-fluid fixed-top">
-        <div id="topnav" class="row bg-white pt-lg-2 d-none d-lg-flex">
+        
+        <div id="topnav" class="row bg-white pt-lg-2 d-none d-lg-flex" >
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
                 <a href="{% url 'books' %}" class="nav-link main-logo-link">
                     <h1 class="logo-font text-black my-0"><span class="icon">
@@ -92,22 +93,23 @@
                 </a>
             </div>
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
-                <form method="GET" action="{% url 'books' %}">
-                    <div class="input-group w-100">
-                        <input class="form-control border border-black rounded-0" type="text" name="q"
-                            placeholder="Search our site">
-                        <div class="input-group-append">
-                            <button class="form-control btn btn-black border border-black rounded-0" type="submit">
-                                <span class="icon">
-                                    <i class="fas fa-search"></i>
-                                </span>
-                            </button>
-                        </div>
-                    </div>
-                </form>
+
+                        
+                            
+                                
+                            
+                      
+
             </div>
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
                 <ul class="list-inline list-unstyled text-center text-lg-right my-0">
+                    <li class="list-inline-item dropdown">
+
+                        <div class="text-center" onclick="openSearch()" style="cursor:pointer">
+                            <div><i class="fas fa-search fa-lg"></i></div>
+                            <p class="my-0">Search book</p>
+                        </div>
+                    </li>
                     <li class="list-inline-item dropdown">
                         <a class="text-black nav-link" href="#" id="user" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">
@@ -147,6 +149,28 @@
                 </ul>
             </div>
         </div>
+        <div style="display: none;
+        justify-content: center;
+        margin-top: 1em;
+        margin-bottom: 1em;" id="formSearch">
+            <div class="input-group-append" style="min-width: 60%;">
+                <form method="GET" action="{% url 'books' %}" style="width: 100%;">
+                    <div class="input-group w-100">
+                        <input class="form-control border border-black rounded-0" type="text" name="q"
+                            placeholder="Search our site">
+                        <div class="input-group-append">
+                            <button class="form-control btn btn-black border border-black rounded-0" type="submit">
+                                <span class="icon">
+                                    <i class="fas fa-search"></i>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+           
+        </div>
+        
         <div class="row bg-white">
             <nav class="navbar navbar-expand-lg navbar-light w-100">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav"
@@ -248,6 +272,12 @@
 </body>
 
 <script>
+    function openSearch(){
+        console.log("clique")
+        $("#topnav").attr( "style", "display: none !important;" )
+        $("#formSearch").css("display","flex")
+
+    }
     const validateEmail = function (email) {
         var formData = new FormData();
         formData.append('email', email)
@@ -304,7 +334,10 @@
 
     (function teste($) {
         $('#submit').on('click', () => {
+
             event.preventDefault();
+            $("#topnav").attr( "style", "display: flex !important;" )
+            $("#formSearch").css("display","none")
             const userEmail = $('#userEmail').val();
             const userName = $('#userName').val();
             if (userEmail && userName) {
