@@ -1,7 +1,7 @@
 {% load static %}
 
 <!doctype html>
-<html lang="en" style="background-color: #F8F8FF;">
+<html lang="en" class="background1">
 
 <head>
 
@@ -87,9 +87,9 @@
         <div id="topnav" class="row bg-white pt-lg-2 d-none d-lg-flex" >
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
                 <a href="{% url 'books' %}" class="nav-link main-logo-link">
-                    <h1 class="logo-font text-black my-0"><span class="icon">
-                            <i class="fas fa-book"></i>
-                        </span><strong class="ml-2" style="text-transform:initial;">SecondHandBooks</strong></h1>
+                    <h1 class="logo-font my-0 "><span class="icon">
+                            <i class="fas fa-book color5"></i>
+                        </span><strong class="ml-2 color4" style="text-transform:initial;">SecondHandBooks</strong></h1>
                 </a>
             </div>
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
@@ -103,15 +103,15 @@
             </div>
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
                 <ul class="list-inline list-unstyled text-center text-lg-right my-0">
-                    <li class="list-inline-item dropdown">
+                    <li class="list-inline-item dropdown color4">
 
-                        <div class="text-center" onclick="openSearch()" style="cursor:pointer">
+                        <div class="text-center color4" onclick="openSearch()" style="cursor:pointer">
                             <div><i class="fas fa-search fa-lg"></i></div>
                             <p class="my-0">Search book</p>
                         </div>
                     </li>
                     <li class="list-inline-item dropdown">
-                        <a class="text-black nav-link" href="#" id="user" data-toggle="dropdown" aria-haspopup="true"
+                        <a class="color4 nav-link" href="#" id="user" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">
                             <div class="text-center">
                                 <div><i class="fas fa-user fa-lg"></i></div>
@@ -132,7 +132,7 @@
                         </div>
                     </li>
                     <li class="list-inline-item">
-                        <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link"
+                        <a class="{% if grand_total %}text-info font-weight-bold{% else %}color4{% endif %} nav-link color4"
                             href="{% url 'view_bag' %}">
                             <div class="text-center">
                                 <div><i class="fas fa-shopping-bag fa-lg"></i></div>
