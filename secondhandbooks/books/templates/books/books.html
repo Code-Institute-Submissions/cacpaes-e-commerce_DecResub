@@ -32,7 +32,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col text-center mt-3">
-                <h2 class="logo-font">Books</h2>
+                <h2 class="logo-font color5">Books</h2>
                 {% for c in current_categories %}
                     <a class="category-badge text-decoration-none" href="{% url 'books' %}?category={{ c.name }}">
                         <span class="p-2 mt-2 badge badge-white text-black rounded-0 border border-dark">{{ c.friendly_name }}</span>
@@ -71,7 +71,7 @@
                 <div class="row">
                     {% for book in books %}
                         <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                            <div class="card h-100 border-0">
+                            <div class="card h-100 border-0 color5">
                                 {% if book.image %}
                                 <a href="{% url 'book_detail' book.id %}">
                                     <img class="card-img-top img-fluid" style="height: 27em;" src="{{ book.image.url }}" alt="{{ book.name }}">
@@ -82,7 +82,7 @@
                                 </a>
                                 {% endif %}
                                 <div class="card-body pb-0 d-flex" style="justify-content: flex-end;flex-direction: column;">
-                                    <p class="mb-0">{{ book.name }}</p>
+                                    <p class="mb-0 pointer text-hover">{{ book.name }}</p>
                                 </div>
                                 <div class="card-footer bg-white pt-0 border-0 text-left">
                                     
@@ -90,9 +90,12 @@
                                         <div class="col">
                                             <p class="lead mb-0 text-left font-weight-bold">${{ book.price }}</p>
                                             {% if book.category %}
-                                            <p class="small mt-1 mb-0">
-                                                <a class="text-muted" href="{% url 'books' %}?category={{ book.category.name }}">
-                                                    <i class="fas fa-tag mr-1"></i>{{ book.category.friendly_name }}
+                                            <p class="small mt-1 mb-0 color5">
+                                                <a  href="{% url 'books' %}?category={{ book.category.name }}">
+                                                    <span class="color5">
+                                                        <i class="fas fa-tag mr-1"></i>{{ book.category.friendly_name }}
+                                                    </span>
+                                                    
                                                 </a>
                                             </p>
                                             {% endif %}

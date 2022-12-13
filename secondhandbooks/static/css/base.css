@@ -136,3 +136,10 @@ body {
     background: #5E3023;
 }
 
+.text-hover:hover{
+    text-decoration: underline;
+}
+
+.pointer{
+    cursor: pointer;
+}
