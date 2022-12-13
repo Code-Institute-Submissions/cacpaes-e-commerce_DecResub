@@ -81,8 +81,8 @@
                                     <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ book.name }}">
                                 </a>
                                 {% endif %}
-                                <div class="card-body pb-0 d-flex" style="justify-content: flex-end;flex-direction: column;">
-                                    <p class="mb-0 pointer text-hover">{{ book.name }}</p>
+                                <div class="card-body pb-0 d-flex"  style="justify-content: flex-end;flex-direction: column;">
+                                    <a href="{% url 'book_detail' book.id %}"><p class="mb-0 pointer text-hover color5" >{{ book.name }}</p></a>
                                 </div>
                                 <div class="card-footer bg-white pt-0 border-0 text-left">
                                     
