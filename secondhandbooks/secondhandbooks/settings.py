@@ -14,18 +14,27 @@ from pathlib import Path
 import dj_database_url
 from django.contrib.messages import constants as messages
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
 
+# SECURITY WARNING: don't run with debug turned on in production!
+if 'USE_AWS' in os.environ:
+    DEBUG = False
+else:
+    DEBUG = True
+
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+if DEBUG == 'False':
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+else:
+    BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for bookion
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in bookion secret!
-SECRET_KEY = os.environ.get('SECRET_KEY', '')
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in bookion!
-DEBUG = 'DEVELOPMENT' in os.environ
+
 ALLOWED_HOSTS = ['secondhandbookk.herokuapp.com', 'localhost']
 
 
