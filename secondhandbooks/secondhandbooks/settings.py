@@ -16,24 +16,16 @@ from django.contrib.messages import constants as messages
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if 'USE_AWS' in os.environ:
-    DEBUG = False
-else:
-    DEBUG = True
+DEBUG = 'DEVELOPMENT' in os.environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-if DEBUG == 'False':
-    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-else:
-    BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for bookion
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
-
+ 
 # SECURITY WARNING: keep the secret key used in bookion secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
-
-# SECURITY WARNING: don't run with debug turned on in bookion!
+SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
 ALLOWED_HOSTS = ['secondhandbookk.herokuapp.com', 'localhost']
 
