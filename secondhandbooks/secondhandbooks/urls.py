@@ -17,16 +17,8 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
-from django.contrib.sitemaps import GenericSitemap
-from django.contrib.sitemaps.views import sitemap
 from books.models import Book
-from secondhandbooks.sitemap import BookSitemap, CategorySitemap
-from secondhandbooks.robots import robots_txt
 
-sitemaps = {
-    'blog':BookSitemap,
-    'category': CategorySitemap
-}
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -36,11 +28,9 @@ urlpatterns = [
     path('profile/', include('profiles.urls')),
     path('accounts/', include('allauth.urls')),
     path('newsletter/', include('newsletter.urls')),
-    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
-    path("robots.txt", robots_txt),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-handler400 = "secondhandbooks.views.error_400"
-handler403 = "secondhandbooks.views.error_403"
-handler404 = "secondhandbooks.views.page_not_found_view"
-handler500 = "secondhandbooks.views.error_500"
+handler400 = "secondhandbooks.views.handler400"
+handler403 = "secondhandbooks.views.handler403"
+handler404 = "secondhandbooks.views.handler404"
+handler500 = "secondhandbooks.views.handler500"
