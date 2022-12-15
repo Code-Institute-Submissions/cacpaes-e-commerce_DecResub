@@ -331,6 +331,7 @@ For the texts, the colors white or black were applied according to the backgroun
 
 <h2>Testing</h2>
 
+All the tests performed in the project are documented in the file [TESTING.md](https://github.com/cacpaes/e-commerce/blob/main/TESTING.md)
 
  <h2>Code Validation</h2>
  
