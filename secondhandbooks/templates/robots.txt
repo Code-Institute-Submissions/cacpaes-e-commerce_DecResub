@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /accounts/
+Disallow: /bag/
+Disallow: /admin/
+Disallow: /profile/
+Sitemap: https://secondhandbookk.herokuapp.com/sitemap.xml
