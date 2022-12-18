@@ -143,3 +143,8 @@ body {
 .pointer{
     cursor: pointer;
 }
+
+.btn-default{
+    border-radius: 10px!important;
+    background-color: #5E3023!important;
+}

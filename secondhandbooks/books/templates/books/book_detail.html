@@ -12,7 +12,7 @@
 {% block content %}
     <div style="background-color: #fff;">
         <div class="overlay"></div>
-        <div class="container-fluid mt-4 mt-md-0">
+        <div class="container-fluid mt-4 mt-md-0 color4">
             <div class="row mt-4 mt-md-0">
                 <div class="col-12 col-md-6 col-lg-4 offset-lg-2 mt-4 mt-md-0">
                     <div class="image-container my-5">
@@ -29,7 +29,7 @@
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="book-details-container mb-5 mt-md-5">
-                        <p class="mb-0 text-houver pointer" style="cursor: pointer;"  >{{ book.name }}</p>
+                        <h2 class="mb-0 text-houver pointer" style="cursor: pointer;"  >{{ book.name }}</h2>
                         <p class="lead mb-0 text-left font-weight-bold">{{ book.price }} €</p>
                         {% if book.category %}
                         <p class="small mt-1 mb-0 color5">
@@ -44,12 +44,12 @@
                         {% if request.user.is_authenticated %}
                         <div style="cursor:pointer" data-toggle="modal" data-target="#exampleModal">
                             
-                            <small class="text-muted">
+                            <small class="">
                                 {% for i in iterator%}
                                     {% if avg_review >= i%}
                                         <i class="fas fa-star mr-1" style="color: yellow;"></i>
                                     {% else %}
-                                        <i class="fas fa-star mr-1"></i>
+                                        <i class="fas fa-star mr-1" style="color: antiquewhite;"></i>
                                     {% endif%}
                                 {% endfor %}
     
@@ -100,12 +100,12 @@
                         
                         <div>
                             
-                            <small class="text-muted">
+                            <small class="">
                                 {% for i in iterator%}
                                     {% if avg_review >= i%}
                                         <i class="fas fa-star mr-1" style="color: yellow;"></i>
                                     {% else %}
-                                        <i class="fas fa-star mr-1"></i>
+                                        <i class="fas fa-star mr-1" style="color: antiquewhite;;"></i>
                                     {% endif%}
                                 {% endfor %}
     
@@ -142,18 +142,18 @@
                                     <div class="form-group w-50">
                                         <div class="input-group input-group-{{ book.id }}">
                                             <div class="input-group-prepend">
-                                                <button class="decrement-qty btn btn-black rounded-0 decrement-qty_{{ book.id }}" 
+                                                <button class="decrement-qty btn btn-black rounded-0 decrement-qty_{{ book.id }} btn-default" 
                                                     data-item_id="{{ book.id }}">
                                                     <span class="icon">
                                                         <i class="fas fa-minus"></i>
                                                     </span>
                                                 </button>
                                             </div>
-                                            <input class="form-control qty_input id_qty_{{ book.id }}" type="number"
+                                            <input class="form-control qty_input id_qty_{{ book.id }}" type="number" style="border-radius: 10px; text-align: center;"
                                                 name="quantity" value="1" min="1" max="99"
                                                 data-item_id="{{ book.id }}">
                                             <div class="input-group-append">
-                                                <button class="increment-qty btn btn-black rounded-0 increment-qty_{{ book.id }}"
+                                                <button class="increment-qty btn btn-black rounded-0 increment-qty_{{ book.id }} btn-default"
                                                     data-item_id="{{ book.id }}">
                                                     <span class="icon">
                                                         <i class="fas fa-plus"></i>
@@ -171,7 +171,7 @@
                                         </span>
                                         <span class="text-uppercase">Keep Shopping</span>
                                     </a>
-                                    <input type="submit" class="btn btn-black rounded-0 text-uppercase mt-5" value="Add to Bag">
+                                    <input type="submit" class="btn btn-black rounded-0 text-uppercase mt-5 btn-default" value="Add to Bag">
                                 </div>
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                             </div>
@@ -189,7 +189,7 @@
                         <div class="comments" style="padding: 10px;">
                             <p class="font-weight-bold align-text">
                                 {{ comment.name }}
-                                <span class=" text-muted font-weight-normal">
+                                <span class="  font-weight-normal">
                                     {{ comment.created_on }}
                                 </span>
                             </p>
