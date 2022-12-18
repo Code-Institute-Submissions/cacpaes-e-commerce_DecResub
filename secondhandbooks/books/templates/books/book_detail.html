@@ -202,10 +202,9 @@
                 {% if user.is_authenticated %}
                 <div class="card-body mt-5 margin-left-details" >
                     {% if new_comment %}
-                    <div class="alert alert-success background-message" id="alert-comment"  role="alert">
-                        <div id="alert-comment">
-                            Your comment is awaiting moderation
-                            <button class="list-group-item list-group-item-action active fit-content create-btn" onclick="leaveComment()">Ok!</button>
+                    <div class="" id="alert-comment"  role="alert">
+                        <div id="alert-comment" style="font-weight: 700;">
+                            Your comment is awaiting moderation !
                         </div>
                         
                     </div>
@@ -215,7 +214,7 @@
                     <form method="post" style="margin-top: 1.3em;">
                         {{ comment_form.as_p }}
                         {% csrf_token %}
-                        <button type="submit" class="btn btn-outline-light  btn-lg" style="color: black;">Submit</button>
+                        <button type="submit" class="btn btn-outline-light  btn-lg btn-default">Submit</button>
                     </form>
                     {% endif %}
                 </div>
