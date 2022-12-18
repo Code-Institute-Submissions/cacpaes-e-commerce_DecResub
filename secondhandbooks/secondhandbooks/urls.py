@@ -28,6 +28,8 @@ urlpatterns = [
     path('profile/', include('profiles.urls')),
     path('accounts/', include('allauth.urls')),
     path('newsletter/', include('newsletter.urls')),
+    url(r'^robots.txt$', TemplateView.as_view(template_name="static/robots.txt", content_type='text/plain')),
+    url(r'^sitemap\.xml$', TemplateView.as_view(template_name="static/sitemap.xml", content_type='text/plain')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler400 = "secondhandbooks.views.handler400"
