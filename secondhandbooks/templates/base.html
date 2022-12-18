@@ -1,7 +1,7 @@
 {% load static %}
 
 <!doctype html>
-<html lang="en" class="background1">
+<html lang="en" style="height: 100%;">
 
 <head>
 
@@ -82,7 +82,7 @@
     </script>
 </head>
 
-<body>
+<body style="height: 100%;overflow: auto;display: flex;flex-direction: column;justify-content: space-between;">
     <header class="container-fluid fixed-top" style="background-color: #fff;">
         
         <div id="topnav" class="row bg-white pt-lg-2 d-none d-lg-flex" >
@@ -222,7 +222,7 @@
     {% endblock %}
 
 
-    <footer class="footer mt-auto py-3 background-main d-flex footer-mobile" style="justify-content: center;">
+    <footer class="footer py-3 background-main d-flex footer-mobile background1"  style="justify-content: center;">
         <div style="width: 100%; margin: auto;">
             <h3 class="m-0 text-center">Made by Carlos</h3>
 
