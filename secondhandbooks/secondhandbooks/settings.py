@@ -13,8 +13,29 @@ import os
 from pathlib import Path
 import dj_database_url
 from django.contrib.messages import constants as messages
-if os.path.isfile('env.py'):
-    import env
+
+import environ
+
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False),
+    STRIPE_PUBLIC_KEY=(str,' '),
+    STRIPE_SECRET_KEY=(str,' '),
+    YOUR_SECRET_KEY=(str,''),
+    STRIPE_WH_SECRET=(str,''),
+    SECRET_KEY=(str,'test'),
+    USE_AWS=(bool,False),
+    AWS_ACCESS_KEY_ID=(str,''),
+    AWS_SECRET_ACCESS_KEY=(str,''),
+    AWS_DEFAULT_ACL=(str,None),
+    DATABASE_URL=(str,'')
+)
+
+# reading .env file
+try:
+    environ.Env.read_env()
+except expression as identifier:
+    pass
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -27,7 +48,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
  
 # SECURITY WARNING: keep the secret key used in bookion secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = os.environ.get('SECRET_KEY', env('SECRET_KEY'))
 
 ALLOWED_HOSTS = ['secondhandbookk.herokuapp.com', 'localhost']
 
@@ -128,9 +149,9 @@ WSGI_APPLICATION = 'secondhandbooks.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-if 'DATABASE_URL' in os.environ:
+if os.environ or env('DATABASE_URL'):
     DATABASES = {
-        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL',env('DATABASE_URL')))
     }
 else:
     DATABASES = {
@@ -188,7 +209,7 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-if 'USE_AWS' in os.environ:
+if os.environ or env('USE_AWS'):
     # Cache control
     AWS_S3_OBJECT_PARAMETERS = {
         'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
@@ -199,8 +220,8 @@ if 'USE_AWS' in os.environ:
     AWS_DEFAULT_ACL = 'public-read'
     AWS_STORAGE_BUCKET_NAME = 'secondhandbookteste'
     AWS_S3_REGION_NAME = 'us-east-2'
-    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
-    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID', env('AWS_ACCESS_KEY_ID'))
+    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY', env('AWS_SECRET_ACCESS_KEY'))
     AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME }.amazonaws.com'
     AWS_HEADERS = {
     'Cache-Control': 'max-age=86400',
@@ -224,6 +245,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STANDARD_DELIVERY_PERCENTAGE = 10
 STRIPE_CURRENCY = 'usd'
-STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
-STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
-STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
+STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_PUBLIC_KEY', env('STRIPE_PUBLIC_KEY'))
+STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY', env('STRIPE_SECRET_KEY'))
+STRIPE_WH_SECRET = os.environ.get('STRIPE_WH_SECRET', env('STRIPE_WH_SECRET'))
