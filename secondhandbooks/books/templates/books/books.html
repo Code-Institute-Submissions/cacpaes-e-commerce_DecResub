@@ -83,7 +83,7 @@
                                     </a>
                                     {% endif %}
                                     <div class="card-body pb-0 d-flex"  style="justify-content: flex-end;flex-direction: column;">
-                                        <a href="{% url 'book_detail' book.id %}"><p class="mb-0 pointer text-hover color5" >{{ book.name }}</p></a>
+                                        <a href="{% url 'book_detail' book.id %}"><h5 class="mb-0 pointer text-hover color5" >{{ book.name }}</h5></a>
                                     </div>
                                     <div class="card-footer bg-white pt-0 border-0 text-left">
                                         
@@ -94,7 +94,7 @@
                                                 <p class="small mt-1 mb-0 color5">
                                                     <a  href="{% url 'books' %}?category={{ book.category.name }}">
                                                         <span class="color5">
-                                                            <i class="fas fa-tag mr-1"></i>{{ book.category.friendly_name }}
+                                                            <i class="fas fa-bookmark mr-1"></i>{{ book.category.friendly_name }}
                                                         </span>
                                                         
                                                     </a>
