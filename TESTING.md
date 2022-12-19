@@ -169,7 +169,7 @@ No errors identified for this script.
 <details>
     <summary>Script present in following files</summary>
 
-| File |   File patch  |
+| File |   file path  |
 | --- |   ---  |
 | 01 |  `static/js/stripe_elements.js `  |
     
@@ -277,7 +277,7 @@ No errors identified for this script.
 <details>
     <summary>Script present in following files</summary>
 
-| File |   File patch  |
+| File |   file path  |
 | --- |   ---  |
 | 01 |  `templates/base.html `  |
     
@@ -310,8 +310,364 @@ No errors identified for this script.
 <details>
     <summary>Script present in following files</summary>
 
-| File |   File patch  |
+| File |   file path  |
 | --- |   ---  |
 | 01 |  `books/includes/quantity_input_script.html `  |
     
 </details>
+
+
+- __Python__
+
+List of pages validated by the tool [PEP8CI - By Code Institute](https://pep8ci.herokuapp.com/)
+
+- bag
+
+No errors identified
+
+| File |   file path  |
+| --- |   ---  |
+| 01 |  `bag/templatetags/bag_tools.py `  |
+
+```
+from django import template
+
+
+register = template.Library()
+
+
+@register.filter(name='calc_subtotal')
+def calc_subtotal(price, quantity):
+    return price * quantity
+```
+
+| File |   file path  |
+| --- |   ---  |
+| 01 |  `bag/tests/tests_views.py `  |
+
+No errors identified
+
+```
+from books.models import Book, Category, Author
+from django.contrib.auth.models import User
+from django.test import TestCase
+from django.urls import reverse
+
+
+class BagViewsTestCase(TestCase):
+
+    """
+    Class test to bag views
+    """
+
+    def setUp(self):
+        self.user = User.objects.create(username='test', password='test')
+        self.user.save()
+
+        self.category = Category.objects.create(
+            name="Children's Books",
+            friendly_name="Children's Books"
+        )
+        self.category.save()
+
+        self.author = Author.objects.create(
+            name="JK",
+            details="Children's Books"
+        )
+        self.author.save()
+
+        self.book = Book.objects.create(
+            name="Harry Potter",
+            description="is very good book",
+            price=73.54,
+            category=self.category,
+            author=self.author
+        )
+        self.book.save()
+
+        self.book2 = Book.objects.create(
+            name="think and grow rich ",
+            description="is very good book",
+            price=82.54
+        )
+
+        self.book2.save()
+
+    def test_view_bag_sucess(self):
+        """
+        Test return bag user
+        """
+        response = self.client.get(reverse('view_bag'))
+        self.assertEqual(response.status_code, 200, response)
+        self.assertTemplateUsed(response, 'bag/bag.html')
+
+    def test_view_add_bag_error_book_not_exist(self):
+        """
+        Test return add bag user book not exist
+        """
+
+        response = self.client.get(
+            reverse('add_to_bag', kwargs={'item_id': '999999999'}))
+        self.assertEqual(response.status_code, 404, response)
+
+    def test_view_add_bag_sucess(self):
+        """
+        Test return add bag user
+        """
+        response = self.client.post(reverse('add_to_bag', kwargs={'item_id': self.book.id}), data={
+                                    'quantity': 43, 'redirect_url': 'request.path'})
+        self.assertEqual(response.status_code, 302, response)
+
+    def test_view_adjust_bag_error_book_not_exist(self):
+        """
+        Test return adjust bag user book not exist
+        """
+        response = self.client.get(
+            reverse('adjust_bag', kwargs={'item_id': '999999999'}))
+        self.assertEqual(response.status_code, 404, response)
+
+    def test_view_adjust_bag_sucess(self):
+        """
+        Test return adjust bag user
+        """
+        response = self.client.post(reverse('adjust_bag', kwargs={'item_id': self.book.id}), data={
+                                    'quantity': 43, 'redirect_url': 'request.path'})
+        self.assertEqual(response.status_code, 302, response)
+
+    def test_view_remove_bag_error_book_not_exist(self):
+        """
+        Test return remove bag user book not exist
+        """
+        response = self.client.get(
+            reverse('remove_from_bag', kwargs={'item_id': '999999999'}))
+        self.assertEqual(response.status_code, 404, response)
+
+    def test_view_adjust_remove_sucess(self):
+        """
+        Test return remove bag user
+        """
+        response = self.client.post(
+            reverse('remove_from_bag', kwargs={'item_id': self.book.id}),)
+        self.assertEqual(response.status_code, 500, response)
+
+```
+
+| File |   file path |
+| --- |   ---  |
+| 01 |  `bag/.py `  |
+
+No errors identified
+
+```
+from django.apps import AppConfig
+
+
+class BagConfig(AppConfig):
+    default_auto_field = 'django.db.models.BigAutoField'
+    name = 'bag'
+
+```
+
+| File |   file path  |
+| --- |   ---  |
+| 01 |  `bag/contexts.py `  |
+
+No errors identified
+
+```
+from decimal import Decimal
+from django.conf import settings
+from django.shortcuts import get_object_or_404
+from books.models import Book
+
+
+def bag_contents(request):
+
+    bag_items = []
+    total = 0
+    book_count = 0
+    bag = request.session.get('bag', {})
+
+    for item_id, item_data in bag.items():
+        if isinstance(item_data, int):
+            book = get_object_or_404(Book, pk=item_id)
+            total += item_data * book.price
+            book_count += item_data
+            bag_items.append({
+                'item_id': item_id,
+                'quantity': item_data,
+                'book': book,
+            })
+        else:
+            book = get_object_or_404(Book, pk=item_id)
+            for size, quantity in item_data['items_by_size'].items():
+                total += quantity * book.price
+                book_count += quantity
+                bag_items.append({
+                    'item_id': item_id,
+                    'quantity': quantity,
+                    'book': book,
+                    'size': size,
+                })
+
+    delivery = total * Decimal(settings.STANDARD_DELIVERY_PERCENTAGE / 100)
+
+    grand_total = delivery + total
+
+    context = {
+        'bag_items': bag_items,
+        'total': total,
+        'book_count': book_count,
+        'delivery': delivery,
+        'grand_total': grand_total,
+    }
+
+    return context
+
+```
+
+| File |   file path  |
+| --- |   ---  |
+| 01 |  `bag/urls.py `  |
+
+No errors identified
+
+```
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', views.view_bag, name='view_bag'),
+    path('add/<item_id>/', views.add_to_bag, name='add_to_bag'),
+    path('adjust/<item_id>/', views.adjust_bag, name='adjust_bag'),
+    path('remove/<item_id>/', views.remove_from_bag, name='remove_from_bag'),
+]
+
+```
+
+
+| File |   file path  |
+| --- |   ---  |
+| 01 |  `bag/views.py `  |
+
+No errors identified
+
+```
+from django.shortcuts import (
+    render, redirect, reverse, HttpResponse, get_object_or_404, Http404
+)
+from django.contrib import messages
+
+from books.models import Book
+
+
+def view_bag(request):
+    """ A view that renders the bag contents page """
+
+    return render(request, 'bag/bag.html')
+
+
+def add_to_bag(request, item_id):
+    """ Add a quantity of the specified book to the shopping bag """
+
+    book = get_object_or_404(Book, pk=item_id)
+    quantity = int(request.POST.get('quantity'))
+    redirect_url = request.POST.get('redirect_url')
+    size = None
+    if 'book_size' in request.POST:
+        size = request.POST['book_size']
+    bag = request.session.get('bag', {})
+
+    if size:
+        if item_id in list(bag.keys()):
+            if size in bag[item_id]['items_by_size'].keys():
+                bag[item_id]['items_by_size'][size] += quantity
+                messages.success(request,
+                                 (f'Updated size {size.upper()} '
+                                  f'{book.name} quantity to '
+                                  f'{bag[item_id]["items_by_size"][size]}'))
+            else:
+                bag[item_id]['items_by_size'][size] = quantity
+                messages.success(request,
+                                 (f'Added size {size.upper()} '
+                                  f'{book.name} to your bag'))
+        else:
+            bag[item_id] = {'items_by_size': {size: quantity}}
+            messages.success(request,
+                             (f'Added size {size.upper()} '
+                              f'{book.name} to your bag'))
+    else:
+        if item_id in list(bag.keys()):
+            bag[item_id] += quantity
+            messages.success(request,
+                             (f'Updated {book.name} '
+                              f'quantity to {bag[item_id]}'))
+        else:
+            bag[item_id] = quantity
+            messages.success(request, f'Added {book.name} to your bag')
+
+    request.session['bag'] = bag
+    return redirect(redirect_url)
+
+
+def adjust_bag(request, item_id):
+    """Adjust the quantity of the specified book to the specified amount"""
+
+    book = get_object_or_404(Book, pk=item_id)
+    quantity = int(request.POST.get('quantity'))
+    size = None
+    if 'book_size' in request.POST:
+        size = request.POST['book_size']
+    bag = request.session.get('bag', {})
+
+    if size:
+        if quantity > 0:
+            bag[item_id]['items_by_size'][size] = quantity
+            messages.success(request,
+                             (f'Updated size {size.upper()} '
+                              f'{book.name} quantity to '
+                              f'{bag[item_id]["items_by_size"][size]}'))
+        else:
+            del bag[item_id]['items_by_size'][size]
+            if not bag[item_id]['items_by_size']:
+                bag.pop(item_id)
+            messages.success(request,
+                             (f'Removed size {size.upper()} '
+                              f'{book.name} from your bag'))
+    else:
+        if quantity > 0:
+            bag[item_id] = quantity
+            messages.success(request,
+                             (f'Updated {book.name} '
+                              f'quantity to {bag[item_id]}'))
+        else:
+            bag.pop(item_id)
+            messages.success(request,
+                             (f'Removed {book.name} '
+                              f'from your bag'))
+
+    request.session['bag'] = bag
+    return redirect(reverse('view_bag'))
+
+
+def remove_from_bag(request, item_id):
+    """Remove the item from the shopping bag"""
+
+    try:
+        book = get_object_or_404(Book, pk=item_id)
+
+        bag = request.session.get('bag', {})
+        bag.pop(item_id)
+        messages.success(request, f'Removed {book.name} from your bag')
+
+        request.session['bag'] = bag
+        return HttpResponse(status=200)
+
+    except Http404 as e:
+        messages.error(request, f'Error removing item: {e}')
+        return HttpResponse(status=404)
+    except Exception as e:
+        messages.error(request, f'Error removing item: {e}')
+        return HttpResponse(status=500)
+
+```
