@@ -164,7 +164,7 @@ form.addEventListener('submit', function(ev) {
 });
 ```
 
-No errors identified for this script. Two wargings: __'template literal syntax' is only available in ES6 (use 'esversion: 6').__
+No errors identified for this script.
 
 <details>
     <summary>Script present in following files</summary>
@@ -172,5 +172,146 @@ No errors identified for this script. Two wargings: __'template literal syntax' 
 | File |   File patch  |
 | --- |   ---  |
 | 01 |  `static/js/stripe_elements.js `  |
+    
+</details>
+
+- Script 02
+
+```
+function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-V4YSE287VJ');
+```
+
+No errors identified for this script.
+
+- Script 03
+
+```
+function openSearch(){
+        console.log("clique")
+        $("#topnav").attr( "style", "display: none !important;" )
+        $("#formSearch").css("display","flex")
+
+    }
+    const validateEmail = function (email) {
+        var formData = new FormData();
+        formData.append('email', email)
+        $.ajaxSetup({
+            headers: {
+                "X-CSRFToken": document.querySelector('[name=csrfmiddlewaretoken]').value,
+            }
+
+        });
+        $.ajax({
+            url: '/newsletter/validate',
+            type: 'POST',
+            dataType: 'json',
+            cache: false,
+            processData: false,
+            contentType: false,
+            data: formData,
+            error: function (xhr) {
+                console.error(xhr.statusText);
+            },
+            success: function (res) {
+                $('.error').text(res.msg);
+            }
+        });
+    };
+
+    const subscribeUser = function (email, name) {
+        var formData = new FormData();
+        formData.append('email', email);
+        formData.append('name', name);
+        $.ajaxSetup({
+            headers: {
+                "X-CSRFToken": document.querySelector('[name=csrfmiddlewaretoken]').value,
+            }
+        });
+        $.ajax({
+            url: '/newsletter/',
+            type: 'POST',
+            dataType: 'json',
+            cache: false,
+            processData: false,
+            contentType: false,
+            data: formData,
+            error: function (xhr) {
+                console.error(xhr.statusText);
+            },
+            success: function (res) {
+                $('.success').text(res.msg);
+                $('#userEmail').val(' ');
+                $('#userName').val(' ');
+            }
+        });
+    };
+
+    (function teste($) {
+        $('#submit').on('click', () => {
+
+            event.preventDefault();
+            $("#topnav").attr( "style", "display: flex !important;" )
+            $("#formSearch").css("display","none")
+            const userEmail = $('#userEmail').val();
+            const userName = $('#userName').val();
+            if (userEmail && userName) {
+                subscribeUser(userEmail, userName);
+            }
+        });
+
+        $('#userEmail').on('change', (event) => {
+            event.preventDefault();
+            const email = event.target.value;
+            validateEmail(email);
+        });
+    })(jQuery);
+
+```
+No errors identified for this script.
+
+<details>
+    <summary>Script present in following files</summary>
+
+| File |   File patch  |
+| --- |   ---  |
+| 01 |  `templates/base.html `  |
+    
+</details>
+
+- Script 4
+
+```
+$('.update-link').click(function(e) {
+        var form = $(this).prev('.update-form');
+        form.submit();
+    })
+
+    // Remove item and reload on click
+    $('.remove-item').click(function(e) {
+        var csrfToken = "{{ csrf_token }}";
+        var itemId = $(this).attr('id').split('remove_')[1];
+        var url = `/bag/remove/${itemId}/`;
+        var data = {'csrfmiddlewaretoken': csrfToken};
+
+        $.post(url, data)
+         .done(function() {
+             location.reload();
+         });
+    })
+```
+
+No errors identified for this script.
+
+<details>
+    <summary>Script present in following files</summary>
+
+| File |   File patch  |
+| --- |   ---  |
+| 01 |  `books/includes/quantity_input_script.html `  |
     
 </details>
