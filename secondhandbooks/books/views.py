@@ -147,7 +147,7 @@ def book_detail(request, book_id):
     total_review = reviews.count()
     avg_review = reviews.aggregate(review=Avg('review'))['review']
 
-    if avg_review == None:
+    if avg_review is None:
         avg_review = 0
 
     if request.method == 'POST' and request.user:
