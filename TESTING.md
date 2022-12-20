@@ -1152,6 +1152,7 @@ class BookingViewsTestCase(TestCase):
 | --- |   ---  |
 | 01 |  `books/admin.py `  |
 
+No errors identified
 ```
 from django.contrib import admin
 
@@ -1211,6 +1212,7 @@ admin.site.register(Review, ReviewAdmin)
 | --- |   ---  |
 | 01 |  `books/apps.py `  |
 
+No errors identified
 ```
 
 from django.apps import AppConfig
@@ -1226,6 +1228,7 @@ class BooksConfig(AppConfig):
 | --- |   ---  |
 | 01 |  `books/forms.py `  |
 
+No errors identified
 ```
 class BookForm(forms.ModelForm):
     """
@@ -1268,6 +1271,7 @@ class ReviewForm(forms.ModelForm):
 | --- |   ---  |
 | 01 |  `books/urls.py `  |
 
+No errors identified
 ```
 from django.urls import path
 
@@ -1290,6 +1294,7 @@ urlpatterns = [
 | --- |   ---  |
 | 01 |  `books/views.py `  |
 
+No errors identified
 ```
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
@@ -1507,6 +1512,7 @@ def add_review(request, book_id):
 | --- |   ---  |
 | 01 |  `books/widgets.py `  |
 
+No errors identified
 ```
 from django.forms.widgets import ClearableFileInput
 from django.utils.translation import gettext_lazy as _
@@ -1517,5 +1523,1051 @@ class CustomClearableFileInput(ClearableFileInput):
     initial_text = _('Current Image')
     input_text = _('')
     template_name = 'books/custom_widget_templates/custom_clearable_file_input.html'
+
+```
+
+| File |   file path  |
+| --- |   ---  |
+| 01 |  `checkout/tests/tests_forms.py `  |
+
+No errors identified
+
+```
+from django.test import TestCase
+from checkout.forms import OrderForm
+from checkout.models import Order
+from django_countries.fields import CountryField
+"""
+class to test form OrderFormTestCase
+"""
+
+
+class OrderFormTestCase(TestCase):
+
+    def test_order_form_valid(self):
+        """
+        Check if the form is valid
+        """
+
+        form = OrderForm(data={
+            'full_name': 'jfkhadkfhds',
+            'email': 'carlos@gmail.com',
+            'phone_number': '91265656532',
+            'street_address1': 'grafton street',
+            'street_address2': 'grafton street',
+            'town_or_city': 'Dublin',
+            'postcode': '65655',
+            'country': 'NZ',
+            'county': 'Dublin',
+        })
+        self.assertTrue(form.is_valid())
+
+    def test_checkout_form_invalid_skip_value_full_name(self):
+        """
+        Check if the form is invalid, parameter full name
+        """
+        form = OrderForm(data={
+            'email': 'carlos@gmail.com',
+            'phone_number': '91265656532',
+            'street_address1': 'grafton street',
+            'town_or_city': 'Dublin',
+            'postcode': '65655',
+            'country': 'NZ',
+        })
+        self.assertFalse(form.is_valid(), form.errors)
+
+    def test_ordem_form_invalid_email(self):
+        """
+        Check if the form is invalid, parameter email
+        """
+        form = OrderForm(data={
+            'full_name': 'jfkhadkfhds',
+            'phone_number': '91265656532',
+            'street_address1': 'grafton street',
+            'town_or_city': 'Dublin',
+            'postcode': '65655',
+            'country': 'NZ',
+        })
+        self.assertFalse(form.is_valid(), form.errors)
+
+    def test_phone_number_form_invalid(self):
+        """
+        Check if the form is invalid, parameter phone number
+        """
+        form = OrderForm(data={
+            'full_name': 'jfkhadkfhds',
+            'email': 'carlos@gmail.com',
+            'street_address1': 'grafton street',
+            'town_or_city': 'Dublin',
+            'postcode': '65655',
+            'country': 'NZ',
+        })
+        self.assertFalse(form.is_valid(), form.errors)
+
+    def test_country_number_form_invalid(self):
+        """
+        Check if the form is invalid, country phone number
+        """
+        form = OrderForm(data={
+            'full_name': 'jfkhadkfhds',
+            'phone_number': '91265656532',
+            'email': 'carlos@gmail.com',
+            'street_address1': 'grafton street',
+            'town_or_city': 'Dublin',
+            'postcode': '65655',
+        })
+        self.assertFalse(form.is_valid(), form.errors)
+
+```
+
+| File |   file path  |
+| --- |   ---  |
+| 01 |  `checkout/tests/tests_models.py `  |
+
+No errors identified
+
+```
++from django.contrib.auth.models import User
+from django.test import TestCase
+from books.models import Book
+from checkout.models import Order, OrderLineItem
+import uuid
+
+"""
+class to test model Order
+"""
+
+
+class OrderTestCase(TestCase):
+
+    def setUp(self):
+
+        """
+        Defined function before condition for test
+        """
+
+        self.uuid_number = uuid.uuid4()
+
+        self.user = User.objects.create(username='test', password='test')
+
+        self.user.save()
+        user2 = User.objects.create(username='test2', password='test2')
+
+        order = Order.objects.create(
+            order_number=self.uuid_number,
+            full_name="Carlos",
+            email="teste@gmail.com",
+            phone_number="989791428",
+            country="ireland",
+            town_or_city="Dublin",
+            street_address1="grafton street",
+            delivery_cost=20,
+            order_total=45,
+            grand_total=65,
+            original_bag="bag",
+            stripe_pid="9898"
+        )
+
+    def test_order_return_str(self):
+        """
+        Test string for Order
+        """
+        order = Order.objects.get(order_number=self.uuid_number)
+        self.assertEquals(order.__str__(), str(self.uuid_number))
+
+
+"""
+class to test model Order Line Item
+"""
+
+
+class OrderLineItemTestCase(TestCase):
+
+    def setUp(self):
+        """
+        Defined function before condition for test
+        """
+
+        self.uuid_number = uuid.uuid4()
+
+        self.user = User.objects.create(username='test', password='test')
+
+        self.user.save()
+
+        self.book = Book.objects.create(
+            name="Harry Potter",
+            description="is very good book",
+            price=73.54,
+        )
+        self.book.save()
+
+        self.order = Order.objects.create(
+            full_name="Carlos",
+            email="teste@gmail.com",
+            phone_number="989791428",
+            country="ireland",
+            town_or_city="Dublin",
+            street_address1="grafton street",
+            delivery_cost=20,
+            order_total=45,
+            grand_total=65,
+            original_bag="bag",
+            stripe_pid="9898"
+        )
+        self.order.save()
+
+        order_line_item = OrderLineItem.objects.create(
+            book=self.book,
+            order=self.order,
+            lineitem_total=5,
+            quantity=12
+        )
+
+    def test_order_line_item_return_str(self):
+        """
+        Test string for OrderLineItem
+        """
+        order = OrderLineItem.objects.get(book=self.book)
+        self.assertEquals(order.__str__(), f'SKU {self.book.sku} on order {self.order.order_number}')
+
+```
+
+| File |   file path  |
+| --- |   ---  |
+| 01 |  `checkout/tests/tests_views.py `  |
+
+No errors identified
+
+```
+from books.models import Book, Category, Author
+from django.contrib.auth.models import User
+from django.test import TestCase
+from django.urls import reverse
+from checkout.models import Order
+
+
+class BookingViewsTestCase(TestCase):
+
+    def setUp(self):
+        self.user = User.objects.create(username='test', password='test')
+        self.user.save()
+
+        self.category = Category.objects.create(
+            name="Children's Books",
+            friendly_name="Children's Books"
+        )
+        self.category.save()
+
+        self.author = Author.objects.create(
+            name="JK",
+            details="Children's Books"
+        )
+        self.author.save()
+
+        self.book = Book.objects.create(
+            name="Harry Potter",
+            description="is very good book",
+            price=73.54,
+            category=self.category,
+            author=self.author
+        )
+        self.book.save()
+
+        self.book2 = Book.objects.create(
+            name="think and grow rich ",
+            description="is very good book",
+            price=82.54
+        )
+
+        self.book2.save()
+
+        test_user1 = User.objects.create_user(
+            username='testuser1', password='1X<ISRUkw+tuK')
+        test_user2 = User.objects.create_user(
+            username='testuser2', password='2HJ1vRV0Z&3iD')
+
+        test_user1.save()
+        test_user2.save()
+
+        self.my_admin = User.objects.create_superuser(
+            username='myemail@test.com', password='mypassword')
+        self.my_admin.save()
+
+    def test_cache_checkout_data_sucess_200(self):
+        """
+        View checkout, parametes
+        """
+        response = self.client.post(reverse('cache_checkout_data'), data={
+                                    'client_secret': 'pi_3M5yYaAqyUAdlutt0EqCCs5Z_secret_RlAGjaO9t8n7uX44mIgp0Yp4C'})
+        self.assertEqual(response.status_code, 200, response)
+
+    def test_cache_checkout_erro_400(self):
+        """
+        View checkout, not parametes error
+        """
+        response = self.client.post(reverse('cache_checkout_data'))
+        self.assertEqual(response.status_code, 400, response)
+
+    def test_checkout_erro_302(self):
+        """
+        View checkout, not parametes error
+        """
+        response = self.client.get(reverse('checkout'))
+        self.assertEqual(response.status_code, 302, response)
+        self.assertEqual(response.url, '/accounts/login/', response)
+
+    def test_checkout_form(self):
+        """
+        View checkout, form checkout
+        """
+        response = self.client.post(reverse('checkout'), data={'full_name': 'RENAN+RIBEIRO+LAGE',
+                                                               'email': 'renan.lagee@gmail.com', 'phone_number': '31989791428',
+                                                               'street_address1': 'Rua+francisco+ovidio+227', 'street_address2': 'ap2',
+                                                               'town_or_city': 'Belo+Horizonte', 'county': 'MG', 'postcode': '30770040',
+                                                               'country': 'BR', 'save-info': 'on',
+                                                               'client_secret': 'pi_3M5yYaAqyUAdlutt0EqCCs5Z_secret_RlAGjaO9t8n7uX44mIgp0Yp4C'})
+        self.assertEqual(response.status_code, 302, response)
+        self.assertIn('/accounts/login/', response.url)
+
+    def test_checkout_sucess_ordem_not_pass(self):
+        """
+        View checkout, checkout sucess order not parameter invalid
+        """
+
+        response = self.client.get(
+            reverse('checkout_success', kwargs={'order_number': 9898989}))
+        self.assertEqual(response.status_code, 404, response)
+
+    def test_checkout_sucess_ordem_pass_sucess(self):
+        """
+        View checkout, checkout sucess order valid
+        """
+
+        order = Order.objects.create(
+            full_name="Carlos",
+            email="teste@gmail.com",
+            phone_number="989791428",
+            country="ireland",
+            town_or_city="Dublin",
+            street_address1="grafton street",
+            delivery_cost=20,
+            order_total=45,
+            grand_total=65,
+            original_bag="bag",
+            stripe_pid="9898"
+        )
+
+        response = self.client.get(reverse('checkout_success', kwargs={
+                                   'order_number': order.order_number}))
+        self.assertEqual(response.status_code, 200, response)
+
+
+```
+
+| File |   file path  |
+| --- |   ---  |
+| 01 |  `checkout/admin.py `  |
+
+No errors identified
+```
+from django.contrib import admin
+from .models import Order, OrderLineItem
+
+
+class OrderLineItemAdminInline(admin.TabularInline):
+    model = OrderLineItem
+    readonly_fields = ('lineitem_total',)
+
+
+class OrderAdmin(admin.ModelAdmin):
+    inlines = (OrderLineItemAdminInline,)
+
+    readonly_fields = ('order_number', 'date',
+                       'delivery_cost', 'order_total',
+                       'grand_total', 'original_bag',
+                       'stripe_pid')
+
+    fields = ('order_number', 'user_profile', 'date', 'full_name',
+              'email', 'phone_number', 'country',
+              'postcode', 'town_or_city', 'street_address1',
+              'street_address2', 'county', 'delivery_cost',
+              'order_total', 'grand_total', 'original_bag',
+              'stripe_pid')
+
+    list_display = ('order_number', 'date', 'full_name',
+                    'order_total', 'delivery_cost',
+                    'grand_total',)
+
+    ordering = ('-date',)
+
+
+admin.site.register(Order, OrderAdmin)
+
+```
+| File |   file path  |
+| --- |   ---  |
+| 01 |  `checkout/apps.py `  |
+
+No errors identified
+```
+
+from django.apps import AppConfig
+
+
+class CheckoutConfig(AppConfig):
+    name = 'checkout'
+
+    def ready(self):
+        import checkout.signals
+
+   
+```
+
+| File |   file path  |
+| --- |   ---  |
+| 01 |  `checkout/forms.py `  |
+
+No errors identified
+```
+from django import forms
+from .models import Order
+
+
+class OrderForm(forms.ModelForm):
+    class Meta:
+        model = Order
+        fields = ('full_name', 'email', 'phone_number',
+                  'street_address1', 'street_address2',
+                  'town_or_city', 'postcode', 'country',
+                  'county',)
+
+    def __init__(self, *args, **kwargs):
+        """
+        Add placeholders and classes, remove auto-generated
+        labels and set autofocus on first field
+        """
+        super().__init__(*args, **kwargs)
+        placeholders = {
+            'full_name': 'Full Name',
+            'email': 'Email Address',
+            'phone_number': 'Phone Number',
+            'postcode': 'Postal Code',
+            'town_or_city': 'Town or City',
+            'street_address1': 'Street Address 1',
+            'street_address2': 'Street Address 2',
+            'county': 'County, State or Locality',
+        }
+
+        self.fields['full_name'].widget.attrs['autofocus'] = True
+        for field in self.fields:
+            if field != 'country':
+                if self.fields[field].required:
+                    placeholder = f'{placeholders[field]} *'
+                else:
+                    placeholder = placeholders[field]
+                self.fields[field].widget.attrs['placeholder'] = placeholder
+            self.fields[field].widget.attrs['class'] = 'stripe-style-input'
+            self.fields[field].label = False
+
+   
+```
+
+| File |   file path  |
+| --- |   ---  |
+| 01 |  `checkout/models.py `  |
+
+No errors identified
+```
+import uuid
+
+from django.db import models
+from django.db.models import Sum
+from django.conf import settings
+
+from django_countries.fields import CountryField
+
+from books.models import Book
+from profiles.models import UserProfile
+
+
+class Order(models.Model):
+    order_number = models.CharField(max_length=32, null=False, editable=False)
+    user_profile = models.ForeignKey(UserProfile, on_delete=models.SET_NULL,
+                                     null=True, blank=True,
+                                     related_name='orders')
+    full_name = models.CharField(max_length=50, null=False, blank=False)
+    email = models.EmailField(max_length=254, null=False, blank=False)
+    phone_number = models.CharField(max_length=20, null=False, blank=False)
+    country = CountryField(blank_label='Country *', null=False, blank=False)
+    postcode = models.CharField(max_length=20, null=True, blank=True)
+    town_or_city = models.CharField(max_length=40, null=False, blank=False)
+    street_address1 = models.CharField(max_length=80, null=False, blank=False)
+    street_address2 = models.CharField(max_length=80, null=True, blank=True)
+    county = models.CharField(max_length=80, null=True, blank=True)
+    date = models.DateTimeField(auto_now_add=True)
+    delivery_cost = models.DecimalField(max_digits=6, decimal_places=2,
+                                        null=False, default=0)
+    order_total = models.DecimalField(max_digits=10, decimal_places=2,
+                                      null=False, default=0)
+    grand_total = models.DecimalField(max_digits=10, decimal_places=2,
+                                      null=False, default=0)
+    original_bag = models.TextField(null=False, blank=False, default='')
+    stripe_pid = models.CharField(max_length=254, null=False, blank=False,
+                                  default='')
+
+    def _generate_order_number(self):
+        """
+        Generate a random, unique order number using UUID
+        """
+        return uuid.uuid4().hex.upper()
+
+    def update_total(self):
+        """
+        Update grand total each time a line item is added,
+        accounting for delivery costs.
+        """
+        self.order_total = self.lineitems.aggregate(
+            Sum('lineitem_total'))['lineitem_total__sum'] or 0
+        sdp = settings.STANDARD_DELIVERY_PERCENTAGE
+        self.delivery_cost = self.order_total * sdp / 100
+
+        self.grand_total = self.order_total + self.delivery_cost
+        self.save()
+
+    def save(self, *args, **kwargs):
+        """
+        Override the original save method to set the order number
+        if it hasn't been set already.
+        """
+        if not self.order_number:
+            self.order_number = self._generate_order_number()
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.order_number
+
+
+class OrderLineItem(models.Model):
+    order = models.ForeignKey(Order, null=False, blank=False,
+                              on_delete=models.CASCADE,
+                              related_name='lineitems')
+    book = models.ForeignKey(Book, null=False, blank=False,
+                             on_delete=models.CASCADE)
+    quantity = models.IntegerField(null=False, blank=False, default=0)
+    lineitem_total = models.DecimalField(max_digits=6, decimal_places=2,
+                                         null=False, blank=False,
+                                         editable=False)
+
+    def save(self, *args, **kwargs):
+        """
+        Override the original save method to set the lineitem total
+        and update the order total.
+        """
+        self.lineitem_total = self.book.price * self.quantity
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f'SKU {self.book.sku} on order {self.order.order_number}'
+
+```
+
+| File |   file path  |
+| --- |   ---  |
+| 01 |  `checkout/signals.py `  |
+
+No errors identified
+```
+from django.db.models.signals import post_save, post_delete
+from django.dispatch import receiver
+
+from .models import OrderLineItem
+
+
+@receiver(post_save, sender=OrderLineItem)
+def update_on_save(sender, instance, created, **kwargs):
+    """
+    Update order total on lineitem update/create
+    """
+    instance.order.update_total()
+
+
+@receiver(post_delete, sender=OrderLineItem)
+def update_on_delete(sender, instance, **kwargs):
+    """
+    Update order total on lineitem delete
+    """
+    instance.order.update_total()
+
+```
+
+| File |   file path  |
+| --- |   ---  |
+| 01 |  `checkout/urls.py `  |
+
+No errors identified
+```
+from django.urls import path
+from . import views
+from .webhooks import webhook
+
+urlpatterns = [
+    path('', views.checkout, name='checkout'),
+    path('checkout_success/<order_number>',
+         views.checkout_success,
+         name='checkout_success'),
+    path('cache_checkout_data/',
+         views.cache_checkout_data,
+         name='cache_checkout_data'),
+    path('wh/', webhook, name='webhook'),
+]
+
+```
+
+| File |   file path  |
+| --- |   ---  |
+| 01 |  `checkout/views.py `  |
+
+No errors identified
+```
+from django.shortcuts import (
+    render, redirect, reverse, get_object_or_404, HttpResponse
+)
+from django.views.decorators.http import require_POST
+from django.contrib import messages
+from django.conf import settings
+
+from .forms import OrderForm
+from .models import Order, OrderLineItem
+
+from books.models import Book
+from profiles.models import UserProfile
+from profiles.forms import UserProfileForm
+from bag.contexts import bag_contents
+
+import stripe
+import json
+
+
+class BookUnavailableBook(Exception):
+    pass
+
+
+@require_POST
+def cache_checkout_data(request):
+    try:
+        pid = request.POST.get('client_secret').split('_secret')[0]
+        stripe.api_key = settings.STRIPE_SECRET_KEY
+        stripe.PaymentIntent.modify(pid, metadata={
+            'bag': json.dumps(request.session.get('bag', {})),
+            'save_info': request.POST.get('save_info'),
+            'username': request.user,
+        })
+        return HttpResponse(status=200)
+    except Exception as e:
+        messages.error(request, ('Sorry, your payment cannot be '
+                                 'processed right now. Please try '
+                                 'again later.'))
+        return HttpResponse(content=e, status=400)
+
+
+def checkout(request):
+    stripe_public_key = settings.STRIPE_PUBLIC_KEY
+    stripe_secret_key = settings.STRIPE_SECRET_KEY
+    if request.user.is_authenticated:
+
+        if request.method == 'POST':
+            bag = request.session.get('bag', {})
+
+            form_data = {
+                'full_name': request.POST['full_name'],
+                'email': request.POST['email'],
+                'phone_number': request.POST['phone_number'],
+                'country': request.POST['country'],
+                'postcode': request.POST['postcode'],
+                'town_or_city': request.POST['town_or_city'],
+                'street_address1': request.POST['street_address1'],
+                'street_address2': request.POST['street_address2'],
+                'county': request.POST['county'],
+            }
+
+            order_form = OrderForm(form_data)
+            if order_form.is_valid():
+                order = order_form.save(commit=False)
+                pid = request.POST.get('client_secret').split('_secret')[0]
+                order.stripe_pid = pid
+                order.original_bag = json.dumps(bag)
+                order.save()
+                for item_id, item_data in bag.items():
+                    try:
+                        book = Book.objects.get(id=item_id)
+                        if isinstance(item_data, int):
+                            if book.amount < item_data:
+                                raise BookUnavailableBook
+                            order_line_item = OrderLineItem(
+                                order=order,
+                                book=book,
+                                quantity=item_data,
+                            )
+                            order_line_item.save()
+                            book.amount = book.amount - item_data
+                            book.save()
+                        else:
+                            for size, quantity in item_data['items_by_size'].items():
+                                if book.amount < quantity:
+                                    raise BookUnavailableBook
+                                order_line_item = OrderLineItem(
+                                    order=order,
+                                    book=book,
+                                    quantity=quantity,
+                                    book_size=size,
+                                )
+                                order_line_item.save()
+                                book.amount = book.amount - quantity
+                                book.save()
+                    except Book.DoesNotExist:
+                        messages.error(request, (
+                            "One of the books in your bag wasn't "
+                            "found in our database. "
+                            "Please call us for assistance!")
+                        )
+                        order.delete()
+                        return redirect(reverse('view_bag'))
+                    except BookUnavailableBook:
+                        messages.error(request, "the {} book does not have the requested demand for purchase. Available quantity {}.".format(book.name, book.amount))
+                        order.delete()
+                        return redirect(reverse('view_bag'))
+
+                # Save the info to the user's profile if all is well
+                request.session['save_info'] = 'save-info' in request.POST
+                return redirect(reverse('checkout_success',
+                                        args=[order.order_number]))
+            else:
+                messages.error(request, ('There was an error with your form. ''Please double check your information.'))
+        else:
+            bag = request.session.get('bag', {})
+            if not bag:
+                messages.error(request, "There's nothing in your bag at the moment")
+                return redirect(reverse('books'))
+
+            current_bag = bag_contents(request)
+            total = current_bag['grand_total']
+            stripe_total = round(total * 100)
+            stripe.api_key = stripe_secret_key
+            intent = stripe.PaymentIntent.create(
+                amount=stripe_total,
+                currency=settings.STRIPE_CURRENCY,
+            )
+
+            # Attempt to prefill the form with any info
+            # the user maintains in their profile
+            if request.user.is_authenticated:
+                try:
+                    profile = UserProfile.objects.get(user=request.user)
+                    order_form = OrderForm(initial={
+                        'full_name': profile.user.get_full_name(),
+                        'email': profile.user.email,
+                        'phone_number': profile.default_phone_number,
+                        'country': profile.default_country,
+                        'postcode': profile.default_postcode,
+                        'town_or_city': profile.default_town_or_city,
+                        'street_address1': profile.default_street_address1,
+                        'street_address2': profile.default_street_address2,
+                        'county': profile.default_county,
+                    })
+                except UserProfile.DoesNotExist:
+                    order_form = OrderForm()
+            else:
+                order_form = OrderForm()
+
+        if not stripe_public_key:
+            messages.warning(request, ('Stripe public key is missing. ' 'Did you forget to set it in ' 'your environment?'))
+
+        template = 'checkout/checkout.html'
+        context = {
+            'order_form': order_form,
+            'stripe_public_key': stripe_public_key,
+            'client_secret': intent.client_secret,
+        }
+
+        return render(request, template, context)
+    else:
+        return redirect(reverse('account_login'))
+
+
+def checkout_success(request, order_number):
+    """
+    Handle successful checkouts
+    """
+    save_info = request.session.get('save_info')
+    order = get_object_or_404(Order, order_number=order_number)
+
+    if request.user.is_authenticated:
+        profile = UserProfile.objects.get(user=request.user)
+        # Attach the user's profile to the order
+        order.user_profile = profile
+        order.save()
+
+        # Save the user's info
+        if save_info:
+            profile_data = {
+                'default_phone_number': order.phone_number,
+                'default_country': order.country,
+                'default_postcode': order.postcode,
+                'default_town_or_city': order.town_or_city,
+                'default_street_address1': order.street_address1,
+                'default_street_address2': order.street_address2,
+                'default_county': order.county,
+            }
+            user_profile_form = UserProfileForm(profile_data, instance=profile)
+            if user_profile_form.is_valid():
+                user_profile_form.save()
+
+    messages.success(request, f'Order successfully processed! \
+        Your order number is {order_number}. A confirmation \
+        email will be sent to {order.email}.')
+
+    if 'bag' in request.session:
+        del request.session['bag']
+
+    template = 'checkout/checkout_success.html'
+    context = {
+        'order': order,
+    }
+
+    return render(request, template, context)
+
+
+```
+
+| File |   file path  |
+| --- |   ---  |
+| 01 |  `checkout/webhook_handler.py `  |
+
+No errors identified
+```
+from django.http import HttpResponse
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
+from django.conf import settings
+
+from .models import Order, OrderLineItem
+from books.models import Book
+from profiles.models import UserProfile
+
+import json
+import time
+
+
+class StripeWH_Handler:
+    """Handle Stripe webhooks"""
+
+    def __init__(self, request):
+        self.request = request
+
+    def _send_confirmation_email(self, order):
+        """Send the user a confirmation email"""
+        cust_email = order.email
+        subject = render_to_string(
+            'checkout/confirmation_emails/confirmation_email_subject.txt',
+            {'order': order})
+        body = render_to_string(
+            'checkout/confirmation_emails/confirmation_email_body.txt',
+            {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL})
+
+        send_mail(
+            subject,
+            body,
+            settings.DEFAULT_FROM_EMAIL,
+            [cust_email]
+        )
+
+    def handle_event(self, event):
+        """
+        Handle a generic/unknown/unexpected webhook event
+        """
+        return HttpResponse(
+            content=f'Unhandled webhook received: {event["type"]}',
+            status=200)
+
+    def handle_payment_intent_succeeded(self, event):
+        """
+        Handle the payment_intent.succeeded webhook from Stripe
+        """
+        intent = event.data.object
+        pid = intent.id
+        bag = intent.metadata.bag
+        save_info = intent.metadata.save_info
+
+        billing_details = intent.charges.data[0].billing_details
+        shipping_details = intent.shipping
+        grand_total = round(intent.charges.data[0].amount / 100, 2)
+
+        # Clean data in the shipping details
+        for field, value in shipping_details.address.items():
+            if value == "":
+                shipping_details.address[field] = None
+
+        # Update profile information if save_info was checked
+        profile = None
+        username = intent.metadata.username
+        if username != 'AnonymousUser':
+            profile = UserProfile.objects.get(user__username=username)
+            if save_info:
+                profile.default_phone_number = shipping_details.phone
+                profile.default_country = shipping_details.address.country
+                profile.default_postcode = shipping_details.address.postal_code
+                profile.default_town_or_city = shipping_details.address.city
+                profile.default_street_address1 = shipping_details.address.line1
+                profile.default_street_address2 = shipping_details.address.line2
+                profile.default_county = shipping_details.address.state
+                profile.save()
+
+        order_exists = False
+        attempt = 1
+        while attempt <= 5:
+            try:
+                order = Order.objects.get(
+                    full_name__iexact=shipping_details.name,
+                    email__iexact=billing_details.email,
+                    phone_number__iexact=shipping_details.phone,
+                    country__iexact=shipping_details.address.country,
+                    postcode__iexact=shipping_details.address.postal_code,
+                    town_or_city__iexact=shipping_details.address.city,
+                    street_address1__iexact=shipping_details.address.line1,
+                    street_address2__iexact=shipping_details.address.line2,
+                    county__iexact=shipping_details.address.state,
+                    grand_total=grand_total,
+                    original_bag=bag,
+                    stripe_pid=pid,
+                )
+                order_exists = True
+                break
+            except Order.DoesNotExist:
+                attempt += 1
+                time.sleep(1)
+        if order_exists:
+            self._send_confirmation_email(order)
+            return HttpResponse(
+                content=(f'Webhook received: {event["type"]} | SUCCESS: '
+                         'Verified order already in database'),
+                status=200)
+        else:
+            order = None
+            try:
+                order = Order.objects.create(
+                    full_name=shipping_details.name,
+                    user_profile=profile,
+                    email=billing_details.email,
+                    phone_number=shipping_details.phone,
+                    country=shipping_details.address.country,
+                    postcode=shipping_details.address.postal_code,
+                    town_or_city=shipping_details.address.city,
+                    street_address1=shipping_details.address.line1,
+                    street_address2=shipping_details.address.line2,
+                    county=shipping_details.address.state,
+                    original_bag=bag,
+                    stripe_pid=pid,
+                )
+                for item_id, item_data in json.loads(bag).items():
+                    book = Book.objects.get(id=item_id)
+                    if isinstance(item_data, int):
+                        order_line_item = OrderLineItem(
+                            order=order,
+                            book=book,
+                            quantity=item_data,
+                        )
+                        order_line_item.save()
+                    else:
+                        for size, quantity in item_data['items_by_size'].items():
+                            order_line_item = OrderLineItem(
+                                order=order,
+                                book=book,
+                                quantity=quantity,
+                                book_size=size,
+                            )
+                            order_line_item.save()
+            except Exception as e:
+                if order:
+                    order.delete()
+                return HttpResponse(
+                    content=f'Webhook received: {event["type"]} | ERROR: {e}',
+                    status=500)
+        self._send_confirmation_email(order)
+        return HttpResponse(
+            content=(f'Webhook received: {event["type"]} | SUCCESS: '
+                     'Created order in webhook'),
+            status=200)
+
+    def handle_payment_intent_payment_failed(self, event):
+        """
+        Handle the payment_intent.payment_failed webhook from Stripe
+        """
+        return HttpResponse(
+            content=f'Webhook received: {event["type"]}',
+            status=200)
+
+```
+
+| File |   file path  |
+| --- |   ---  |
+| 01 |  `checkout/webhooks.py `  |
+
+No errors identified
+```
+from django.conf import settings
+from django.http import HttpResponse
+from django.views.decorators.http import require_POST
+from django.views.decorators.csrf import csrf_exempt
+
+from checkout.webhook_handler import StripeWH_Handler
+
+import stripe
+
+
+@require_POST
+@csrf_exempt
+def webhook(request):
+    """Listen for webhooks from Stripe"""
+    # Setup
+    wh_secret = settings.STRIPE_WH_SECRET
+    stripe.api_key = settings.STRIPE_SECRET_KEY
+
+    # Get the webhook data and verify its signature
+    payload = request.body
+    sig_header = request.META['HTTP_STRIPE_SIGNATURE']
+    event = None
+
+    try:
+        event = stripe.Webhook.construct_event(
+            payload, sig_header, wh_secret
+        )
+    except ValueError as e:
+        # Invalid payload
+        return HttpResponse(content=e, status=400)
+    except stripe.error.SignatureVerificationError as e:
+        # Invalid signature
+        return HttpResponse(content=e, status=400)
+    except Exception as e:
+        return HttpResponse(content=e, status=400)
+
+    # Set up a webhook handler
+    handler = StripeWH_Handler(request)
+
+    # Map webhook events to relevant handler functions
+    event_map = {
+        'payment_intent.succeeded': handler.handle_payment_intent_succeeded,
+        'payment_intent.payment_failed': handler.handle_payment_intent_payment_failed,
+    }
+
+    # Get the webhook type from Stripe
+    event_type = event['type']
+
+    # If there's a handler for it, get it from the event map
+    # Use the generic one by default
+    event_handler = event_map.get(event_type, handler.handle_event)
+
+    # Call the event handler with the event
+    response = event_handler(event)
+    return response
 
 ```
