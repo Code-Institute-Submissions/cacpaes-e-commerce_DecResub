@@ -454,7 +454,7 @@ class BagViewsTestCase(TestCase):
 
 | File |   file path |
 | --- |   ---  |
-| 01 |  `bag/.py `  |
+| 01 |  `bag/apps.py `  |
 
 No errors identified
 
@@ -669,5 +669,853 @@ def remove_from_bag(request, item_id):
     except Exception as e:
         messages.error(request, f'Error removing item: {e}')
         return HttpResponse(status=500)
+
+```
+
+| File |   file path  |
+| --- |   ---  |
+| 01 |  `books/tests/tests_forms.py `  |
+
+No errors identified
+
+```
+from django.test import TestCase
+from books.forms import ReviewForm, BookForm
+from books.models import Category
+
+"""
+class to test form ReviewForm
+"""
+
+
+class ReviewFormTestCase(TestCase):
+
+    def test_review_form_valid(self):
+        """
+        Check if the form is valid
+        """
+        form = ReviewForm(data={
+            'review': 1,
+        })
+        self.assertTrue(form.is_valid())
+
+    def test_review_form_invalid_skip_value_review(self):
+        """
+        Check if the form is invalid, parameter name not review
+        """
+        form = ReviewForm(data={
+            'review': None,
+        })
+        self.assertFalse(form.is_valid(), form.errors)
+
+    def test_review_form_invalid_review_negative(self):
+        """
+        Check if the form is invalid, parameter review value negative
+        """
+        form = ReviewForm(data={
+            'review': -5,
+        })
+        self.assertFalse(form.is_valid(), form.errors)
+
+    def test_review_form_invalid_review_value_greather_than_five(self):
+        """
+        Check if the form is invalid, parameter review value greather than 5 
+        """
+        form = ReviewForm(data={
+            'review': 10,
+        })
+        self.assertFalse(form.is_valid(), form.errors)
+
+
+"""
+class to test form BookForm
+"""
+
+
+class BookFormTestCase(TestCase):
+
+    def setUp(self):
+        """
+        Create setup book form
+        """
+        self.category = Category.objects.create(
+            name="Children's Books",
+            friendly_name="Children's Books"
+        )
+
+        self.category.save()
+
+    def test_book_form_valid(self):
+        """
+        Check if the form is valid
+        """
+        form = BookForm(data={
+            'name': 'Harry Potter',
+            'description': 'The best book',
+            'price': 70
+        })
+        self.assertTrue(form.is_valid())
+
+    def test_book_form_invalid_skip_value_name(self):
+        """
+        Check if the form is invalid, parameter name blank
+        """
+        form = BookForm(data={
+            'description': 'The best book',
+            'price': 70
+        })
+        self.assertFalse(form.is_valid(), form.errors)
+
+    def test_book_form_invalid_description(self):
+        """
+        Check if the form is invalid, parameter description none
+        """
+        form = BookForm(data={
+            'name': 'Harry Potter',
+            'price': 70
+        })
+        self.assertFalse(form.is_valid(), form.errors)
+
+    def test_book_form_invalid_price_none(self):
+        """
+        Check if the form is invalid, parameter price none
+        """
+        form = BookForm(data={
+            'name': 'Harry Potter',
+            'description': 'The best book',
+        })
+        self.assertFalse(form.is_valid(), form.errors)
+
+
+```
+
+| File |   file path  |
+| --- |   ---  |
+| 01 |  `books/tests/tests_models.py `  |
+
+No errors identified
+
+```
+from django.contrib.auth.models import User
+from django.test import TestCase
+from books.models import Review, Book, Category, Author
+from decimal import *
+
+"""
+class to test model Review
+"""
+
+
+class ReviewTestCase(TestCase):
+
+    def setUp(self):
+        """
+        Defined function before condition for test
+        """
+
+        self.user = User.objects.create(username='test', password='test')
+        self.user.save()
+        user2 = User.objects.create(username='test2', password='test2')
+
+        book = Book.objects.create(
+            name="Harry Potter",
+            description="is very good book",
+            price=73.54
+        )
+
+        book2 = Book.objects.create(
+            name="think and grow rich ",
+            description="is very good book",
+            price=82.54
+        )
+
+        Review.objects.create(
+            user=self.user,
+            book=book,
+            review=4
+        )
+
+        Review.objects.create(
+            user=user2,
+            book=book,
+            review=5,
+        )
+
+    def test_review_return_str(self):
+        """
+        Test string for review
+        """
+        review = Review.objects.get(user=self.user)
+        self.assertEquals(review.__str__(), "Harry Potter")
+
+    def test_confirm_data(self):
+        """
+        Test confirm objects atributes
+        """
+        review = Review.objects.get(user=self.user)
+        self.assertEquals(review.review, 4)
+        self.assertEquals(review.reviewed, True)
+
+    def test_review_orderind(self):
+        """
+        Test ordering review
+        """
+        reviews = Review.objects.all()
+        self.assertEquals(reviews[0].review, 4)
+        self.assertEquals(reviews[1].review, 5)
+        self.assertGreater(reviews[1].created_on, reviews[0].created_on)
+
+
+"""
+class to test model Category
+"""
+
+
+class CategoryTestCase(TestCase):
+
+    def setUp(self):
+        """
+        Defined function before condition for test
+        """
+
+        user = User.objects.create(username='test', password='test')
+
+        category_children = Category.objects.create(
+            name="Children's Books",
+            friendly_name="Children's Books"
+        )
+
+        category_health = Category.objects.create(
+            name="Health",
+            friendly_name="Health"
+        )
+
+        category_food = Category.objects.create(
+            name="Food&Drink",
+            friendly_name="Food&Drink"
+        )
+
+        category_crime = Category.objects.create(
+            name="Crime, Thrillers&Mystery",
+            friendly_name="Crime, Thrillers&Mystery"
+        )
+
+        book_children = Book.objects.create(
+            name="Harry Potter",
+            description="is very good book",
+            price=73.54,
+            category=category_children
+        )
+
+        book_health = Book.objects.create(
+            name="think and grow rich ",
+            description="is very good book",
+            price=82.54,
+            category=category_health
+        )
+
+        book_food = Book.objects.create(
+            name="think and grow rich ",
+            description="is very good book",
+            price=82.54,
+            category=category_food
+        )
+
+        book_crime = Book.objects.create(
+            name="think and grow rich ",
+            description="is very good book",
+            price=82.54,
+            category=category_crime
+        )
+
+    def test_cetegory_return_str(self):
+        """
+        Test string for cetegory
+        """
+        category = Category.objects.get(name="Children's Books")
+        self.assertEquals(category.__str__(), "Children's Books")
+
+    def test_confirm_data(self):
+        """
+        Test confirm objects atributes
+        """
+        category = Category.objects.get(name="Health")
+        self.assertEquals(category.name, "Health")
+        self.assertEquals(category.friendly_name, "Health")
+
+
+"""
+class to test model Author
+"""
+
+
+class AuthorTestCase(TestCase):
+
+    def setUp(self):
+        """
+        Defined function before condition for test
+        """
+
+        self.user = User.objects.create(username='test', password='test')
+        self.user.save()
+
+        self.author = Author.objects.create(
+            name="JK",
+            details="Children's Books"
+        )
+        self.author.save()
+
+        self.category_children = Category.objects.create(
+            name="Children's Books",
+            friendly_name="Children's Books"
+        )
+        self.category_children.save()
+
+        book_children = Book.objects.create(
+            name="Harry Potter",
+            description="is very good book",
+            price=73.54,
+            category=self.category_children,
+            author=self.author
+        )
+
+    def test_author_return_str(self):
+        """
+        Test string for author
+        """
+        author = Author.objects.get(name="JK")
+        self.assertIsNotNone(author)
+        self.assertEquals(author.__str__(), "JK")
+
+    def test_confirm_data(self):
+        """
+        Test confirm objects atributes
+        """
+        author = Author.objects.get(name="JK")
+        self.assertEquals(author.name, "JK")
+        self.assertEquals(author.details, "Children's Books")
+
+
+"""
+class to test model Books
+"""
+
+
+class BookTestCase(TestCase):
+
+    def setUp(self):
+        """
+        Defined function before condition for test
+        """
+
+        book = Book.objects.create(
+            name="Harry Potter",
+            description="is very good book",
+            price=73
+        )
+
+        book2 = Book.objects.create(
+            name="think and grow rich ",
+            description="is very good book",
+            price=82.54
+        )
+
+    def test_book_return_str(self):
+        """
+        Test string for book
+        """
+        book = Book.objects.get(name="Harry Potter")
+        self.assertEquals(book.__str__(), "Harry Potter")
+
+    def test_confirm_data(self):
+        """
+        Test confirm objects atributes
+        """
+        book = Book.objects.get(name="Harry Potter")
+        self.assertIsNotNone(book)
+        self.assertEquals(book.name, "Harry Potter")
+        self.assertEquals(book.description, "is very good book")
+        self.assertEquals(book.price, Decimal(73))
+
+```
+
+| File |   file path  |
+| --- |   ---  |
+| 01 |  `books/tests/tests_views.py `  |
+
+No errors identified
+
+```
+from books.models import Book, Category, Author
+from django.contrib.auth.models import User
+from django.test import TestCase
+from django.urls import reverse
+
+
+class BookingViewsTestCase(TestCase):
+
+    def setUp(self):
+        self.user = User.objects.create(username='test', password='test')
+        self.user.save()
+
+        self.category = Category.objects.create(
+            name="Children's Books",
+            friendly_name="Children's Books"
+        )
+        self.category.save()
+
+        self.author = Author.objects.create(
+            name="JK",
+            details="Children's Books"
+        )
+        self.author.save()
+
+        self.book = Book.objects.create(
+            name="Harry Potter",
+            description="is very good book",
+            price=73.54,
+            category=self.category,
+            author=self.author
+        )
+        self.book.save()
+
+        self.book2 = Book.objects.create(
+            name="think and grow rich ",
+            description="is very good book",
+            price=82.54
+        )
+
+        self.book2.save()
+
+        self.my_admin = User.objects.create_superuser(username='myemail@test.com', password='mypassword')
+        self.my_admin.save()
+
+    def test_all_books_sucess_200(self):
+        """
+        View return all books, not parametes
+        """
+        response = self.client.get(reverse('books'))
+        self.assertEqual(response.status_code, 200, response)
+        self.assertTemplateUsed(response, 'books/books.html')
+
+    def test_detail_book_sucess_200(self):
+        """
+        View return details book
+        """
+        response = self.client.get(reverse('book_detail', kwargs={'book_id': self.book.id}))
+        self.assertEqual(response.status_code, 200, response)
+        self.assertTemplateUsed(response, 'books/book_detail.html')
+
+    def test_detail_book_error_404(self):
+        """
+        View return error book 404
+        """
+        response = self.client.get(reverse('book_detail', kwargs={'book_id': '999999999'}))
+        self.assertEqual(response.status_code, 404, response)
+
+    def test_add_book_not_permission(self):
+        """
+        View return error add book user not permission 403, reponse redirect
+        """
+        response = self.client.get(reverse('add_book'))
+        self.assertEqual(response.status_code, 302, response)
+
+    def test_edit_book_not_permission(self):
+        """
+        View return error edit book user not permission 403, reponse redirect
+        """
+        response = self.client.get(reverse('edit_book', kwargs={'book_id': '999999999'}))
+        self.assertEqual(response.status_code, 302, response)
+
+    def test_delete_book_not_permission(self):
+        """
+        View return error delete book user not permission 403, reponse redirect
+        """
+        response = self.client.get(reverse('delete_book', kwargs={'book_id': '999999999'}))
+        self.assertEqual(response.status_code, 302, response)
+
+    def test_delete_book_sucess(self):
+        """
+        View return delete book
+        """
+        self.client.login(username='myemail@test.com', password='mypassword')
+        book = Book.objects.get(id=self.book.id)
+        self.assertIsNotNone(book)
+        response = self.client.get(reverse('delete_book', kwargs={'book_id': self.book.id}))
+        self.assertEqual(response.status_code, 302, response)
+        book = Book.objects.filter(id=self.book.id).first()
+        self.assertIsNone(book)
+
+```
+
+| File |   file path  |
+| --- |   ---  |
+| 01 |  `books/admin.py `  |
+
+```
+from django.contrib import admin
+
+from .models import Book, Category, Author, Review
+
+# Register your models here.
+
+
+class BookAdmin(admin.ModelAdmin):
+    list_display = (
+        'sku',
+        'name',
+        'category',
+        'price',
+        'rating',
+        'image',
+        'author',
+    )
+
+    ordering = ('sku',)
+
+
+class ReviewAdmin(admin.ModelAdmin):
+    list_display = (
+        'book',
+        'user',
+        'created_on',
+        'review'
+    )    
+    ordering = ('book',)
+
+
+class CategoryAdmin(admin.ModelAdmin):
+
+    list_display = (
+        'friendly_name',
+        'name',
+    )
+
+
+class AuthorAdmin(admin.ModelAdmin):
+    list_display = (
+        'name',
+        'image',
+        'details',
+        'site_url'
+    )    
+
+
+admin.site.register(Book, BookAdmin)
+admin.site.register(Author, AuthorAdmin)
+admin.site.register(Category, CategoryAdmin)
+admin.site.register(Review, ReviewAdmin)
+
+```
+| File |   file path  |
+| --- |   ---  |
+| 01 |  `books/apps.py `  |
+
+```
+
+from django.apps import AppConfig
+
+
+class BooksConfig(AppConfig):
+    default_auto_field = 'django.db.models.BigAutoField'
+    name = 'books'
+   
+```
+
+| File |   file path  |
+| --- |   ---  |
+| 01 |  `books/forms.py `  |
+
+```
+class BookForm(forms.ModelForm):
+    """
+    Class user validated book and created new 
+    """
+
+    class Meta:
+        model = Book
+        fields = '__all__'
+
+    image = forms.ImageField(label='Image',
+                             required=False,
+                             widget=CustomClearableFileInput)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        categories = Category.objects.all()
+        friendly_names = [(c.id, c.get_friendly_name()) for c in categories]
+
+        self.fields['category'].choices = friendly_names
+        for field_name, field in self.fields.items():
+            field.widget.attrs['class'] = 'border-black rounded-0'
+
+
+class ReviewForm(forms.ModelForm):
+    """
+    Class user validated review in the book and created new  
+    """
+    CHOICES = (('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5'))
+    review = forms.ChoiceField(choices=CHOICES, label="Rate", widget=forms.Select)
+
+    class Meta:
+        model = Review
+        fields = ('review', )
+
+   
+```
+
+| File |   file path  |
+| --- |   ---  |
+| 01 |  `books/urls.py `  |
+
+```
+from django.urls import path
+
+from . import views
+
+urlpatterns = [
+    path('', views.all_books, name='books'),
+    path('<int:book_id>/', views.book_detail, name='book_detail'),
+    path('add/', views.add_book, name='add_book'),
+    path('edit/<int:book_id>/', views.edit_book, name='edit_book'),
+    path('delete/<int:book_id>/',
+         views.delete_book,
+         name='delete_book'),
+    path('reviews/<int:book_id>/', views.add_review, name='reviews_book')
+]
+
+```
+
+| File |   file path  |
+| --- |   ---  |
+| 01 |  `books/views.py `  |
+
+```
+from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.db.models import Q, Avg
+from django.db.models.functions import Lower
+from comment.forms import CommentForm
+from .models import Book, Category, Review
+from .forms import BookForm, ReviewForm
+
+# Create your views here.
+
+
+def all_books(request):
+    """ A view to show all books, including sorting and search queries """
+
+    books = Book.objects.all()
+    query = None
+    categories = None
+    sort = None
+    direction = None
+    style = "display: block;"
+
+    if request.GET:
+        style = "display: none;"
+        if 'sort' in request.GET:
+            sortkey = request.GET['sort']
+            sort = sortkey
+            if sortkey == 'name':
+                sortkey = 'lower_name'
+                books = books.annotate(lower_name=Lower('name'))
+            if sortkey == 'category':
+                sortkey = 'category__name'
+            if 'direction' in request.GET:
+                direction = request.GET['direction']
+                if direction == 'desc':
+                    sortkey = f'-{sortkey}'
+            books = books.order_by(sortkey)
+
+        if 'category' in request.GET:
+            categories = request.GET['category'].split(',')
+            books = books.filter(category__name__in=categories)
+            categories = Category.objects.filter(name__in=categories)
+
+        if 'q' in request.GET:
+            query = request.GET['q']
+            if not query:
+                messages.error(request,
+                               ("You didn't enter any search criteria!"))
+                return redirect(reverse('books'))
+
+            queries = Q(name__icontains=query) | Q(
+                description__icontains=query)
+            books = books.filter(queries)
+
+    current_sorting = f'{sort}_{direction}'
+
+    context = {
+        'books': books,
+        'search_term': query,
+        'current_categories': categories,
+        'current_sorting': current_sorting,
+        'style': style
+    }
+
+    return render(request, 'books/books.html', context)
+
+
+@login_required
+def add_book(request):
+    """ Add a book to the store """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect(reverse('books'))
+
+    if request.method == 'POST':
+        form = BookForm(request.POST, request.FILES)
+        if form.is_valid():
+            book = form.save()
+            messages.success(request, 'Successfully added book!')
+            return redirect(reverse('book_detail', args=[book.id]))
+        else:
+            messages.error(request,
+                           ('Failed to add book. '
+                            'Please ensure the form is valid.'))
+    else:
+        form = BookForm()
+
+    template = 'books/add_book.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)
+
+
+@login_required
+def edit_book(request, book_id):
+    """ Edit a book in the store """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect(reverse('books'))
+
+    book = get_object_or_404(Book, pk=book_id)
+    if request.method == 'POST':
+        form = BookForm(request.POST, request.FILES, instance=book)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully updated book!')
+            return redirect(reverse('book_detail', args=[book.id]))
+        else:
+            messages.error(request,
+                           ('Failed to update book. '
+                            'Please ensure the form is valid.'))
+    else:
+        form = BookForm(instance=book)
+        messages.info(request, f'You are editing {book.name}')
+
+    template = 'books/edit_book.html'
+    context = {
+        'form': form,
+        'book': book,
+    }
+
+    return render(request, template, context)
+
+
+@login_required
+def delete_book(request, book_id):
+    """ Delete a book from the store """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect(reverse('books'))
+
+    book = get_object_or_404(Book, pk=book_id)
+    book.delete()
+    messages.success(request, 'Book deleted!')
+    return redirect(reverse('books'))
+
+
+def book_detail(request, book_id):
+    """ A view to show individual book details """
+
+    book = get_object_or_404(Book, pk=book_id)
+    comments = book.comments.filter(active=True)
+    new_comment = None
+    reviews = book.review.filter(reviewed=True).order_by("-created_on")
+    total_review = reviews.count()
+    avg_review = reviews.aggregate(review=Avg('review'))['review']
+
+    if avg_review is None:
+        avg_review = 0
+
+    if request.method == 'POST' and request.user:
+        comment_form = CommentForm(data=request.POST)
+        if comment_form.is_valid():
+            new_comment = comment_form.save(commit=False)
+            new_comment.book = book
+            new_comment.save()
+
+        review_form = ReviewForm(data=request.POST)
+        if review_form.is_valid():
+            review = Review.objects.filter(user=request.user, book=book)[::1]
+            if len(review) > 0:
+                review_edit = review[0]
+                review_edit.review = review_form['review'].value()
+                review_edit.save()
+            else:
+                new_review = review_form.save(commit=False)
+                new_review.book = book
+                new_review.user = request.user
+                new_review.save()
+            reviews = book.review.filter(reviewed=True).order_by("-created_on")
+            total_review = reviews.count()
+            avg_review = reviews.aggregate(review=Avg('review'))['review']
+            book.rating = avg_review
+            book.save()
+    else:
+        comment_form = CommentForm()
+        review_form = ReviewForm()
+
+    context = {
+        'book': book, 'comments': comments, 'new_comment': new_comment, 'comment_form': comment_form, 'reviews': reviews,
+        'total_review': total_review, 'avg_review': avg_review, 'review_form': review_form, 'iterator': range(1, 6)
+    }
+
+    return render(request, 'books/book_detail.html', context)
+
+
+@login_required()
+def add_review(request, book_id):
+    """ View to add review in book"""
+    book = get_object_or_404(Book, pk=book_id)
+    reviews = book.review.filter(reviewed=True).order_by("-created_on")
+
+    if request.method == 'POST' and request.user:
+        review_form = ReviewForm(data=request.POST)
+        if review_form.is_valid():
+            new_review = review_form.save(commit=False)
+            new_review.book = book
+            new_review.user = request.user
+            new_review.save()
+    else:
+        review_form = ReviewForm()
+
+    context = {
+        'reviews': reviews, 'book': book, 'review_form': review_form
+    }
+
+    return render(request, 'books/review_detail.html', context)
+
+```
+
+| File |   file path  |
+| --- |   ---  |
+| 01 |  `books/widgets.py `  |
+
+```
+from django.forms.widgets import ClearableFileInput
+from django.utils.translation import gettext_lazy as _
+
+
+class CustomClearableFileInput(ClearableFileInput):
+    clear_checkbox_label = _('Remove')
+    initial_text = _('Current Image')
+    input_text = _('')
+    template_name = 'books/custom_widget_templates/custom_clearable_file_input.html'
 
 ```
