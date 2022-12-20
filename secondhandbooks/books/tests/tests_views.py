@@ -96,4 +96,4 @@ class BookingViewsTestCase(TestCase):
         response = self.client.get(reverse('delete_book', kwargs={'book_id': self.book.id}))
         self.assertEqual(response.status_code, 302, response)
         book = Book.objects.filter(id=self.book.id).first()
-        self.assertIsNone(book)     
+        self.assertIsNone(book)  
