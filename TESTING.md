@@ -2805,3 +2805,155 @@ class Comment(models.Model):
 
 
 ```
+
+| File |   file path  |
+| --- |   ---  |
+| 01 |  `newsletter/admin.py `  |
+
+No errors identified
+
+```
+from django.contrib import admin
+from .models import SubscribedUsers
+
+
+# Register your models here.
+class NewsletterAdmin(admin.ModelAdmin):
+    list_display = (
+        'user',
+        'name',
+        'email',
+    )
+
+    ordering = ('name',)
+
+
+admin.site.register(SubscribedUsers, NewsletterAdmin)
+
+
+```
+
+| File |   file path  |
+| --- |   ---  |
+| 01 |  `newsletter/apps.py `  |
+
+No errors identified
+
+```
+from django.apps import AppConfig
+
+
+class NewsletterConfig(AppConfig):
+    name = 'newsletter'
+
+
+```
+
+| File |   file path  |
+| --- |   ---  |
+| 01 |  `newsletter/models.py `  |
+
+No errors identified
+
+```
+from django.db import models
+from django.contrib.auth.models import User
+
+
+class SubscribedUsers(models.Model):
+    """ Entity to subcribed users to newsletter"""
+    email = models.CharField(unique=True, max_length=50)
+    name = models.CharField(max_length=50)
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name="user", null=True
+        )
+
+```
+
+| File |   file path  |
+| --- |   ---  |
+| 01 |  `newsletter/urls.py `  |
+
+No errors identified
+
+```
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', views.newsletter, name='newsletter'),
+    path('validate',
+         views.validate_email,
+         name='validate_email'),
+]
+
+
+```
+
+| File |   file path  |
+| --- |   ---  |
+| 01 |  `newsletter/views.py `  |
+
+No errors identified
+
+```
+from django.shortcuts import render
+from django.http import JsonResponse
+import re
+from .models import SubscribedUsers
+from django.core.mail import send_mail
+from django.conf import settings
+from django.contrib.auth.decorators import login_required
+
+
+@login_required
+def newsletter(request):
+    """ Function to create newsletter for user  """
+
+    if request.method == 'POST':
+        try:
+            subscribedUsers = SubscribedUsers.objects.get(user=request.user)
+        except SubscribedUsers.DoesNotExist:
+            subscribedUsers = SubscribedUsers()
+        finally:
+            post_data = request.POST.copy()
+            email = post_data.get("email", None)
+            name = post_data.get("name", None)
+            subscribedUsers.email = email
+            subscribedUsers.name = name
+            subscribedUsers.user = request.user
+            subscribedUsers.save()
+            # send a confirmation mail
+            subject = 'NewsLetter Subscription'
+            message = 'Hello ' + name + \
+                ', Thanks for subscribing us. You will get notification of latest articles posted on our website. Please do not reply on this email.'
+            email_from = settings.EMAIL_HOST_USER
+            recipient_list = [email, ]
+            send_mail(subject, message, email_from, recipient_list)
+            res = JsonResponse({'msg': 'Thanks. Subscribed Successfully!'})
+            return res
+
+    return render(request, 'index.html')
+
+
+def validate_email(request):
+    """ Funcion to validate email """
+    email = request.POST.get("email", None)
+    try:
+        if email is None:
+            res = JsonResponse({'msg': 'Email is required.'})
+        elif not re.match(r"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$", email):
+            res = JsonResponse({'msg': 'Invalid Email Address'})
+
+        elif SubscribedUsers.objects.get(email=email):
+            res = JsonResponse({'msg': 'Email Address already exists'})
+
+        else:
+            res = JsonResponse({'msg': ''})
+    except SubscribedUsers.DoesNotExist:
+        pass
+    return res
+
+```
