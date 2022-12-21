@@ -171,7 +171,7 @@ No errors identified for this script.
 
 | File |   file path  |
 | --- |   ---  |
-| 01 |  `static/js/stripe_elements.js `  |
+| 01 |  `secondhandbooks/static/js/stripe_elements.js `  |
     
 </details>
 
@@ -279,7 +279,7 @@ No errors identified for this script.
 
 | File |   file path  |
 | --- |   ---  |
-| 01 |  `templates/base.html `  |
+| 01 |  `secondhandbooks/templates/base.html `  |
     
 </details>
 
@@ -312,7 +312,7 @@ No errors identified for this script.
 
 | File |   file path  |
 | --- |   ---  |
-| 01 |  `books/includes/quantity_input_script.html `  |
+| 01 |  `secondhandbooks/books/includes/quantity_input_script.html `  |
     
 </details>
 
@@ -340,7 +340,7 @@ No errors identified for this script.
 
 | File |   file path  |
 | --- |   ---  |
-| 01 |  `profiles/countryfield.js `  |
+| 01 |  `secondhandbooks/profiles/countryfield.js `  |
     
 </details>
 
@@ -355,7 +355,7 @@ No errors identified
 
 | File |   file path  |
 | --- |   ---  |
-| 01 |  `bag/templatetags/bag_tools.py `  |
+| 01 |  `secondhandbooks/bag/templatetags/bag_tools.py `  |
 
 ```
 from django import template
@@ -371,7 +371,7 @@ def calc_subtotal(price, quantity):
 
 | File |   file path  |
 | --- |   ---  |
-| 01 |  `bag/tests/tests_views.py `  |
+| 01 |  `secondhandbooks/bag/tests/tests_views.py `  |
 
 No errors identified
 
@@ -482,7 +482,7 @@ class BagViewsTestCase(TestCase):
 
 | File |   file path |
 | --- |   ---  |
-| 01 |  `bag/apps.py `  |
+| 01 |  `secondhandbooks/bag/apps.py `  |
 
 No errors identified
 
@@ -498,7 +498,7 @@ class BagConfig(AppConfig):
 
 | File |   file path  |
 | --- |   ---  |
-| 01 |  `bag/contexts.py `  |
+| 01 |  `secondhandbooks/bag/contexts.py `  |
 
 No errors identified
 
@@ -556,7 +556,7 @@ def bag_contents(request):
 
 | File |   file path  |
 | --- |   ---  |
-| 01 |  `bag/urls.py `  |
+| 01 |  `secondhandbooks/bag/urls.py `  |
 
 No errors identified
 
@@ -576,7 +576,7 @@ urlpatterns = [
 
 | File |   file path  |
 | --- |   ---  |
-| 01 |  `bag/views.py `  |
+| 01 |  `secondhandbooks/bag/views.py `  |
 
 No errors identified
 
@@ -702,7 +702,7 @@ def remove_from_bag(request, item_id):
 
 | File |   file path  |
 | --- |   ---  |
-| 01 |  `books/tests/tests_forms.py `  |
+| 01 |  `secondhandbooks/books/tests/tests_forms.py `  |
 
 No errors identified
 
@@ -819,7 +819,7 @@ class BookFormTestCase(TestCase):
 
 | File |   file path  |
 | --- |   ---  |
-| 01 |  `books/tests/tests_models.py `  |
+| 01 |  `secondhandbooks/books/tests/tests_models.py `  |
 
 No errors identified
 
@@ -1069,7 +1069,7 @@ class BookTestCase(TestCase):
 
 | File |   file path  |
 | --- |   ---  |
-| 01 |  `books/tests/tests_views.py `  |
+| 01 |  `secondhandbooks/books/tests/tests_views.py `  |
 
 No errors identified
 
@@ -1178,7 +1178,7 @@ class BookingViewsTestCase(TestCase):
 
 | File |   file path  |
 | --- |   ---  |
-| 01 |  `books/admin.py `  |
+| 01 |  `secondhandbooks/books/admin.py `  |
 
 No errors identified
 ```
@@ -1238,7 +1238,7 @@ admin.site.register(Review, ReviewAdmin)
 ```
 | File |   file path  |
 | --- |   ---  |
-| 01 |  `books/apps.py `  |
+| 01 |  `secondhandbooks/books/apps.py `  |
 
 No errors identified
 ```
@@ -1254,7 +1254,7 @@ class BooksConfig(AppConfig):
 
 | File |   file path  |
 | --- |   ---  |
-| 01 |  `books/forms.py `  |
+| 01 |  `secondhandbooks/books/forms.py `  |
 
 No errors identified
 ```
@@ -1297,7 +1297,7 @@ class ReviewForm(forms.ModelForm):
 
 | File |   file path  |
 | --- |   ---  |
-| 01 |  `books/urls.py `  |
+| 01 |  `secondhandbooks/books/urls.py `  |
 
 No errors identified
 ```
@@ -1320,7 +1320,7 @@ urlpatterns = [
 
 | File |   file path  |
 | --- |   ---  |
-| 01 |  `books/views.py `  |
+| 01 |  `secondhandbooks/books/views.py `  |
 
 No errors identified
 ```
@@ -1538,7 +1538,7 @@ def add_review(request, book_id):
 
 | File |   file path  |
 | --- |   ---  |
-| 01 |  `books/widgets.py `  |
+| 01 |  `secondhandbooks/books/widgets.py `  |
 
 No errors identified
 ```
@@ -1556,7 +1556,7 @@ class CustomClearableFileInput(ClearableFileInput):
 
 | File |   file path  |
 | --- |   ---  |
-| 01 |  `checkout/tests/tests_forms.py `  |
+| 01 |  `secondhandbooks/checkout/tests/tests_forms.py `  |
 
 No errors identified
 
@@ -1650,7 +1650,7 @@ class OrderFormTestCase(TestCase):
 
 | File |   file path  |
 | --- |   ---  |
-| 01 |  `checkout/tests/tests_models.py `  |
+| 01 |  `secondhandbooks/checkout/tests/tests_models.py `  |
 
 No errors identified
 
@@ -1762,7 +1762,7 @@ class OrderLineItemTestCase(TestCase):
 
 | File |   file path  |
 | --- |   ---  |
-| 01 |  `checkout/tests/tests_views.py `  |
+| 01 |  `secondhandbooks/checkout/tests/tests_views.py `  |
 
 No errors identified
 
@@ -1894,7 +1894,7 @@ class BookingViewsTestCase(TestCase):
 
 | File |   file path  |
 | --- |   ---  |
-| 01 |  `checkout/admin.py `  |
+| 01 |  `secondhandbooks/checkout/admin.py `  |
 
 No errors identified
 ```
@@ -1934,7 +1934,7 @@ admin.site.register(Order, OrderAdmin)
 ```
 | File |   file path  |
 | --- |   ---  |
-| 01 |  `checkout/apps.py `  |
+| 01 |  `secondhandbooks/checkout/apps.py `  |
 
 No errors identified
 ```
@@ -1953,7 +1953,7 @@ class CheckoutConfig(AppConfig):
 
 | File |   file path  |
 | --- |   ---  |
-| 01 |  `checkout/forms.py `  |
+| 01 |  `secondhandbooks/checkout/forms.py `  |
 
 No errors identified
 ```
@@ -2002,7 +2002,7 @@ class OrderForm(forms.ModelForm):
 
 | File |   file path  |
 | --- |   ---  |
-| 01 |  `checkout/models.py `  |
+| 01 |  `secondhandbooks/checkout/models.py `  |
 
 No errors identified
 ```
@@ -2101,7 +2101,7 @@ class OrderLineItem(models.Model):
 
 | File |   file path  |
 | --- |   ---  |
-| 01 |  `checkout/signals.py `  |
+| 01 |  `secondhandbooks/checkout/signals.py `  |
 
 No errors identified
 ```
@@ -2130,7 +2130,7 @@ def update_on_delete(sender, instance, **kwargs):
 
 | File |   file path  |
 | --- |   ---  |
-| 01 |  `checkout/urls.py `  |
+| 01 |  `secondhandbooks/checkout/urls.py `  |
 
 No errors identified
 ```
@@ -2153,7 +2153,7 @@ urlpatterns = [
 
 | File |   file path  |
 | --- |   ---  |
-| 01 |  `checkout/views.py `  |
+| 01 |  `secondhandbooks/checkout/views.py `  |
 
 No errors identified
 ```
@@ -2369,7 +2369,7 @@ def checkout_success(request, order_number):
 
 | File |   file path  |
 | --- |   ---  |
-| 01 |  `checkout/webhook_handler.py `  |
+| 01 |  `secondhandbooks/checkout/webhook_handler.py `  |
 
 No errors identified
 ```
@@ -2538,7 +2538,7 @@ class StripeWH_Handler:
 
 | File |   file path  |
 | --- |   ---  |
-| 01 |  `checkout/webhooks.py `  |
+| 01 |  `secondhandbooks/checkout/webhooks.py `  |
 
 No errors identified
 ```
@@ -2602,7 +2602,7 @@ def webhook(request):
 
 | File |   file path  |
 | --- |   ---  |
-| 01 |  `comment/tests/tests_forms.py `  |
+| 01 |  `secondhandbooks/comment/tests/tests_forms.py `  |
 
 No errors identified
 
@@ -2665,7 +2665,7 @@ class CommentFormTestCase(TestCase):
 
 | File |   file path  |
 | --- |   ---  |
-| 01 |  `comment/tests/tests_models.py `  |
+| 01 |  `secondhandbooks/comment/tests/tests_models.py `  |
 
 No errors identified
 
@@ -2740,7 +2740,7 @@ class CommentTestCase(TestCase):
 
 | File |   file path  |
 | --- |   ---  |
-| 01 |  `comment/admin.py `  |
+| 01 |  `secondhandbooks/comment/admin.py `  |
 
 No errors identified
 
@@ -2765,7 +2765,7 @@ class CommentAdmin(admin.ModelAdmin):
 
 | File |   file path  |
 | --- |   ---  |
-| 01 |  `comment/apps.py `  |
+| 01 |  `secondhandbooks/comment/apps.py `  |
 
 No errors identified
 
@@ -2781,7 +2781,7 @@ class CommentConfig(AppConfig):
 
 | File |   file path  |
 | --- |   ---  |
-| 01 |  `comment/forms.py `  |
+| 01 |  `secondhandbooks/comment/forms.py `  |
 
 No errors identified
 
@@ -2807,7 +2807,7 @@ class CommentForm(forms.ModelForm):
 
 | File |   file path  |
 | --- |   ---  |
-| 01 |  `comment/models.py `  |
+| 01 |  `secondhandbooks/comment/models.py `  |
 
 No errors identified
 
@@ -2836,7 +2836,7 @@ class Comment(models.Model):
 
 | File |   file path  |
 | --- |   ---  |
-| 01 |  `newsletter/admin.py `  |
+| 01 |  `secondhandbooks/newsletter/admin.py `  |
 
 No errors identified
 
@@ -2863,7 +2863,7 @@ admin.site.register(SubscribedUsers, NewsletterAdmin)
 
 | File |   file path  |
 | --- |   ---  |
-| 01 |  `newsletter/apps.py `  |
+| 01 |  `secondhandbooks/newsletter/apps.py `  |
 
 No errors identified
 
@@ -2879,7 +2879,7 @@ class NewsletterConfig(AppConfig):
 
 | File |   file path  |
 | --- |   ---  |
-| 01 |  `newsletter/models.py `  |
+| 01 |  `secondhandbooks/newsletter/models.py `  |
 
 No errors identified
 
@@ -2902,7 +2902,7 @@ class SubscribedUsers(models.Model):
 
 | File |   file path  |
 | --- |   ---  |
-| 01 |  `newsletter/urls.py `  |
+| 01 |  `secondhandbooks/newsletter/urls.py `  |
 
 No errors identified
 
@@ -2922,7 +2922,7 @@ urlpatterns = [
 
 | File |   file path  |
 | --- |   ---  |
-| 01 |  `newsletter/views.py `  |
+| 01 |  `secondhandbooks/newsletter/views.py `  |
 
 No errors identified
 
@@ -2983,5 +2983,769 @@ def validate_email(request):
     except SubscribedUsers.DoesNotExist:
         pass
     return res
+
+```
+
+| File |   file path  |
+| --- |   ---  |
+| 01 |  `secondhandbooks/profiles/tests/tests_models.py `  |
+
+No errors identified
+
+```
+from django.contrib.auth.models import User
+from django.test import TestCase
+from profiles.models import UserProfile
+
+"""
+class to test model Profile
+"""
+
+
+class ProfileTestCase(TestCase):
+
+    def setUp(self):
+        """
+        Defined function before condition for test
+        """
+
+        self.user = User.objects.create(username='test33', password='test33')
+        self.user.save()
+
+        profile = UserProfile.objects.create(
+            user=self.user,
+            default_phone_number='0834187086',
+            default_street_address1='grafton street',
+            default_town_or_city='Dublin',
+            default_county='ireland',
+            default_postcode='32653'
+        )
+
+```
+
+
+| File |   file path  |
+| --- |   ---  |
+| 01 |  `secondhandbooks/profiles/tests/tests_views.py `  |
+
+No errors identified
+
+```
+from django.contrib.auth.models import User
+from django.test import TestCase
+from django.urls import reverse
+from profiles.models import UserProfile
+from checkout.models import Order
+from books.models import Book, Category, Author
+import uuid
+
+
+class ProfilesViewsTestCase(TestCase):
+
+    def setUp(self):
+        self.user = User.objects.create(username='test', password='test')
+        self.user.save()
+
+        self.category = Category.objects.create(
+            name="Children's Books",
+            friendly_name="Children's Books"
+        )
+        self.category.save()
+
+        self.author = Author.objects.create(
+            name="JK",
+            details="Children's Books"
+        )
+        self.author.save()
+
+        self.book = Book.objects.create(
+            name="Harry Potter",
+            description="is very good book",
+            price=73.54,
+            category=self.category,
+            author=self.author
+        )
+        self.book.save()
+
+        self.book2 = Book.objects.create(
+            name="think and grow rich ",
+            description="is very good book",
+            price=82.54
+        )
+
+        self.book2.save()
+
+        test_user1 = User.objects.create_user(
+            username='testuser1', password='1X<ISRUkw+tuK')
+        test_user2 = User.objects.create_user(
+            username='testuser2', password='2HJ1vRV0Z&3iD')
+
+        test_user1.save()
+        test_user2.save()
+
+        self.my_admin = User.objects.create_superuser(
+            username='myemail@test.com', password='mypassword')
+        self.my_admin.save()
+
+        self.uuid_number = uuid.uuid4()
+
+        order = Order.objects.create(
+            order_number=self.uuid_number,
+            full_name="Carlos",
+            email="teste@gmail.com",
+            phone_number="989791428",
+            country="ireland",
+            town_or_city="Dublin",
+            street_address1="grafton street",
+            delivery_cost=20,
+            order_total=45,
+            grand_total=65,
+            original_bag="bag",
+            stripe_pid="9898"
+        )
+
+    def test_order_history_profile_not_found(self):
+        """
+        View Profiles, return order history error 404
+        """
+        response = self.client.get(
+            reverse('order_history', kwargs={'order_number': 9898989}))
+        self.assertEqual(response.status_code, 404, response)
+
+    def test_order_history_profile_sucess(self):
+        """
+        View Profiles, return order history error 200
+        """
+
+        response = self.client.get(reverse('order_history', kwargs={
+                                   'order_number': self.uuid_number}))
+        self.assertEqual(response.status_code, 200, response)
+
+    def test_return_profile(self):
+        """
+        View Profiles, return profile
+        """
+
+        response = self.client.get(reverse('profile'))
+        self.assertEqual(response.status_code, 302, response)
+
+```
+
+| File |   file path  |
+| --- |   ---  |
+| 01 |  `secondhandbooks/profiles/apps.py `  |
+
+No errors identified
+
+```
+from django.apps import AppConfig
+
+
+class ProfilesConfig(AppConfig):
+    name = 'profiles'
+
+
+```
+
+| File |   file path  |
+| --- |   ---  |
+| 01 |  `secondhandbooks/profiles/forms.py `  |
+
+No errors identified
+
+```
+from django import forms
+from .models import UserProfile
+
+
+class UserProfileForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        exclude = ('user',)
+
+    def __init__(self, *args, **kwargs):
+        """
+        Add placeholders and classes, remove auto-generated
+        labels and set autofocus on first field
+        """
+        super().__init__(*args, **kwargs)
+        placeholders = {
+            'default_phone_number': 'Phone Number',
+            'default_postcode': 'Postal Code',
+            'default_town_or_city': 'Town or City',
+            'default_street_address1': 'Street Address 1',
+            'default_street_address2': 'Street Address 2',
+            'default_county': 'County, State or Locality',
+        }
+
+        self.fields['default_phone_number'].widget.attrs['autofocus'] = True
+        for field in self.fields:
+            if field != 'default_country':
+                if self.fields[field].required:
+                    placeholder = f'{placeholders[field]} *'
+                else:
+                    placeholder = placeholders[field]
+                self.fields[field].widget.attrs['placeholder'] = placeholder
+            self.fields[field].widget.attrs['class'] = ('border-black '
+                                                        'rounded-0 '
+                                                        'profile-form-input')
+            self.fields[field].widget.attrs['style'] = ('width: 60%')
+            self.fields[field].label = False
+
+```
+
+
+| File |   file path  |
+| --- |   ---  |
+| 01 |  `secondhandbooks/profiles/models.py `  |
+
+No errors identified
+
+```
+from django.db import models
+from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+
+from django_countries.fields import CountryField
+
+
+class UserProfile(models.Model):
+    """
+    A user profile model for maintaining default
+    delivery information and order history
+    """
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    default_phone_number = models.CharField(max_length=20,
+                                            null=True, blank=True)
+    default_street_address1 = models.CharField(max_length=80,
+                                               null=True, blank=True)
+    default_street_address2 = models.CharField(max_length=80,
+                                               null=True, blank=True)
+    default_town_or_city = models.CharField(max_length=40,
+                                            null=True, blank=True)
+    default_county = models.CharField(max_length=80,
+                                      null=True, blank=True)
+    default_postcode = models.CharField(max_length=20,
+                                        null=True, blank=True)
+    default_country = CountryField(blank_label='Country',
+                                   null=True, blank=True)
+
+    def __str__(self):
+        return self.user.username
+
+
+@receiver(post_save, sender=User)
+def create_or_update_user_profile(sender, instance, created, **kwargs):
+    """
+    Create or update the user profile
+    """
+    if created:
+        UserProfile.objects.create(user=instance)
+    # Existing users: just save the profile
+    instance.userprofile.save()
+
+```
+
+| File |   file path  |
+| --- |   ---  |
+| 01 |  `secondhandbooks/profiles/urls.py `  |
+
+No errors identified
+
+```
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', views.profile, name='profile'),
+    path('order_history/<order_number>',
+         views.order_history,
+         name='order_history'),
+]
+
+```
+
+| File |   file path  |
+| --- |   ---  |
+| 01 |  `secondhandbooks/profiles/views.py `  |
+
+No errors identified
+
+```
+from django.shortcuts import render, get_object_or_404
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from .models import UserProfile
+from .forms import UserProfileForm
+
+from checkout.models import Order
+
+
+@login_required
+def profile(request):
+    """ Display the user's profile. """
+    profile = get_object_or_404(UserProfile, user=request.user)
+
+    if request.method == 'POST':
+        form = UserProfileForm(request.POST, instance=profile)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Profile updated successfully')
+        else:
+            messages.error(request,
+                           ('Update failed. Please ensure '
+                            'the form is valid.'))
+    else:
+        form = UserProfileForm(instance=profile)
+    orders = profile.orders.all()
+
+    template = 'profiles/profile.html'
+    context = {
+        'form': form,
+        'orders': orders,
+        'on_profile_page': True
+    }
+
+    return render(request, template, context)
+
+
+def order_history(request, order_number):
+    order = get_object_or_404(Order, order_number=order_number)
+
+    messages.info(request, (
+        f'This is a past confirmation for order number {order_number}. '
+        'A confirmation email was sent on the order date.'
+    ))
+
+    template = 'checkout/checkout_success.html'
+    context = {
+        'order': order,
+        'from_profile': True,
+    }
+
+    return render(request, template, context)
+
+```
+
+| File |   file path  |
+| --- |   ---  |
+| 01 |  `secondhandbooks/secondhandbooks/test/tests_robots.py `  |
+
+No errors identified
+
+```
+from http import HTTPStatus
+
+from django.test import TestCase
+
+
+class RobotsTxtTests(TestCase):
+    def test_get(self):
+        response = self.client.get("/robots.txt")
+
+        self.assertEqual(response.status_code, HTTPStatus.OK)
+        self.assertEqual(response["content-type"], "text/plain")
+        lines = response.content.decode().splitlines()
+        self.assertEqual(lines[0], "User-Agent: *")
+
+    def test_post_disallowed(self):
+        response = self.client.post("/robots.txt")
+
+        self.assertEqual(HTTPStatus.METHOD_NOT_ALLOWED, response.status_code)
+
+```
+
+| File |   file path  |
+| --- |   ---  |
+| 01 |  `secondhandbooks/secondhandbooks/asgi.py `  |
+
+No errors identified
+
+```
+"""
+ASGI config for secondhandbooks project.
+
+It exposes the ASGI callable as a module-level variable named ``application``.
+
+For more information on this file, see
+https://docs.djangoproject.com/en/3.2/howto/deployment/asgi/
+"""
+
+import os
+
+from django.core.asgi import get_asgi_application
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'secondhandbooks.settings')
+
+application = get_asgi_application()
+
+
+```
+
+| File |   file path  |
+| --- |   ---  |
+| 01 |  `secondhandbooks/secondhandbooks/settings.py `  |
+
+No errors identified
+
+```
+"""
+Django settings for secondhandbooks project.
+
+Generated by 'django-admin startproject' using Django 3.2.
+
+For more information on this file, see
+https://docs.djangoproject.com/en/3.2/topics/settings/
+
+For the full list of settings and their values, see
+https://docs.djangoproject.com/en/3.2/ref/settings/
+"""
+import os
+from pathlib import Path
+import dj_database_url
+from django.contrib.messages import constants as messages
+
+import environ
+
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False),
+    STRIPE_PUBLIC_KEY=(str, ' '),
+    STRIPE_SECRET_KEY=(str, ' '),
+    YOUR_SECRET_KEY=(str, ''),
+    STRIPE_WH_SECRET=(str, ''),
+    SECRET_KEY=(str, 'test'),
+    USE_AWS=(bool, False),
+    AWS_ACCESS_KEY_ID=(str, ''),
+    AWS_SECRET_ACCESS_KEY=(str, ''),
+    AWS_DEFAULT_ACL=(str, None),
+    DATABASE_URL=(str, '')
+)
+
+# reading .env file
+try:
+    environ.Env.read_env()
+except expression as identifier:
+    pass
+
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = False
+
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Quick-start development settings - unsuitable for bookion
+# See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
+
+# SECURITY WARNING: keep the secret key used in bookion secret!
+SECRET_KEY = os.environ.get('SECRET_KEY', env('SECRET_KEY'))
+
+ALLOWED_HOSTS = ['secondhandbookk.herokuapp.com', 'localhost']
+
+
+# Application definition
+
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'puml_generator',
+    'checkout',
+    'books',
+    'profiles',
+    'bag',
+    'crispy_forms',
+    'storages',
+    'comment',
+    'newsletter',
+    'django.contrib.sitemaps',
+]
+
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+ROOT_URLCONF = 'secondhandbooks.urls'
+
+
+MESSAGE_TAGS = {
+    messages.DEBUG: 'alert-secondary',
+    messages.INFO: 'alert-info',
+    messages.SUCCESS: 'alert-success',
+    messages.WARNING: 'alert-warning',
+    messages.ERROR: 'alert-danger',
+}
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates'),
+            os.path.join(BASE_DIR, 'templates', 'allauth')
+        ],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
+                'bag.contexts.bag_contents',
+            ],
+            'builtins': [
+                'crispy_forms.templatetags.crispy_forms_tags',
+                'crispy_forms.templatetags.crispy_forms_field',
+            ]
+        },
+    },
+]
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+SITE_ID = 1
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+DEFAULT_FROM_EMAIL = 'renan.lagee@gmail.com'
+
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
+ACCOUNT_USERNAME_MIN_LENGTH = 4
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/'
+
+WSGI_APPLICATION = 'secondhandbooks.wsgi.application'
+
+
+# Database
+# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
+
+if os.environ or env('DATABASE_URL'):
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL', env('DATABASE_URL')))
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
+
+
+# Password validation
+# https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
+
+AUTH_PASSWORD_VALIDATORS = [
+    {
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    },
+]
+
+
+# Internationalization
+# https://docs.djangoproject.com/en/3.2/topics/i18n/
+
+LANGUAGE_CODE = 'en-us'
+
+TIME_ZONE = 'UTC'
+
+USE_I18N = True
+
+USE_L10N = True
+
+USE_TZ = True
+
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/3.2/howto/static-files/
+
+# STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+
+STATIC_URL = '/static/'
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+if os.environ or env('USE_AWS'):
+    # Cache control
+    AWS_S3_OBJECT_PARAMETERS = {
+        'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
+        'CacheControl': 'max-age=94608000',
+    }
+
+    # Bucket Config
+    AWS_DEFAULT_ACL = 'public-read'
+    AWS_STORAGE_BUCKET_NAME = 'secondhandbookteste'
+    AWS_S3_REGION_NAME = 'us-east-2'
+    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID', env('AWS_ACCESS_KEY_ID'))
+    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY', env('AWS_SECRET_ACCESS_KEY'))
+    AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME }.amazonaws.com'
+    AWS_HEADERS = {
+     'Cache-Control': 'max-age=86400',
+    }
+
+    # Static and media files
+    STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+    STATICFILES_LOCATION = 'static'
+    DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+    MEDIAFILES_LOCATION = 'media'
+
+    # Override static and media URLs in production
+    STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
+    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
+
+# Default primary key field type
+# https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+STANDARD_DELIVERY_PERCENTAGE = 10
+STRIPE_CURRENCY = 'usd'
+STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_PUBLIC_KEY', env('STRIPE_PUBLIC_KEY'))
+STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY', env('STRIPE_SECRET_KEY'))
+STRIPE_WH_SECRET = os.environ.get('STRIPE_WH_SECRET', env('STRIPE_WH_SECRET'))
+
+```
+
+| File |   file path  |
+| --- |   ---  |
+| 01 |  `secondhandbooks/secondhandbooks/views.py `  |
+
+No errors identified
+
+```
+from django.shortcuts import render
+
+
+def handler404(request, exception):
+    return render(request, '404.html', status=404)
+
+
+def handler400(request, exception):
+    return render(request, '400.html', status=400)
+
+
+def handler403(request, exception):
+    return render(request, '403.html', status=403)
+
+
+def handler500(request):
+    return render(request, '500.html', status=500)
+
+```
+
+| File |   file path  |
+| --- |   ---  |
+| 01 |  `secondhandbooks/secondhandbooks/wsgi.py `  |
+
+No errors identified
+
+```
+"""
+WSGI config for secondhandbooks project.
+
+It exposes the WSGI callable as a module-level variable named ``application``.
+
+For more information on this file, see
+https://docs.djangoproject.com/en/3.2/howto/deployment/wsgi/
+"""
+
+import os
+
+from django.core.wsgi import get_wsgi_application
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'secondhandbooks.settings')
+
+application = get_wsgi_application()
+
+```
+
+| File |   file path  |
+| --- |   ---  |
+| 01 |  `secondhandbooks/custom_storages.py `  |
+
+No errors identified
+
+```
+from django.conf import settings
+from storages.backends.s3boto3 import S3Boto3Storage
+
+
+class StaticStorage(S3Boto3Storage):
+    location = settings.STATICFILES_LOCATION
+
+
+class MediaStorage(S3Boto3Storage):
+    location = settings.MEDIAFILES_LOCATION
+
+
+```
+
+| File |   file path  |
+| --- |   ---  |
+| 01 |  `secondhandbooks/manage.py `  |
+
+No errors identified
+
+```
+#!/usr/bin/env python
+"""Django's command-line utility for administrative tasks."""
+import os
+import sys
+
+
+def main():
+    """Run administrative tasks."""
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'secondhandbooks.settings')
+    try:
+        from django.core.management import execute_from_command_line
+    except ImportError as exc:
+        raise ImportError(
+            "Couldn't import Django. Are you sure it's installed and "
+            "available on your PYTHONPATH environment variable? Did you "
+            "forget to activate a virtual environment?"
+        ) from exc
+    execute_from_command_line(sys.argv)
+
+
+if __name__ == '__main__':
+    main()
+()
 
 ```
