@@ -2571,3 +2571,237 @@ def webhook(request):
     return response
 
 ```
+
+| File |   file path  |
+| --- |   ---  |
+| 01 |  `comment/tests/tests_forms.py `  |
+
+No errors identified
+
+```
+from django.test import TestCase
+from comment.forms import CommentForm
+
+
+"""
+class to test form CommentForm
+"""
+
+
+class CommentFormTestCase(TestCase):
+
+    def test_comment_form_valid(self):
+        """
+        Check if the form is valid
+        """
+        form = CommentForm(data={
+            'name': 'Teste',
+            'email': 'teste@gmail.com',
+            'body': 'This is a valid'
+        })
+        self.assertTrue(form.is_valid())
+
+    def test_comment_form_invalid_skip_name(self):
+        """
+        Check if the form is invalid, parameter name not invite
+        """
+        form = CommentForm(data={
+            'email': 'colombiano@gmail.com',
+            'body': 'This is a valid'
+        })
+        self.assertFalse(form.is_valid(), form.errors)
+
+    def test_comment_form_invalid_skip_email(self):
+        """
+        Check if the form is invalid, parameter email not invite
+        """
+        form = CommentForm(data={
+            'name': 'Colombiano',
+            'body': 'This is a valid'
+        })
+        self.assertFalse(form.is_valid(), form.errors)
+
+    def test_comment_form_invalid_skip_body(self):
+        """
+        Check if the form is invalid, parameter body not invite
+        """
+        form = CommentForm(data={
+            'email': 'colombiano@gmail.com',
+            'name': 'Colombiano'
+        })
+        self.assertFalse(form.is_valid(), form.errors)
+
+
+
+```
+
+| File |   file path  |
+| --- |   ---  |
+| 01 |  `comment/tests/tests_models.py `  |
+
+No errors identified
+
+```
+from django.contrib.auth.models import User
+from django.test import TestCase
+from comment.models import Comment
+from books.models import Book
+
+
+"""
+class to test model Comment
+"""
+
+
+class CommentTestCase(TestCase):
+
+
+    def setUp(self):
+        """
+        Defined function before condition for test
+        """
+
+        user = User.objects.create(username='test', password='test')
+
+        book = Book.objects.create(
+            name="Harry Potter",
+            description="is very good book",
+            price=73.54
+        )
+        Comment.objects.create(
+            book=book,
+            name="Carlos",
+            email="carlos@test.com",
+            body="I like this post"
+        )
+
+        Comment.objects.create(
+            book=book,
+            name="Test",
+            email="test@test.com",
+            body="I like this post"
+        )
+
+    def test_comment_return_str(self):
+        """
+        Test string for comment
+        """
+        comment = Comment.objects.get(name="Carlos")
+        self.assertEquals(comment.__str__(), "Comment I like this post by Carlos")
+
+    def test_confirm_data(self):
+        """
+        Test confirm objects atributes
+        """
+        comment = Comment.objects.get(name="Carlos")
+        self.assertEquals(comment.name, "Carlos")
+        self.assertEquals(comment.email, "carlos@test.com")
+        self.assertEquals(comment.body, "I like this post")
+
+    def test_comment_orderind(self):
+        """
+        Test ordering comment
+        """
+        comments = Comment.objects.all()
+        self.assertEquals(comments[0].name, "Test")
+        self.assertEquals(comments[1].name, "Carlos")
+        self.assertGreater(comments[0].created_on, comments[1].created_on)
+
+
+```
+
+| File |   file path  |
+| --- |   ---  |
+| 01 |  `comment/admin.py `  |
+
+No errors identified
+
+```
+from django.contrib import admin
+from .models import Comment
+# Register your models here.
+
+
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ('name', 'body', 'book', 'created_on', 'active')
+    list_filter = ('active', 'created_on')
+    search_fields = ('name', 'email', 'body')
+    actions = ['approve_comments']
+
+    def approve_comments(self, request, queryset):
+        queryset.update(active=True)
+
+
+```
+
+| File |   file path  |
+| --- |   ---  |
+| 01 |  `comment/apps.py `  |
+
+No errors identified
+
+```
+from django.apps import AppConfig
+
+
+class CommentConfig(AppConfig):
+    name = 'comment'
+
+
+```
+
+| File |   file path  |
+| --- |   ---  |
+| 01 |  `comment/forms.py `  |
+
+No errors identified
+
+```
+from .models import Comment
+from django import forms
+
+
+class CommentForm(forms.ModelForm):
+    """
+    Class user validated comment and created new
+    """
+
+    name = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}), label="Name", max_length=80)
+    email = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}), label="Email")
+    body = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control'}), label="Comment")
+
+    class Meta:
+        model = Comment
+        fields = ('name', 'email', 'body')
+
+```
+
+| File |   file path  |
+| --- |   ---  |
+| 01 |  `comment/models.py `  |
+
+No errors identified
+
+```
+from django.db import models
+from books.models import Book
+
+
+# Create your models here.
+class Comment(models.Model):
+    book = models.ForeignKey(Book, on_delete=models.CASCADE, related_name='comments')
+    name = models.CharField(max_length=80)
+    email = models.EmailField()
+    body = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
+    active = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ['-created_on']
+
+    def __str__(self):
+        return 'Comment {} by {}'.format(self.body, self.name)
+
+
+```
