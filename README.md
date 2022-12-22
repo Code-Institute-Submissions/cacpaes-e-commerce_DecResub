@@ -5,7 +5,8 @@ SecondHandBooks is an online store that sells used books in great condition and 
 
 [View website in Heroku Pages](https://secondhandbookk.herokuapp.com/)
 
-![homepage](https://user-images.githubusercontent.com/93129370/204146480-9ed80cfb-d9ac-424a-a569-9964228a84d2.png)
+![homepage](https://user-images.githubusercontent.com/93129370/209137503-ed524027-992f-4a33-82f2-373da8106f0c.png)
+
 
 <h2>Contents</h2>
 
@@ -49,16 +50,14 @@ The idea of marketing and promotion would be the presence on social networks aim
 *  As an user, I want to register or connect with the company, so I can be informed with the news and promotions.
 *  As a site owner, I want to easily add, edit or remove products, so I can provide new products or correct some information.
 *  As a site owner, I want to send a communication to the subscribers of the site, so I can send promotions and communications.
-*  As a site owner, I I want to update stock and order status, so I can keep accurate information.
 
 
 <h3>Scope</h3>
 
 <p>For the scope of this project the following key points were determined.</p>
 
-*  Allow the site owner to update stock and order status direct from the website.
-*  Allow the site owner add, update or remove produtos direct from the website.
-*  Allow the user to add and manipulate the products in the bag before checkout.
+*  Allow the site owner add, update or remove books direct from the website.
+*  Allow the user to add and manipulate the books in the bag before checkout.
 *  Allow logged in users to interact with comments and rating.
 *  Allow users to manipulate their delivery details informations.
 *  Allow the user to create an account to keep the information saved.
@@ -73,15 +72,20 @@ The idea of marketing and promotion would be the presence on social networks aim
 
 <p>The page structure for SecondHandBooks Store was determined as follows:</p>
 
-  *  Home, profile, products (filter pages for: Categories / Offers), shopbag, checkout (checkout page / checkout success), management (Product Manag. / Stock Manag. / Order Status Manag. / New Letter Manag.).
+  *  Home, profile, books (filter pages for: Category / Books), shopbag, checkout (checkout page / checkout success).
 
 <p>For users not logged in, will be displayed:</p>
 
-*  Home, products (filter pages for: Categories / Offers), sign in, sign up, shopbag, checkout (checkout page / checkout success).
+*  Home, books (filter pages for: Categories / books), Login/Register, shopbag, checkout (checkout page).
+
+<p>For users logged in, will be displayed:</p>
+
+*  Home, books (filter pages for: Categories / books), My account (My profile / Logout), shopbag, checkout (checkout page / checkout success).
+*  My profile will contain My orders and Update information.
 
 <p>For superuser (site owner) logged in, will be displayed:</P>
 
-*  Home, products (filter pages for: Categories / Offers), management (Product Manag. / Stock Manag. / Order Status Manag. / New Letter Manag.), My account (My profile / Logout), shopbag, checkout (checkout page / checkout success).
+*  Home, books (filter pages for: Categories / books), Book management (Delete, add and edit a book), My account (My profile /Book Management/ Logout), shopbag, checkout (checkout page / checkout success).
 *  My profile will be the same as users.
 
 
@@ -111,13 +115,12 @@ Regarding the purchase and checkout process, the user must be logged in. It is n
 <h3>Surface</h3>
 
 *  Colours
-<p>For the Street Craft project I used predominantly standard Bootstrap colors.<br>
-For the texts, the colors white or black were applied according to the background color to have the proper contrast.</p>
 
+![colors](https://user-images.githubusercontent.com/93129370/187049930-fc432acf-ba16-4e72-8100-75311b4fd897.png)
 
 <h3>Typography</h3>
 
-<p>The site's font was chosen from google fonts.</p>
+The site's font was chosen from google fonts, The font used on this site was [site was](https://fonts.google.com/specimen/Roboto)
 
 
 <h2>Imagery</h2>
