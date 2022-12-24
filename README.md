@@ -142,16 +142,16 @@ The site's font was chosen from google fonts, The font used on this site was [si
 
 * Navbar that is present on all pages for user navigation through the online store.
 
-![navbar](https://user-images.githubusercontent.com/93129370/204151904-d548d4d0-58e7-46e1-a483-9e252f28f64f.png)
+![navbar](https://user-images.githubusercontent.com/93129370/209439237-f15abbaf-6bc7-43bd-9e76-ef4ef309659e.png)
 
 
 * Is present for everyone the logo/banner that redirects to the home page.
-* The other links are displayed depending on whether the user is logged off or not, and what type of account.
-* For not logged users, the links are displayed: : Sign in and Sign up.
+* The other links are displayed depending on whether the user is logged off or not, and what type of my account.
+* For not logged users, the links are displayed: : Register and Login.
 * For logged users, the links are displayed: : My Account(Dropdown) - My Profile / Logout
-* For logged superusers, the links are displayed: : My Account(Dropdown) - My Profile / Logout and Management(Dropdown) 
+* For logged superusers, the links are displayed: : My Account(Dropdown) - My Profile / Logout and Book Management(Dropdown) 
 
-![navbarmanage](https://user-images.githubusercontent.com/93129370/204152129-efb55147-326d-437b-afba-9b9a8fc11b59.png)
+![navbarmanage](https://user-images.githubusercontent.com/93129370/209439481-16910907-235c-41fb-a388-c92dc4e0635f.png)
 
 
 * Navbar is responsive, for mobiles it automatically groups to drowdown menu.
@@ -164,7 +164,7 @@ The site's font was chosen from google fonts, The font used on this site was [si
 
 * The footer is shown only when reaching the end of the page, it counts with a few navegation links, News Letter - Subscribe button and Social links.
 
-![footer](https://user-images.githubusercontent.com/93129370/204152284-99c79f80-d06d-4c99-aa31-9ec5da2cc8fa.png)
+![footer](https://user-images.githubusercontent.com/93129370/209439637-cab1175d-c2bb-4778-841f-9df24378a42a.png)
 
 
 * The News Letter - Subscribe button, open a modal form when clicked. Where the user can subscribe using e-mail and a name.
@@ -174,7 +174,8 @@ The site's font was chosen from google fonts, The font used on this site was [si
 
 <p>At the beginning of the home page, the first section has a book image.</p>
 
-![home](https://user-images.githubusercontent.com/93129370/204152502-813d9de9-d964-4464-8c69-05232c24aecc.png)
+![homepage](https://user-images.githubusercontent.com/93129370/209439811-b7dd6690-b413-4d65-b03e-818905dfb8dc.png)
+
 
 
 <h3>Sign up</h3>
@@ -205,7 +206,8 @@ The site's font was chosen from google fonts, The font used on this site was [si
 * Shows some information about purchase history.
 * The delivery data is available as a form that can be changed. By clicking the update info button the information entered into the fields is saved and a success message is displayed
 
-![myprofile](https://user-images.githubusercontent.com/93129370/204153201-041907f7-b076-41f6-a873-a8fb54503def.png)
+![myprofile](https://user-images.githubusercontent.com/93129370/209440045-b4c0184c-d287-44ec-98f1-39599bec0d5c.png)
+
 
 
 <h3>My Orders</h3>
@@ -214,7 +216,8 @@ The site's font was chosen from google fonts, The font used on this site was [si
 * A list with the following information: Order Number / Date / Items / Order Total
 * The Order Number ia a link to redirect to that order details page.
 
-![myorder](https://user-images.githubusercontent.com/93129370/204153357-62772c30-24a8-46dd-9a51-1145bf28dfbe.png)
+![ordernumber](https://user-images.githubusercontent.com/93129370/209440143-53067c5e-f41b-4d54-ac66-798a1f263639.png)
+
 
 
 <h3>Order Details</h3>
@@ -224,7 +227,8 @@ The site's font was chosen from google fonts, The font used on this site was [si
 * It also has two buttons, one to go back to My Profile page and the other to My Orders.
 
 
-![myorderdetail](https://user-images.githubusercontent.com/93129370/204153457-d3a6080a-b1fb-4e48-8317-905d1561fa22.png)
+![orderdetail](https://user-images.githubusercontent.com/93129370/209440231-379804ea-5e97-45f4-9dca-7d58cf0fd833.png)
+
 
 
 <h3>All Products</h3>
