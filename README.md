@@ -231,47 +231,47 @@ The site's font was chosen from google fonts, The font used on this site was [si
 
 
 
-<h3>All Products</h3>
+<h3>All Books</h3>
 
-* The main page for displaying the store's products.
-* At the top, it shows how many products there are for a given search / filter. A selection box is present to sort among all products.
-* The user can add the product to the shopbag via the product card container and select the quantity.
-* By clicking on the product image, the user is redirected to the product detail page.
+* The main page for displaying the store's books.
+* At the top, it shows how many books exist for a given search/filter. A checkbox is present to sort among all books.
+* The user can add the book to the bag by clicking on the "add to bag" button.
+* By clicking on the book image, the user is redirected to the book detail page.
 
-![allbooks](https://user-images.githubusercontent.com/93129370/204153660-fe40cfa1-b30e-443a-a53f-789e39ea9e5c.png)
+![allbooks](https://user-images.githubusercontent.com/93129370/209442760-e2a9c7a2-37ef-4b25-bddd-cb687c145435.png)
+
 
 
 
 <h3>Product Details</h3>
 
-* It shows a picture of the product and just below the average reviews. If the user is logged in, a button is displayed that redirects to the reviews page.
+* It shows a picture of the book and just below the average reviews. If the user is logged in, the user can make a rating.
 * It is possible to see all information.
-* Buttons for KEEP SHOPPING (back to products page) and ADD TO BAG.
+* Buttons for KEEP SHOPPING (back to books page) and ADD TO BAG.
+
+![bookdetail](https://user-images.githubusercontent.com/93129370/209442874-b39c8916-5c29-42d1-b06f-9ce214affe98.png)
+
+
 * If logged as superuser the buttons to edit and delete product are visible at the end.
-* Delete product button, redirect to a new page to confirm action.
 
-
-![bookdetail](https://user-images.githubusercontent.com/93129370/204154038-4971d416-96b0-4be6-8daa-8d15e16279da.png)
-
-![managebookdetail](https://user-images.githubusercontent.com/93129370/204153930-7f36ec96-db4d-46d8-abd5-db9d3d5a1778.png)
-
-
+![managebook](https://user-images.githubusercontent.com/93129370/209443058-39ec12f2-daaf-4965-bf58-8cf70a3adab2.png)
 
 
 <h3>Shopbag</h3>
 
 * If the shopbag is empty, only a text is displayed and the button to KEEP SHOPPING
-* It shows a list with the added products.
-* A product image with the name, sku and unit price.
+* It shows a list with the added books.
+
+![bag](https://user-images.githubusercontent.com/93129370/209443315-f25b1d69-7ec6-4274-8e57-76a3da4b3db4.png)
+
+* A book image with the name, sku and unit price.
 * A field to modify the quantity with the button to update. And the button to remove the product.
 * The order and delivery totals are displayed.
-* If the user is logged in, a field to add the discount coupon is displayed and the button to apply it. If it is valid the discount is applied and the discount field is displayed.
-* At the end are the buttons for KEEP SHOPPING (back to products page) and SECURE CHECKOUT (redirect to checkout page).
+* At the end are the buttons for KEEP SHOPPING (back to books page) and SECURE CHECKOUT (redirect to checkout page).
 
 
-![bag](https://user-images.githubusercontent.com/93129370/204154233-9218fa7c-faef-46b6-a7a6-1cad51469143.png)
+![shoppingbag](https://user-images.githubusercontent.com/93129370/209443322-f081503f-47c6-4243-9d6d-2ccf1bd925a5.png)
 
-![shoppingbag](https://user-images.githubusercontent.com/93129370/204154329-565b47a6-1c0b-44ef-b3c2-c53c67900ab1.png)
 
 
 
@@ -283,18 +283,20 @@ The site's font was chosen from google fonts, The font used on this site was [si
 * Field for credit card data, using the Stripe tool.
 * At the end are the buttons for Adjust Bag (back to shopbag page) and Complete Order (submit the form if valid, and redirect to success checkout page).
 
-![checkout](https://user-images.githubusercontent.com/93129370/204154471-7947f7d9-66f0-4ccd-807c-75dbd08accd7.png)
+![checkout](https://user-images.githubusercontent.com/93129370/209443469-73a09ebc-ff23-47e2-8999-7f3cf5373a21.png)
 
 
 <h3>Checkout Success</h3>
 
-* As soon as the order is processed and payment has been confirmed successful, an e-mail is sent to the user with the order information and the order number.
-* It shows the details of the order. It is possible to see the order number, date, products and quantity, billing info, delivering info, contact info.
-* At the end have one button Check out the latest promotions (redirect to products page)
+* As soon as the order is processed and payment has been confirmed successful, a success message appears on the screen.
 
 ![successorder](https://user-images.githubusercontent.com/93129370/204154647-d8948a00-8fb3-4889-99f4-1ee0f1d746f3.png)
 
-![order](https://user-images.githubusercontent.com/93129370/204154757-da8db366-ff33-43ec-969d-d2d141367b56.png)
+* It shows the details of the order. It is possible to see the order number, date, products and quantity, billing info, delivering info, contact info.
+* At the end have one button now check out other books! (redirect to books page)
+
+![checkoutdetail](https://user-images.githubusercontent.com/93129370/209443794-6898328f-89ee-4739-9e5d-4ad892c63aa3.png)
+
 
 
 
@@ -315,17 +317,22 @@ The site's font was chosen from google fonts, The font used on this site was [si
 
 * To delete a book just click the DELETE button
 
-![managebookdetail](https://user-images.githubusercontent.com/93129370/204155091-7b0d12b3-ce31-4b91-8191-6334ae6cca4c.png)
+![managebook](https://user-images.githubusercontent.com/93129370/209443858-b757f5d8-4cf0-400e-abea-491d0de4b27b.png)
+
 
 
 * When add, edit and delete a book a success message appears.
+
+![successfullyupdated](https://user-images.githubusercontent.com/93129370/209443932-0af890a1-f7f4-4134-a097-221cf8818aa0.png)
+
 
 
 <h3>Management - Custom Facebook Page</h3>
 
 *  A customized page for the store was created on Facebook. In order to increase the presence of the store on social networks.
 
-![facebookpage](https://user-images.githubusercontent.com/93129370/204155357-3a63a129-defd-457b-828a-31cb1a8e5b23.png)
+![facebookpage](https://user-images.githubusercontent.com/93129370/209444166-b92f6b59-baa5-40c7-a890-9ef11e3b2ac3.png)
+
 
 
 <h2>Features Left to Implement</h2>
@@ -339,320 +346,6 @@ The site's font was chosen from google fonts, The font used on this site was [si
 <h2>Testing</h2>
 
 All the tests performed in the project are documented in the file [TESTING.md](https://github.com/cacpaes/e-commerce/blob/main/TESTING.md)
-
- <h2>Code Validation</h2>
- 
- <h3>HTML validation</h3>
- 
- <p>All HTML was tested using Nu HTML Checker and returned no errors.</p>
- 
- <h3>CSS validation</h3>
-
- <p>All custom CSS code was tested using the Jigsaw css validator and showed no errors relating to custom code. All errors were relating to the Materialize CDN CSS.</p>
- 
- <h3>JS validation</h3>
- 
-<p>All Javascript code was tested using Beautify Tool Javascript validator and returned no errors.<p>
-
- <h3>Python validation</h3>
- 
-<p>All Python was tested and checked against pep8 standards using pylint in vscode and returned no errors.</p>
- 
- <h2>Automated</h2>
- 
- <p>Here is a report of the validations made on the code and their results</p>
-  
-            Operations to perform:
-                       Synchronize unmigrated apps: allauth, crispy_forms, messages, puml_generator, sitemaps, staticfiles, storages
-                       Apply all migrations: account, admin, auth, books, checkout, comment, contenttypes, newsletter, profiles, sessions, sites, socialaccount
-                       Running pre-migrate handlers for application admin
-                       Running pre-migrate handlers for application auth
-                       Running pre-migrate handlers for application contenttypes
-                       Running pre-migrate handlers for application sessions
-                       Running pre-migrate handlers for application sites
-                       Running pre-migrate handlers for application allauth
-                       Running pre-migrate handlers for application account
-                       Running pre-migrate handlers for application socialaccount
-                       Running pre-migrate handlers for application checkout
-                       Running pre-migrate handlers for application books
-                       Running pre-migrate handlers for application profiles
-                       Running pre-migrate handlers for application comment
-                       Running pre-migrate handlers for application newsletter
-                       Synchronizing apps without migrations:
-                           Creating tables...
-                              Running deferred SQL...
-                       Running migrations:
-                         Applying contenttypes.0001_initial... OK (0.004s)
-                         Applying auth.0001_initial... OK (0.014s)
-                         Applying account.0001_initial... OK (0.012s)
-                         Applying account.0002_email_max_length... OK (0.008s)
-                         Applying admin.0001_initial... OK (0.008s)
-                         Applying admin.0002_logentry_remove_auto_add... OK (0.009s)
-                         Applying admin.0003_logentry_add_action_flag_choices... OK (0.009s)
-                         Applying contenttypes.0002_remove_content_type_name... OK (0.019s)
-                         Applying auth.0002_alter_permission_name_max_length... OK (0.005s)
-                         Applying auth.0003_alter_user_email_max_length... OK (0.009s)
-                         Applying auth.0004_alter_user_username_opts... OK (0.009s)
-                         Applying auth.0005_alter_user_last_login_null... OK (0.009s)
-                         Applying auth.0006_require_contenttypes_0002... OK (0.001s)
-                         Applying auth.0007_alter_validators_add_error_messages... OK (0.010s)
-                         Applying auth.0008_alter_user_username_max_length... OK (0.010s)
-                         Applying auth.0009_alter_user_last_name_max_length... OK (0.008s)
-                         Applying auth.0010_alter_group_name_max_length... OK (0.007s)
-                         Applying auth.0011_update_proxy_permissions... OK (0.007s)
-                         Applying books.0001_initial... OK (0.007s)
-                         Applying books.0002_review... OK (0.008s)
-                         Applying books.0003_auto_20221110_2242... OK (0.021s)
-                         Applying books.0004_auto_20221120_1802... OK (0.011s)
-                         Applying profiles.0001_initial... OK (0.014s)
-                         Applying checkout.0001_initial... OK (0.034s)
-                         Applying checkout.0002_remove_orderlineitem_book_size... OK (0.044s)
-                         Applying comment.0001_initial... OK (0.018s)
-                         Applying newsletter.0001_initial... OK (0.002s)
-                         Applying newsletter.0002_subscribedusers_user... OK (0.020s)
-                         Applying sessions.0001_initial... OK (0.002s)
-                         Applying sites.0001_initial... OK (0.002s)
-                         Applying sites.0002_alter_domain_unique... OK (0.004s)
-                         Applying socialaccount.0001_initial... OK (0.058s)
-                         Applying socialaccount.0002_token_max_lengths... OK (0.029s)
-                         Applying socialaccount.0003_extra_data_default_dict... OK (0.010s)
-                     Running post-migrate handlers for application admin
-                         Adding content type 'admin | logentry'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Running post-migrate handlers for application auth
-                         Adding content type 'auth | permission'
-                         Adding content type 'auth | group'
-                         Adding content type 'auth | user'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Running post-migrate handlers for application contenttypes
-                         Adding content type 'contenttypes | contenttype'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Running post-migrate handlers for application sessions
-                         Adding content type 'sessions | session'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Running post-migrate handlers for application sites
-                         Adding content type 'sites | site'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Creating example.com Site object
-                         Running post-migrate handlers for application allauth
-                         Running post-migrate handlers for application account
-                         Adding content type 'account | emailaddress'
-                         Adding content type 'account | emailconfirmation'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Running post-migrate handlers for application socialaccount
-                         Adding content type 'socialaccount | socialaccount'
-                         Adding content type 'socialaccount | socialapp'
-                         Adding content type 'socialaccount | socialtoken'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Running post-migrate handlers for application checkout
-                         Adding content type 'checkout | order'
-                         Adding content type 'checkout | orderlineitem'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Running post-migrate handlers for application books
-                         Adding content type 'books | author'
-                         Adding content type 'books | category'
-                         Adding content type 'books | book'
-                         Adding content type 'books | review'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Running post-migrate handlers for application profiles
-                         Adding content type 'profiles | userprofile'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Running post-migrate handlers for application comment
-                         Adding content type 'comment | comment'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Adding permission 'Permission object (None)'
-                         Creating test database for alias 'default' ('file:memorydb_default?mode=memory&cache=shared')...
-                         test_view_add_bag_error_book_not_exist (bag.tests.tests_views.BagViewsTestCase)
-                         Test return add bag user book not exist ... ok
-                         test_view_add_bag_sucess (bag.tests.tests_views.BagViewsTestCase)
-                         Test return add bag user ... ok
-                         test_view_adjust_bag_error_book_not_exist (bag.tests.tests_views.BagViewsTestCase)
-                         Test return adjust bag user book not exist ... ok
-                         test_view_adjust_bag_sucess (bag.tests.tests_views.BagViewsTestCase)
-                         Test return adjust bag user ... ok
-                         test_view_adjust_remove_sucess (bag.tests.tests_views.BagViewsTestCase)
-                         Test return remove bag user ... ok
-                         test_view_bag_sucess (bag.tests.tests_views.BagViewsTestCase)
-                         Test return bag user ... ok
-                         test_view_remove_bag_error_book_not_exist (bag.tests.tests_views.BagViewsTestCase)
-                         Test return remove bag user book not exist ... ok
-                         test_book_form_invalid_description (books.tests.tests_forms.BookFormTestCase)
-                         Check if the form is invalid, parameter description none ... ok
-                         test_book_form_invalid_price_none (books.tests.tests_forms.BookFormTestCase)
-                         Check if the form is invalid, parameter price none ... ok
-                         test_book_form_invalid_skip_value_name (books.tests.tests_forms.BookFormTestCase)
-                         Check if the form is invalid, parameter name blank ... ok
-                         test_book_form_valid (books.tests.tests_forms.BookFormTestCase)
-                         Check if the form is valid ... ok
-                         test_review_form_invalid_review_negative (books.tests.tests_forms.ReviewFormTestCase)
-                         Check if the form is invalid, parameter review value negative ... ok
-                         test_review_form_invalid_review_value_greather_than_five (books.tests.tests_forms.ReviewFormTestCase)
-                         Check if the form is invalid, parameter review value greather than 5 ... ok
-                         test_review_form_invalid_skip_value_review (books.tests.tests_forms.ReviewFormTestCase)
-                         Check if the form is invalid, parameter name not review ... ok
-                         test_review_form_valid (books.tests.tests_forms.ReviewFormTestCase)
-                         Check if the form is valid ... ok
-                         test_author_return_str (books.tests.tests_models.AuthorTestCase)
-                         Test string for author ... ok
-                         test_confirm_data (books.tests.tests_models.AuthorTestCase)
-                         Test confirm objects atributes ... ok
-                         test_book_return_str (books.tests.tests_models.BookTestCase)
-                         Test string for book ... ok
-                         test_confirm_data (books.tests.tests_models.BookTestCase)
-                         Test confirm objects atributes ... ok
-                         test_cetegory_return_str (books.tests.tests_models.CategoryTestCase)
-                         Test string for cetegory ... ok
-                         test_confirm_data (books.tests.tests_models.CategoryTestCase)
-                         Test confirm objects atributes ... ok
-                         test_confirm_data (books.tests.tests_models.ReviewTestCase)
-                         Test confirm objects atributes ... ok
-                         test_review_orderind (books.tests.tests_models.ReviewTestCase)
-                         Test ordering review ... ok
-                         test_review_return_str (books.tests.tests_models.ReviewTestCase)
-                         Test string for review ... ok
-                         test_add_book_not_permission (books.tests.tests_views.BookingViewsTestCase)
-                         View return error add book user not permission 403, reponse redirect ... ok
-                         test_all_books_sucess_200 (books.tests.tests_views.BookingViewsTestCase)
-                         View return all books, not parametes ... ok
-                         test_delete_book_not_permission (books.tests.tests_views.BookingViewsTestCase)
-                         View return error delete book user not permission 403, reponse redirect ... ok
-                         test_delete_book_sucess (books.tests.tests_views.BookingViewsTestCase)
-                         View return delete book ... ok
-                         test_detail_book_error_404 (books.tests.tests_views.BookingViewsTestCase)
-                         View return error book 404 ... ok
-                         test_detail_book_sucess_200 (books.tests.tests_views.BookingViewsTestCase)
-                         View return details book ... ok
-                         test_edit_book_not_permission (books.tests.tests_views.BookingViewsTestCase)
-                         View return error edit book user not permission 403, reponse redirect ... ok
-                         test_checkout_form_invalid_skip_value_full_name (checkout.tests.tests_forms.OrderFormTestCase)
-                         Check if the form is invalid, parameter full name ... ok
-                         test_country_number_form_invalid (checkout.tests.tests_forms.OrderFormTestCase)
-                         Check if the form is invalid, country phone number ... ok
-                         test_ordem_form_invalid_email (checkout.tests.tests_forms.OrderFormTestCase)
-                         Check if the form is invalid, parameter email ... ok
-                         test_order_form_valid (checkout.tests.tests_forms.OrderFormTestCase)
-                         Check if the form is valid ... ok
-                         test_phone_number_form_invalid (checkout.tests.tests_forms.OrderFormTestCase)
-                         Check if the form is invalid, parameter phone number ... ok
-                         test_order_line_item_return_str (checkout.tests.tests_models.OrderLineItemTestCase)
-                         Test string for OrderLineItem ... ok
-                         test_order_return_str (checkout.tests.tests_models.OrderTestCase)
-                         Test string for Order ... ok
-                         test_cache_checkout_data_sucess_200 (checkout.tests.tests_views.BookingViewsTestCase)
-                         View checkout, parametes ... ok
-                         test_cache_checkout_erro_400 (checkout.tests.tests_views.BookingViewsTestCase)
-                         View checkout, not parametes error ... ok
-                         test_checkout_erro_302 (checkout.tests.tests_views.BookingViewsTestCase)
-                         View checkout, not parametes error ... ok
-                         test_checkout_form (checkout.tests.tests_views.BookingViewsTestCase)
-                         View checkout, form checkout ... ok
-                         test_checkout_sucess_ordem_not_pass (checkout.tests.tests_views.BookingViewsTestCase)
-                         View checkout, checkout sucess order not parameter invalid ... ok
-                         test_checkout_sucess_ordem_pass_sucess (checkout.tests.tests_views.BookingViewsTestCase)
-                         View checkout, checkout sucess order valid ... ok
-                         test_comment_form_invalid_skip_body (comment.tests.tests_forms.CommentFormTestCase)
-                         Check if the form is invalid, parameter body not invite ... ok
-                         test_comment_form_invalid_skip_email (comment.tests.tests_forms.CommentFormTestCase)
-                         Check if the form is invalid, parameter email not invite ... ok
-                         test_comment_form_invalid_skip_name (comment.tests.tests_forms.CommentFormTestCase)
-                         Check if the form is invalid, parameter name not invite ... ok
-                         test_comment_form_valid (comment.tests.tests_forms.CommentFormTestCase)
-                         Check if the form is valid ... ok
-                         test_comment_orderind (comment.tests.tests_models.CommentTestCase)
-                         Test ordering comment ... ok
-                         test_comment_return_str (comment.tests.tests_models.CommentTestCase)
-                         Test string for comment ... ok
-                         test_confirm_data (comment.tests.tests_models.CommentTestCase)
-                         Test confirm objects atributes ... ok
-                         test_order_history_profile_not_found (profiles.tests.tests_views.ProfilesViewsTestCase)
-                         View Profiles, return order history error 404 ... ok
-                         test_order_history_profile_sucess (profiles.tests.tests_views.ProfilesViewsTestCase)
-                         View Profiles, return order history error 200 ... ok
-                         test_return_profile (profiles.tests.tests_views.ProfilesViewsTestCase)
-                         View Profiles, return profile ... ok
-
-                  ----------------------------------------------------------------------
-                  Ran 54 tests in 3.017s
-
-                  OK
-                  Destroying test database for alias 'default' ('file:memorydb_default?mode=memory&cache=shared')...
-                  Running post-migrate handlers for application newsletter
-                  Adding content type 'newsletter | subscribedusers'
-                  Adding permission 'Permission object (None)'
-                  Adding permission 'Permission object (None)'
-                  Adding permission 'Permission object (None)'
-                  Adding permission 'Permission object (None)'
-                  System check identified no issues (0 silenced).
-
- ![teste](https://user-images.githubusercontent.com/93129370/204150073-4a326d61-f9a6-4483-a751-24a36142aca5.png)
 
 
 <h2>Deployment</h2>
