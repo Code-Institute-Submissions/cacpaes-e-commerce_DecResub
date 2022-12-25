@@ -305,14 +305,16 @@ The site's font was chosen from google fonts, The font used on this site was [si
 * Accessible only to superuser.
 * It has a form for the site owner to easily add new products to the store.
 
-![addbook](https://user-images.githubusercontent.com/93129370/204154921-fc295673-0a5e-4bdf-bd8d-5ed9a7528cbc.png)
+![addbook](https://user-images.githubusercontent.com/93129370/209478107-c6acd5c9-99cd-4588-8c47-067665420c0e.png)
+
 
 
 * One button for cancel(redirect to My Prodile page) and one button for add product (If valid, submit form and add new product).
 * It has a form for the site owner to easily  edit products to the store.
 * One button for Update Book
 
-![editbook](https://user-images.githubusercontent.com/93129370/204155425-0f67e74d-0925-4002-a880-583b20e19a6c.png)
+![editbook](https://user-images.githubusercontent.com/93129370/209478120-221ca327-cd97-44b4-b182-51af6347e152.png)
+
 
 
 * To delete a book just click the DELETE button
@@ -358,17 +360,6 @@ All the tests performed in the project are documented in the file [TESTING.md](h
     * git commit -m "message" - to commit changes to the local repository.
     * git push - to push all committed changes to the GitHub repository.
 
-
-<h2>Deployment</h2>
-
-* To create this project I used GitHub and GitPod.
-* I used the Code Institute Gitpod Full Template, clicking on the "Use this template" button. From there I created the repository on Github with my username.
-* These commands were used for version control during project:
-    * git status - to check the status of the files to be commited.
-    * git add filename - to add files before committing.
-    * git commit -m "message" - to commit changes to the local repository.
-    * git push - to push all committed changes to the GitHub repository.
-
 <h3>Deployment</h3>
 
 <p> 1. Create Django project and app </p>
@@ -387,79 +378,80 @@ All the tests performed in the project are documented in the file [TESTING.md](h
 * I opened the heroku website and logged into my account
 * I created a new app with the project name, chose the region Europe
 * I opened the Resources section and searched for Heroku Postgres and selected it
-* I opened the Settings section and then Config VARS, after I initially added the keys needed to start development DATABASE_URL/SECRET_KEY/CLOUDINARY_URL;
+* I opened the Settings section and then Config VARS, after I initially added the keys needed to start development DATABASE_URL/SECRET_KEY/STRIPE_SECRET_KEY/STRIPE_PUBLIC_KEY/YOUR_SECRET_KEY/STRIPE_WH_SECRET/USE_AWS/AWS_ACCESS_KEY_ID/AWS_SECRET_ACCESS_KEY/AWS_DEFAULT_ACL;
 * Still in Config VARS I added the following keys: PORT with a value of 8000 and DISABLE_COLLECTSTATIC with a value of 1;
 
 <p> 3. Set up Django settings.py and necessary folders/files </p>
 
 * Set up to connect the environment variables
-         from pathlib import Path
-         import os
-         import dj_database_url
-         from django.contrib.messages import constants as messages
-         if os.path.isfile('env.py'):
-         import env
+     import os
+     from pathlib import Path
+     import dj_database_url
+     from django.contrib.messages import constants as messages
+         
+     import environ
          
 * Inside INSTALLED_APPS I added the necessary apps
 
 * For the database I replaced it with the following code
 
-        DATABASES = {
-        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+```
+       if os.environ or env('DATABASE_URL'):
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL',env('DATABASE_URL')))
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
+    }
+```
         
 * For the static files and media I replaced it with the following code to conect to Amazon (AWS)
 
-      STATIC_URL = '/static/'
-      STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-      
-      MEDIA_URL = '/media/'
-      MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-      
-      if 'USE_AWS' in os.environ:
-      # Cache Control
-      AWS_S3_OBJECT_PARAMETERS = {
-        'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
-        'CacheControl': 'max-age=94608000',
-      }
-      # Bucket Config
-      AWS_STORAGE_BUCKET_NAME = 'streetcraft'
-      AWS_S3_REGION_NAME = 'eu-west-1'
-      AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
-      AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
-      AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+        ```
+        STATIC_URL = '/static/'
+        STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
-      # Static and media files
-      STATICFILES_STORAGE = 'custom_storages.StaticStorage'
-      STATICFILES_LOCATION = 'static'
-      DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
-      MEDIAFILES_LOCATION = 'media'
+        MEDIA_URL = '/media/'
+        MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-      # Override static and media URLs in production
-      STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
-      MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
-      
-      
-* Set Google social account provider config.
+        if os.environ or env('USE_AWS'):
+            # Cache control
+            AWS_S3_OBJECT_PARAMETERS = {
+                'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
+                'CacheControl': 'max-age=94608000',
+            }
 
-      SOCIALACCOUNT_PROVIDERS = {
-          'google': {
-              'SCOPE': [
-                  'profile',
-                  'email',
-               ],
-               'AUTH_PARAMS': {
-                   'access_type': 'online',
-                }
-
+           # Bucket Config
+           AWS_DEFAULT_ACL = 'public-read'
+           AWS_STORAGE_BUCKET_NAME = 'secondhandbookteste'
+           AWS_S3_REGION_NAME = 'us-east-2'
+           AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID', env('AWS_ACCESS_KEY_ID'))
+           AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY', env('AWS_SECRET_ACCESS_KEY'))
+           AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME }.amazonaws.com'
+           AWS_HEADERS = {
+           'Cache-Control': 'max-age=86400',
            }
-      }
 
+           # Static and media files
+           STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+           STATICFILES_LOCATION = 'static'
+           DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+           MEDIAFILES_LOCATION = 'media'
 
+           # Override static and media URLs in production
+           STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
+           MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
+
+   
+        ```
 * Set up Stripe config.
 
       # Stripe setup
-      STRIPE_CURRENCY = 'usd'
+      STRIPE_CURRENCY = 'eur'
       STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
       STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
       STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
@@ -469,7 +461,7 @@ All the tests performed in the project are documented in the file [TESTING.md](h
       # E-mail setup
       if 'DEVELOPMENT' in os.environ:
           EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-          DEFAULT_FROM_EMAIL = 'streetcraft@example.com'
+          DEFAULT_FROM_EMAIL = 'secondhandbookk@example.com'
       else:
           EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
           EMAIL_USE_TLS = True
@@ -481,20 +473,21 @@ All the tests performed in the project are documented in the file [TESTING.md](h
          
 * Create a Procfile and add the following text
 
-      web: gunicorn streetcraft.wsgi:application
+      web: sh -c 'cd ./secondhandbooks/ && exec gunicorn secondhandbooks.wsgi --log-file -'
       
  
 <h3> 4. Final deployment. </h3>
 
 * In settings.py inside the Django project I changed DEBUG to:
   
-      DEBUG = 'DEVELOPMENT' in os.environ
+      DEBUG = false
          
 * I migrate database to ElephantSQL instance using DATABASE_URL settings, coping and pasting the URL without commit. Changing the DATABASES to: 
-
-      DATABASES = {
-      'default': dj_database_url.parse('elephantsql-database-url-here')
-      }
+    ```
+     DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL',env('DATABASE_URL')))
+    }
+    ```
       
 * In Heroku I went back to Settings > Config VARS and removed the DISABLE_COLLECTSTATIC var;
 * In Heroku I navigated to the Deploy section;
@@ -535,33 +528,33 @@ All the tests performed in the project are documented in the file [TESTING.md](h
 * Django - Used in the development of this project. Main python Framework.
 
       *The following python modules were used on this project:
-      asgiref==3.5.2
-           django-model2puml==0.2.1
-           asgiref==3.2.3
-           boto3==1.12.42
-           botocore==1.15.42
-           chardet==3.0.4
-           dj-database-url==0.5.0
-           Django==3.0.1
-           django-allauth==0.41.0
-           django-countries==6.0
-           django-crispy-forms==1.8.1
-           django-storages==1.9.1
-           docutils==0.15.2
-           gunicorn==20.0.4
-           idna==2.8
-           jmespath==0.9.5
-           oauthlib==3.1.0
-           Pillow==7.0.0
-           psycopg2-binary==2.8.5
-           python3-openid==3.1.0
-           pytz==2019.3
-           requests==2.22.0
-           requests-oauthlib==1.3.0
-           s3transfer==0.3.3
-           sqlparse==0.3.0
-           stripe==2.42.0
-           urllib3==1.25.7
+        asgiref==3.2.3
+        boto3==1.12.42
+        botocore==1.15.42
+        chardet==3.0.4
+        dj-database-url==0.5.0
+        Django==3.0.1
+        django-allauth==0.41.0
+        django-countries==6.0
+        django-crispy-forms==1.8.1
+        django-environ==0.9.0
+        django-model2puml==0.2.1
+        django-storages==1.9.1
+        docutils==0.15.2
+        gunicorn==20.0.4
+        idna==2.8
+        jmespath==0.9.5
+        oauthlib==3.1.0
+        Pillow==7.0.0
+        psycopg2-binary==2.8.5
+        python3-openid==3.1.0
+        pytz==2019.3
+        requests==2.22.0
+        requests-oauthlib==1.3.0
+        s3transfer==0.3.3
+        sqlparse==0.3.0
+        stripe==2.42.0
+        urllib3==1.25.7
 
 * Bootstrap - Used to . CSS/JS Framework for developing responsiveness and styling.
 
@@ -570,8 +563,6 @@ All the tests performed in the project are documented in the file [TESTING.md](h
 * Amazon AWS - Used to upload images and cloud hosting service.
 
 * Jquery Ajax - Used to load more content at garage and events pages.
-
-* Ludichart - Used to create the database diagram and agile images.
 
 * Pencil - Used to creat the wireframes.
 
@@ -609,11 +600,11 @@ All the tests performed in the project are documented in the file [TESTING.md](h
 
 <h3>Content</h3>
 
-All images used to create the demo content for the site were selected from: Bazaart, Bing and Google Images. I thank the curatorship of the three sites for the extraordinary images.
+All images used to create the demo content for the site were selected from: Google Images. I thank the curatorship of the three sites for the extraordinary images.
 
 <h3>Media</h3>
 
-* The photos used for Hero (Home page) and placeholder images was taken from [Bazzart](https://www.bazaart.me/) [Bing](https://www.bing.com/images/details/%7B0%7D) [Google Images](https://images.google.com/)
+* The photos used for Hero (Home page) and placeholder images was taken from [Google Images](https://images.google.com/)
 * Responsive Nav-bar [WEB CIFAR](https://www.youtube.com/channel/UCdxaLo9ALJgXgOUDURRPGiQ)
 * All the icons from [Icons8](https://icons8.com/)
 
