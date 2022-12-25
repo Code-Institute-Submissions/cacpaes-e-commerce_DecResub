@@ -164,6 +164,12 @@
                                 <span class="icon">
                                     <i class="fas fa-search"></i>
                                 </span>
+                                
+                            </button>
+                            <button class="form-control btn btn-black border border-black rounded-0" style="background: #5E3023;border-color: #5E3023!important;" type="button" onclick="closeSearch()">
+                                <span class="icon">
+                                    <i class="fas fa-times"></i>
+                                </span>
                             </button>
                         </div>
                     </div>
@@ -274,10 +280,15 @@
 
 <script>
     function openSearch(){
-        console.log("clique")
+        
         $("#topnav").attr( "style", "display: none !important;" )
         $("#formSearch").css("display","flex")
 
+    }
+
+    function closeSearch(){
+        $("#topnav").attr( "style", "display: flex !important;" )
+        $("#formSearch").css("display","none")
     }
     const validateEmail = function (email) {
         var formData = new FormData();
