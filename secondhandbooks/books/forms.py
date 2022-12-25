@@ -1,3 +1,7 @@
+from django import forms
+from .widgets import CustomClearableFileInput
+from .models import Book, Category, Review
+
 class BookForm(forms.ModelForm):
     """
     Class user validated book and created new 
