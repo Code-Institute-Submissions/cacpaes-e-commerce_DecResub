@@ -22,7 +22,7 @@ List of pages validated by the tool [W3C Markup Validator](https://validator.w3.
 |    ---    |   ---  |   ---   |  ---  |
 | Home    | `https://secondhandbookk.herokuapp.com/` |   No errors   |  [Validated](https://validator.w3.org/nu/?doc=https%3A%2F%2Fsecondhandbookk.herokuapp.com%2F)  |
 | Book. Detail |   `https://secondhandbookk.herokuapp.com/11/`  |   No errors   |  [Validated](https://validator.w3.org/nu/?doc=https%3A%2F%2Fsecondhandbookk.herokuapp.com%2F11%2F)  |
-| Book. Rate  |   `https://secondhandbookk.herokuapp.com/3/`  |   No errors   |  [Validated](https://validator.w3.org/nu/?useragent=Validator.nu%2FLV+http%3A%2F%2Fvalidator.w3.org%2Fservices&acceptlanguage=&doc=https%3A%2F%2Fsecondhandbookk.herokuapp.com%2F3%2F)  |
+| Book. Rate  |   `https://secondhandbookk.herokuapp.com/30/`  |   No errors   |  [Validated](https://validator.w3.org/nu/?doc=https%3A%2F%2Fsecondhandbookk.herokuapp.com%2F30%2F)  |
 | Login    |   `https://secondhandbookk.herokuapp.com/accounts/login/`  |   No errors   |  [Validated](https://validator.w3.org/nu/?doc=https%3A%2F%2Fsecondhandbookk.herokuapp.com%2Faccounts%2Flogin%2F)  | 
 | Signup    |   `https://secondhandbookk.herokuapp.com/accounts/signup/`  |   No errors   |  [Validated](https://validator.w3.org/nu/?doc=https%3A%2F%2Fsecondhandbookk.herokuapp.com%2Faccounts%2Fsignup%2F)  |
 | Logout    |   `https://secondhandbookk.herokuapp.com/accounts/logout/`  |   No errors   |  [Validated](https://validator.w3.org/nu/?doc=https%3A%2F%2Fsecondhandbookk.herokuapp.com%2Faccounts%2Flogout%2F)  |
