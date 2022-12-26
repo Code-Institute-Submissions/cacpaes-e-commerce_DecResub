@@ -100,7 +100,7 @@
                                                     </a>
                                                 </p>
                                                 {% endif %}
-                                                <p>
+                                                
                                                     <form class="form" action="{% url 'add_to_bag' book.id %}" method="POST">
                                                     {% csrf_token %}
                                                     <input class="form-control qty_input id_qty_{{ book.id }}" type="number" style="display: none;"
@@ -109,7 +109,6 @@
                                                         <input type="submit" class="btn btn-black rounded-0 text-uppercase mt-5 btn-default" value="Add to Bag">
                                                         <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                                     </form>
-                                                </p>
                                                 
                                                 {% if request.user.is_superuser %}
                                                     <small class="ml-3">
